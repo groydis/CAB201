@@ -122,21 +122,33 @@ namespace TankBattle
             start_player = 0;
 
             CommenceRound();
-
         }
 
         public void CommenceRound()
         {
-            curr_player = start_player;
+            //curr_player to starting Opponent FIELD (See Begin Game)
+            //curr_player = ;
 
             newMap = new Map();
 
-            int [] positions;
+            //Dot Point 3 Array of opponent Positions
+            //int [] positions = {0, 1 };
 
             for (int i =0; i < noPlayers.Length; i++)
             {
-                positions = new { GetPlayerLocations(i) };
-            }       
+                noPlayers[i].CommenceRound();
+                
+            }
+
+            //Shuffle that array of positions
+            //Shuffle(positions);
+
+            //Create BattleTanks array of Private field that is the length of Opponent noPlayers
+
+            GetWindSpeed();
+
+            //Create New Gameplay Form and Show() it (Show() is exact wording from question
+
         }
 
         public Map GetArena()
