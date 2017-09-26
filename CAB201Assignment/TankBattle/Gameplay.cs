@@ -71,7 +71,7 @@ namespace TankBattle
             return colours[playerNum - 1];
         }
 
-        public static int[] CalcPlayerLocations(int numPlayers)
+        public static int[] GetPlayerLocations(int numPlayers)
         {
             int[] locations = new int[numPlayers];
             int screenWidth = 160;
