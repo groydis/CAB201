@@ -15,11 +15,11 @@ namespace TankBattle
 
         private Map newMap;
 
-        private BattleTank[] newTank;
+        private BattleTank[] battleTanks;
 
         private int curr_round;
         private int start_player;
-        private int curr_player;
+        private Gameplay curr_player;
         
         private int wind;
 
@@ -129,11 +129,10 @@ namespace TankBattle
         public void CommenceRound()
         {
             //curr_player to starting Opponent FIELD (See Begin Game)
-            //curr_player = ;
+            curr_player = new Gameplay(curr_round, start_player);
 
             newMap = new Map();
 
-            //Dot Point 3 Array of opponent Positions
             int [] positions = GetPlayerLocations(noPlayers.Length);
 
             for (int i =0; i < noPlayers.Length; i++)
@@ -141,19 +140,18 @@ namespace TankBattle
                 noPlayers[i].CommenceRound();                
             }
 
-            //Shuffle that array of positions
             Shuffle(positions);
 
-            //Initialising the array of BattleTank by finding the horizontal position of the BattleTank
-            //(by looking up the appropriate index of the array returned by GetPlayerLocations and shuffled with the Shuffle method), 
-            //the vertical position of the BattleTank(by calling TankYPosition() on the Map with the horizontal position as an argument), 
-            //and then calling BattleTank's constructor to create that BattleTank (passing in the appropriate Opponent, 
-            //the horizontal position, the vertical position and a reference to this).
-            newTank = new BattleTank[noPlayers.Length];
+            battleTanks = new BattleTank[noPlayers.Length];
 
-            for (int i = 0; i < noPlayers.Length;i++)
+            
+            for (int i = 0; i < positions.Length;i++)
             {
-                newTank[i].GetX();
+                int X_pos = battleTanks[i].GetX();
+                int Y_pos = newMap.TankYPosition(X_pos);
+
+                battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
+ 
             }
 
             GetWindSpeed();
@@ -166,7 +164,9 @@ namespace TankBattle
 
         public Map GetArena()
         {
-            throw new NotImplementedException();
+            CommenceRound();
+
+            return newMap;
         }
 
         public void DrawPlayers(Graphics graphics, Size displaySize)

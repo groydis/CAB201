@@ -12,15 +12,27 @@ namespace TankBattle
         private float angle;
         private int power;
         private int curr_weapon;
-        private Opponent players;
+
+        private Opponent player;
+        private int tankX;
+        private int tankY;
+        private Gameplay game;
+        private TankModel tank;
+        private Bitmap bmp;
 
         public BattleTank(Opponent player, int tankX, int tankY, Gameplay game)
         {
+            player = this.player;
+
+            tank = player.GetTank();
+
             angle = 0;
             power = 25;
             curr_weapon = 0;
-            players = player;
-            //TankModel.CreateBMP(Opponent.GetColour(), angle);
+            
+            bmp = tank.CreateBMP(player.GetColour(), angle);
+
+            game = this.game;
         }
 
         public Opponent GetPlayer()
@@ -30,7 +42,7 @@ namespace TankBattle
 
         public TankModel GetTank()
         {
-            return players.GetTank();
+            return player.GetTank();
         }
 
         public float GetTankAngle()
