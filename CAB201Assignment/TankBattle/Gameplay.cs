@@ -10,6 +10,8 @@ namespace TankBattle
 {
     public class Gameplay
     {
+        List<Effect> effects;
+
         private Opponent[] noPlayers;
         private Opponent[] noRounds;
 
@@ -19,7 +21,7 @@ namespace TankBattle
 
         private int curr_round;
         private int start_player;
-        private Gameplay curr_player;
+        private int curr_player;
         
         private int wind;
 
@@ -36,7 +38,7 @@ namespace TankBattle
                 noRounds = new Opponent[numRounds];
             }
 
-            List<Effect> effects = new List<Effect>();
+            effects = new List<Effect>();
         }
 
         public int NumPlayers()
@@ -128,8 +130,7 @@ namespace TankBattle
 
         public void CommenceRound()
         {
-            //curr_player to starting Opponent FIELD (See Begin Game)
-            curr_player = new Gameplay(curr_round, start_player);
+            curr_player = start_player;
 
             newMap = new Map();
 
@@ -171,47 +172,129 @@ namespace TankBattle
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
-            // THIS SHOULD SIMPLY BE AS FOLLOWS!
-            // FOR EACH BATTLE TANK tank in BATTLE TANKS ARRAY
-            /// ^^ or could be standard for loop
-            // IF tank.EXISTS()
+            
             // tank.DISPLAY(graphics, displaysize) 
-            throw new NotImplementedException();
+            foreach (BattleTank tank in battleTanks)
+            {
+                if (tank.Exists() == true)
+                {
+                    tank.Display(graphics, displaySize);
+                }
+            }
         }
 
         public BattleTank GetCurrentPlayerTank()
         {
-            throw new NotImplementedException();
+            return battleTanks[curr_player];
         }
 
         public void AddWeaponEffect(Effect weaponEffect)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < effects.Count; i++)
+            {
+                if (effects[i] == null)
+                {
+                    effects[i] = weaponEffect;
+                    effects[i].ConnectGame(this);
+                    break;
+                }
+            }
+
         }
 
         public bool ProcessWeaponEffects()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < effects.Count; i++)
+            {
+                if (effects[i] != null)
+                {
+                    effects[i].Tick();
+                    return true;
+                }              
+            }
+            return false;
         }
 
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < effects.Count; i++)
+            {
+                if (effects[i] != null)
+                {
+                    effects[i].Display(graphics,displaySize);                    
+                }
+            }
         }
 
         public void RemoveEffect(Effect weaponEffect)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < effects.Count; i++)
+            {
+                if (effects[i] == weaponEffect)
+                {
+                    effects.Remove(weaponEffect);
+                }
+            }
         }
 
         public bool CheckHitTank(float projectileX, float projectileY)
         {
-            throw new NotImplementedException();
+            if (projectileX < 0 || projectileX > Map.WIDTH)
+            {
+                if (projectileY < 0 || projectileY > Map.HEIGHT)
+                {
+                    return false;
+                }
+            }
+
+            if (newMap.Get((int)projectileX,(int)projectileY) == true)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < battleTanks.Length; i++)
+            {
+                int x_pos = battleTanks[i].GetX();
+                int y_pos = battleTanks[i].Y();
+                int right = x_pos + TankModel.WIDTH;
+                int bottom = y_pos + TankModel.HEIGHT;
+
+                if (projectileX >= x_pos || projectileX <= right)
+                {
+                    if(projectileY >= y_pos || projectileY <= bottom)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public void InflictDamage(float damageX, float damageY, float explosionDamage, float radius)
         {
-            throw new NotImplementedException();
+            float overallDamage = explosionDamage;
+            for (int i = 0; i < battleTanks.Length; i++)
+            {
+                if (battleTanks[i].Exists() == true)
+                {
+                    float[] pos = { battleTanks[i].GetX() + (TankModel.HEIGHT / 2), battleTanks[i].Y() + (TankModel.HEIGHT / 2)  };
+
+                    float dist = (float)Math.Sqrt(Math.Pow(pos[0] - damageX, 2) + Math.Pow(pos[1] - damageY, 2));
+
+                    if (dist > radius/2 && dist < radius)
+                    {
+                        float diff = dist - radius;
+
+                        overallDamage = explosionDamage * diff / radius;
+                    }
+                    if (dist < radius / 2)
+                    {
+                        overallDamage = explosionDamage;
+                    }
+                    battleTanks[i].InflictDamage((int)overallDamage);
+                }
+            }
         }
 
         public bool GravityStep()
