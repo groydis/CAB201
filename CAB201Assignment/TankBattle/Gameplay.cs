@@ -12,6 +12,12 @@ namespace TankBattle
     {
         private Opponent[] noPlayers;
         private Opponent[] noRounds;
+
+        private Map newMap;
+
+        private int curr_round;
+        private int start_player;
+        private int curr_player;
         
         private int wind;
 
@@ -98,12 +104,26 @@ namespace TankBattle
 
         public void BeginGame()
         {
-            throw new NotImplementedException();
+            curr_round = 1;
+
+            start_player = 0;
+
+            CommenceRound();
+
         }
 
         public void CommenceRound()
         {
-            throw new NotImplementedException();
+            curr_player = start_player;
+
+            newMap = new Map();
+
+            int [] positions;
+
+            for (int i =0; i < noPlayers.Length; i++)
+            {
+                positions = new { GetPlayerLocations(i) };
+            }       
         }
 
         public Map GetArena()
