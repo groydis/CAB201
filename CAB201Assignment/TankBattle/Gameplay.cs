@@ -146,6 +146,11 @@ namespace TankBattle
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
+            // THIS SHOULD SIMPLY BE AS FOLLOWS!
+            // FOR EACH BATTLE TANK tank in BATTLE TANKS ARRAY
+            /// ^^ or could be standard for loop
+            // IF tank.EXISTS()
+            // tank.DISPLAY(graphics, displaysize) 
             throw new NotImplementedException();
         }
 
