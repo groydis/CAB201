@@ -71,23 +71,24 @@ namespace TankBattle
             return colours[playerNum - 1];
         }
 
-        public static int[] GetPlayerLocations(int numPlayers)
+        public static int[] CalcPlayerLocations(int numPlayers)
         {
-            int[] ans = { 0, 0 };
-            int SCRWIDTH = 160;
-
-            for(int i = 0; i < numPlayers; i++)
+            int[] locations = new int[numPlayers];
+            int screenWidth = 160;
+            int loc = 0;
+            for (int i = 0; i < numPlayers; i++)
             {
                 if (i == 0)
                 {
-                    
-                } else
-                {
-                    
+                    loc = screenWidth / numPlayers;
                 }
+                else
+                {
+                    loc = locations[i - 1] + (screenWidth / numPlayers);
+                }
+                locations[i] = loc;
             }
-
-            return ans;
+            return locations;
         }
 
         public static void Shuffle(int[] array)
