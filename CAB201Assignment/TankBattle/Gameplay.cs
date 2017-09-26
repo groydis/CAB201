@@ -99,7 +99,20 @@ namespace TankBattle
 
         public static void Shuffle(int[] array)
         {
-            throw new NotImplementedException();
+
+            Random rng = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = i + 1;
+            }
+
+            for (int j = 0; j < array.Length; j++)
+            {
+                int z = rng.Next(j);
+                int k = array[z];
+                array[z] = array[j];
+                array[j] = k;
+            }
         }
 
         public void BeginGame()
