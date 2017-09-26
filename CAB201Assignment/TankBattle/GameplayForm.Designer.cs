@@ -35,9 +35,10 @@
             // 
             // displayPanel
             // 
-            this.displayPanel.Location = new System.Drawing.Point(0, 32);
+            this.displayPanel.Location = new System.Drawing.Point(0, 62);
+            this.displayPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.displayPanel.Name = "displayPanel";
-            this.displayPanel.Size = new System.Drawing.Size(800, 600);
+            this.displayPanel.Size = new System.Drawing.Size(1600, 1154);
             this.displayPanel.TabIndex = 0;
             this.displayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.displayPanel_Paint);
             // 
@@ -48,19 +49,22 @@
             this.controlPanel.BackColor = System.Drawing.Color.OrangeRed;
             this.controlPanel.Enabled = false;
             this.controlPanel.Location = new System.Drawing.Point(0, 0);
+            this.controlPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(800, 32);
+            this.controlPanel.Size = new System.Drawing.Size(1600, 62);
             this.controlPanel.TabIndex = 1;
+            this.controlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.controlPanel_Paint);
             // 
             // GameplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 629);
+            this.ClientSize = new System.Drawing.Size(1600, 1210);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.displayPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "GameplayForm";
             this.Text = "Form1";
             this.ResumeLayout(false);

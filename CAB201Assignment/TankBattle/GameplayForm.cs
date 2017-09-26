@@ -108,5 +108,10 @@ namespace TankBattle
             Graphics graphics = displayPanel.CreateGraphics();
             gameplayGraphics.Render(graphics);
         }
+
+        private void controlPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

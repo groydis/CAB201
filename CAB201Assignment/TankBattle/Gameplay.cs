@@ -15,6 +15,8 @@ namespace TankBattle
 
         private Map newMap;
 
+        private BattleTank[] newTank;
+
         private int curr_round;
         private int start_player;
         private int curr_player;
@@ -132,22 +134,33 @@ namespace TankBattle
             newMap = new Map();
 
             //Dot Point 3 Array of opponent Positions
-            //int [] positions = {0, 1 };
+            int [] positions = GetPlayerLocations(noPlayers.Length);
 
             for (int i =0; i < noPlayers.Length; i++)
             {
-                noPlayers[i].CommenceRound();
-                
+                noPlayers[i].CommenceRound();                
             }
 
             //Shuffle that array of positions
-            //Shuffle(positions);
+            Shuffle(positions);
 
-            //Create BattleTanks array of Private field that is the length of Opponent noPlayers
+            //Initialising the array of BattleTank by finding the horizontal position of the BattleTank
+            //(by looking up the appropriate index of the array returned by GetPlayerLocations and shuffled with the Shuffle method), 
+            //the vertical position of the BattleTank(by calling TankYPosition() on the Map with the horizontal position as an argument), 
+            //and then calling BattleTank's constructor to create that BattleTank (passing in the appropriate Opponent, 
+            //the horizontal position, the vertical position and a reference to this).
+            newTank = new BattleTank[noPlayers.Length];
+
+            for (int i = 0; i < noPlayers.Length;i++)
+            {
+                newTank[i].GetX();
+            }
 
             GetWindSpeed();
 
-            //Create New Gameplay Form and Show() it (Show() is exact wording from question
+            Gameplay newGame = new Gameplay(noPlayers.Length, noRounds.Length);
+            GameplayForm gpf = new GameplayForm(newGame);
+            gpf.Show();
 
         }
 
