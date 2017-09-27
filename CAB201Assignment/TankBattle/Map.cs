@@ -17,6 +17,15 @@ namespace TankBattle
 
         public Map()
         {
+            for (int i = 0; i < WIDTH; i++)
+            {
+                thisMap[i, HEIGHT] = true;
+            }
+            for (int i = 0; i < WIDTH; i++)
+            {
+                thisMap[i, 0] = false;
+            }
+
             int newX, newY;
             for (int i = 0; i < 250; i++)
             {
@@ -31,14 +40,6 @@ namespace TankBattle
                 thisMap[newX, newY] = true;
             }
 
-            for (int i = 0; i < WIDTH; i++)
-            {
-                thisMap[i, HEIGHT] = true;
-            }
-            for (int i = 0; i < WIDTH; i++)
-            {
-                thisMap[i, 0] = false;
-            }
         }
 
         public bool Get(int x, int y)
@@ -75,7 +76,16 @@ namespace TankBattle
 
         public int TankYPosition(int x)
         {
-            throw new NotImplementedException();
+            bool lowest = false;
+            for (int y = HEIGHT; y > 0; y--)
+            {
+                for (int i = x; i < WIDTH; i++)
+                {
+                    if () { }
+                }
+            }
+
+            return lowest;
         }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
