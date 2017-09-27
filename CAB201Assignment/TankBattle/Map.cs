@@ -64,9 +64,13 @@ namespace TankBattle
             {
                 if (x <= WIDTH - TankModel.WIDTH && y <= HEIGHT - TankModel.HEIGHT)
                 {
-                    if(Get())
+                    if (Get(x, tankBott+ 1) == true)
+                    {
+                        return true;
+                    }
                 }
             }
+            return false;
         }
 
         public int TankYPosition(int x)
