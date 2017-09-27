@@ -37,7 +37,7 @@ namespace TankBattle
 
         public Opponent GetPlayer()
         {
-            throw new NotImplementedException();
+            return player;
         }
 
         public TankModel GetTank()
@@ -47,31 +47,32 @@ namespace TankBattle
 
         public float GetTankAngle()
         {
-            throw new NotImplementedException();
+            return angle;
+                
         }
 
         public void SetAngle(float angle)
         {
-            throw new NotImplementedException();
+            this.angle = angle;
         }
 
         public int GetCurrentPower()
         {
-            throw new NotImplementedException();
+            return power;
         }
 
         public void SetPower(int power)
         {
-            throw new NotImplementedException();
+            this.power = power;
         }
 
         public int GetWeaponIndex()
         {
-            throw new NotImplementedException();
+            return curr_weapon;
         }
         public void SetWeapon(int newWeapon)
         {
-            throw new NotImplementedException();
+            this.curr_weapon = newWeapon;
         }
 
         public void Display(Graphics graphics, Size displaySize)
