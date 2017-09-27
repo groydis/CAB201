@@ -21,7 +21,7 @@ namespace TankBattle
 
         public override void NewTurn(GameplayForm gameplayForm, Gameplay currentGame)
         {
-            throw new NotImplementedException();
+            gameplayForm.EnableControlPanel();
         }
 
         public override void HitPos(float x, float y)
