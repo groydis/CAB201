@@ -299,22 +299,91 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-            throw new NotImplementedException();
+            bool moved = false;
+
+            if (newMap.GravityStep() == true)
+            {
+                moved = true;
+            }
+
+            for(int i = 0; i < battleTanks.Length; i++)
+            {
+                if(battleTanks[i].GravityStep() == true)
+                {
+                    moved = true;
+                }
+            }
+
+            return moved;
         }
 
         public bool FinishTurn()
         {
-            throw new NotImplementedException();
+            int playersLeft = 0;
+            for (int i = 0; i< battleTanks.Length; i++)
+            {
+                if (battleTanks[i].Exists() == true)
+                {
+                    playersLeft++;
+                }
+                if (playersLeft >= 2)
+                {
+                    curr_player++;
+                    if (battleTanks[curr_player].Exists() == true)
+                    {
+                        wind += rng.Next(-10, 10);
+
+                        if (wind < -100)
+                        {
+                            wind = -100;
+                        }
+                        if (wind > 100)
+                        {
+                            wind = 100;
+                        }
+                        return true;
+                    } else
+                    {
+                        curr_player--;
+                        if (i == noPlayers.Length)
+                        {
+                            i = 0;
+                        }
+                    }
+
+                } else if(playersLeft <= 1)
+                {
+                    FindWinner();
+                    return false;
+                }
+            }
+            return false;
         }
 
         public void FindWinner()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < noPlayers.Length; i++)
+            {
+                if (battleTanks[i].Exists() == true)
+                {
+                    battleTanks[i].GetPlayer().AddScore();
+                }
+            }
         }
 
         public void NextRound()
         {
-            throw new NotImplementedException();
+            curr_round++;
+            if (curr_round <= noRounds.Length)
+            {
+                start_player++;
+                if (start_player == noPlayers.Length)
+                {
+                    start_player = 0;
+                }
+                CommenceRound();
+            }
+            //if (curr_round > noPlayers.Length){either(show leaderboard OR show Main MenuForm again)
         }
         
         public int GetWindSpeed()

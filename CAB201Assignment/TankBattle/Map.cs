@@ -11,19 +11,62 @@ namespace TankBattle
         public const int WIDTH = 160;
         public const int HEIGHT = 120;
 
+        private bool[,] thisMap = new bool[WIDTH, HEIGHT];
+
+        Random rng = new Random();
+
         public Map()
         {
-            throw new NotImplementedException();
+            int newX, newY;
+            for (int i = 0; i < 250; i++)
+            {
+                newX = rng.Next(0, 160);
+                newY = rng.Next(0, 119);
+
+                while (Get(newX, newY + 1) == false)
+                {
+                    newY++;
+                };
+
+                thisMap[newX, newY] = true;
+            }
+
+            for (int i = 0; i < WIDTH; i++)
+            {
+                thisMap[i, HEIGHT] = true;
+            }
+            for (int i = 0; i < WIDTH; i++)
+            {
+                thisMap[i, 0] = false;
+            }
         }
 
         public bool Get(int x, int y)
         {
-            throw new NotImplementedException();
+            if (x >= 0 && x <= WIDTH)
+            {
+                if (y >= 0 && y <= HEIGHT)
+                {
+                    if (thisMap[x,y] == true)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool CheckTankCollide(int x, int y)
         {
-            throw new NotImplementedException();
+            int tankBott = y + TankModel.HEIGHT, tankR = x + TankModel.WIDTH;
+
+            if (x >= 0 && y >= 0)
+            {
+                if (x <= WIDTH - TankModel.WIDTH && y <= HEIGHT - TankModel.HEIGHT)
+                {
+                    if(Get())
+                }
+            }
         }
 
         public int TankYPosition(int x)
