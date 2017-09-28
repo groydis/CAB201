@@ -31,14 +31,27 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameplayForm));
             this.displayPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.powerNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.weaponComboBox = new System.Windows.Forms.ComboBox();
+            this.fireButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.powerLabel = new System.Windows.Forms.Label();
+            this.angleLabel = new System.Windows.Forms.Label();
+            this.weaponLabel = new System.Windows.Forms.Label();
+            this.currWindLabel = new System.Windows.Forms.Label();
+            this.windLabel = new System.Windows.Forms.Label();
+            this.playerNameLabel = new System.Windows.Forms.Label();
+            this.controlPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powerNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // displayPanel
             // 
-            this.displayPanel.Location = new System.Drawing.Point(0, 62);
-            this.displayPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.displayPanel.Location = new System.Drawing.Point(0, 32);
             this.displayPanel.Name = "displayPanel";
-            this.displayPanel.Size = new System.Drawing.Size(1600, 1154);
+            this.displayPanel.Size = new System.Drawing.Size(800, 600);
             this.displayPanel.TabIndex = 0;
             this.displayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.displayPanel_Paint);
             // 
@@ -47,26 +60,145 @@
             this.controlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.controlPanel.BackColor = System.Drawing.Color.OrangeRed;
+            this.controlPanel.Controls.Add(this.trackBar1);
+            this.controlPanel.Controls.Add(this.powerNumericUpDown);
+            this.controlPanel.Controls.Add(this.weaponComboBox);
+            this.controlPanel.Controls.Add(this.fireButton);
+            this.controlPanel.Controls.Add(this.label1);
+            this.controlPanel.Controls.Add(this.powerLabel);
+            this.controlPanel.Controls.Add(this.angleLabel);
+            this.controlPanel.Controls.Add(this.weaponLabel);
+            this.controlPanel.Controls.Add(this.currWindLabel);
+            this.controlPanel.Controls.Add(this.windLabel);
+            this.controlPanel.Controls.Add(this.playerNameLabel);
             this.controlPanel.Enabled = false;
             this.controlPanel.Location = new System.Drawing.Point(0, 0);
-            this.controlPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1600, 62);
+            this.controlPanel.Size = new System.Drawing.Size(800, 32);
             this.controlPanel.TabIndex = 1;
-            this.controlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.controlPanel_Paint);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 10;
+            this.trackBar1.Location = new System.Drawing.Point(552, 6);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Minimum = 5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(120, 45);
+            this.trackBar1.TabIndex = 9;
+            this.trackBar1.Value = 5;
+            // 
+            // powerNumericUpDown
+            // 
+            this.powerNumericUpDown.Location = new System.Drawing.Point(443, 5);
+            this.powerNumericUpDown.Name = "powerNumericUpDown";
+            this.powerNumericUpDown.Size = new System.Drawing.Size(40, 20);
+            this.powerNumericUpDown.TabIndex = 8;
+            // 
+            // weaponComboBox
+            // 
+            this.weaponComboBox.FormattingEnabled = true;
+            this.weaponComboBox.Location = new System.Drawing.Point(256, 4);
+            this.weaponComboBox.Name = "weaponComboBox";
+            this.weaponComboBox.Size = new System.Drawing.Size(121, 21);
+            this.weaponComboBox.TabIndex = 7;
+            // 
+            // fireButton
+            // 
+            this.fireButton.Location = new System.Drawing.Point(722, 4);
+            this.fireButton.Name = "fireButton";
+            this.fireButton.Size = new System.Drawing.Size(75, 23);
+            this.fireButton.TabIndex = 6;
+            this.fireButton.Text = "Fire";
+            this.fireButton.UseVisualStyleBackColor = true;
+            this.fireButton.Click += new System.EventHandler(this.fireButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(678, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "20";
+            // 
+            // powerLabel
+            // 
+            this.powerLabel.AutoSize = true;
+            this.powerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerLabel.Location = new System.Drawing.Point(489, 6);
+            this.powerLabel.Name = "powerLabel";
+            this.powerLabel.Size = new System.Drawing.Size(57, 20);
+            this.powerLabel.TabIndex = 4;
+            this.powerLabel.Text = "Power:";
+            // 
+            // angleLabel
+            // 
+            this.angleLabel.AutoSize = true;
+            this.angleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.angleLabel.Location = new System.Drawing.Point(383, 4);
+            this.angleLabel.Name = "angleLabel";
+            this.angleLabel.Size = new System.Drawing.Size(54, 20);
+            this.angleLabel.TabIndex = 3;
+            this.angleLabel.Text = "Angle:";
+            // 
+            // weaponLabel
+            // 
+            this.weaponLabel.AutoSize = true;
+            this.weaponLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weaponLabel.Location = new System.Drawing.Point(177, 4);
+            this.weaponLabel.Name = "weaponLabel";
+            this.weaponLabel.Size = new System.Drawing.Size(73, 20);
+            this.weaponLabel.TabIndex = 0;
+            this.weaponLabel.Text = "Weapon:";
+            // 
+            // currWindLabel
+            // 
+            this.currWindLabel.AutoSize = true;
+            this.currWindLabel.Location = new System.Drawing.Point(108, 16);
+            this.currWindLabel.Name = "currWindLabel";
+            this.currWindLabel.Size = new System.Drawing.Size(27, 13);
+            this.currWindLabel.TabIndex = 2;
+            this.currWindLabel.Text = "0 W";
+            this.currWindLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // windLabel
+            // 
+            this.windLabel.AutoSize = true;
+            this.windLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.windLabel.Location = new System.Drawing.Point(99, 4);
+            this.windLabel.Name = "windLabel";
+            this.windLabel.Size = new System.Drawing.Size(36, 13);
+            this.windLabel.TabIndex = 1;
+            this.windLabel.Text = "Wind";
+            this.windLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // playerNameLabel
+            // 
+            this.playerNameLabel.AutoSize = true;
+            this.playerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerNameLabel.Location = new System.Drawing.Point(3, 4);
+            this.playerNameLabel.Name = "playerNameLabel";
+            this.playerNameLabel.Size = new System.Drawing.Size(73, 20);
+            this.playerNameLabel.TabIndex = 0;
+            this.playerNameLabel.Text = "Player 1";
             // 
             // GameplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 1210);
+            this.ClientSize = new System.Drawing.Size(800, 629);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.displayPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "GameplayForm";
             this.Text = "Form1";
+            this.controlPanel.ResumeLayout(false);
+            this.controlPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powerNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -75,6 +207,17 @@
 
         private System.Windows.Forms.Panel displayPanel;
         private System.Windows.Forms.Panel controlPanel;
+        private System.Windows.Forms.Label playerNameLabel;
+        private System.Windows.Forms.Button fireButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label powerLabel;
+        private System.Windows.Forms.Label angleLabel;
+        private System.Windows.Forms.Label weaponLabel;
+        private System.Windows.Forms.Label currWindLabel;
+        private System.Windows.Forms.Label windLabel;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.NumericUpDown powerNumericUpDown;
+        private System.Windows.Forms.ComboBox weaponComboBox;
     }
 }
 

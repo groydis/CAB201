@@ -76,7 +76,7 @@ namespace TankBattle
 
         public void EnableControlPanel()
         {
-            throw new NotImplementedException();
+            controlPanel.Enabled = true;
         }
 
         public void SetAngle(float angle)
@@ -150,9 +150,9 @@ namespace TankBattle
             gameplayGraphics.Render(graphics);
         }
 
-        private void controlPanel_Paint(object sender, PaintEventArgs e)
+        private void fireButton_Click(object sender, EventArgs e)
         {
-
+            Fire();
         }
     }
 }
