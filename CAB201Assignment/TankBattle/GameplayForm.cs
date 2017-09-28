@@ -135,8 +135,30 @@ namespace TankBattle
 
         private void NewTurn()
         {
-            // CREATED AS PER INSTRUCTIONS FOR public GameplayForm
-            throw new NotImplementedException();
+            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
+            Opponent opponentTank = currentTank.GetPlayer();
+            this.Text = String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+            BackColor = opponentTank.GetColour();
+            playerNameLabel.Text = opponentTank.Identifier();
+            SetAngle(currentTank.GetTankAngle());
+            SetPower(currentTank.GetCurrentPower());
+            int currentWind = currentGame.GetWindSpeed();
+            if (currentWind > 0)
+            {
+                currWindLabel.Text = String.Format("{0} E", currentWind);
+            } else
+            {
+                currentWind = currentWind * -1;
+                currWindLabel.Text = String.Format("{0} W", currentWind);
+            }
+            weaponComboBox.Items.Clear();
+            TankModel currentTankModel = currentTank.GetTank();
+            foreach (String weapon in currentTankModel.WeaponList())
+            {
+                weaponComboBox.Items.Add(weapon);
+            }
+            SetWeapon(weaponComboBox.SelectedIndex);
+            opponentTank.NewTurn(this, currentGame);
         }
 
         public BufferedGraphics InitialiseBuffer()

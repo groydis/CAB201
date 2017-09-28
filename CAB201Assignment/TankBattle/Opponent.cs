@@ -9,29 +9,29 @@ namespace TankBattle
 {
     abstract public class Opponent
     {
-        private string names;
-        private TankModel tanks;
-        private Color colours;
+        private string name;
+        private TankModel tank;
+        private Color colour;
         private int roundsWon;
 
         public Opponent(string name, TankModel tank, Color colour)
         {
-            names = name;
-            tanks = tank;
-            colours = colour;
+            this.name = name;
+            this.tank = tank;
+            this.colour = colour;
             roundsWon = 0;
         }
         public TankModel GetTank()
         {
-            return tanks;
+            return tank;
         }
         public string Identifier()
         {
-            return names;
+            return name;
         }
         public Color GetColour()
         {
-            return colours;
+            return colour;
         }
         public void AddScore()
         {
