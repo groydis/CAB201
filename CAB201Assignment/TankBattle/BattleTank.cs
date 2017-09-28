@@ -13,43 +13,47 @@ namespace TankBattle
         private int power;
         private int curr_weapon;
 
-        private Opponent player;
         private int tankX;
         private int tankY;
         private int currDurability;
+
+        private Opponent player;
+
         private Gameplay game;
-        private TankModel tank;
-        private Bitmap bmp;
+        private TankModel tankModel;
+        private Bitmap tankBmp;
 
         public BattleTank(Opponent player, int tankX, int tankY, Gameplay game)
         {
-            player = this.player;
+            this.player = player;
+            this.tankX = tankX;
+            this.tankY = tankY;
 
-            tank = player.GetTank();
-            currDurability = tank.GetTankArmour();
+            this.tankModel = player.GetTank();
+            this.currDurability = tankModel.GetTankArmour();
 
-            angle = 0;
-            power = 25;
-            curr_weapon = 0;
+            this.angle = 0;
+            this.power = 25;
+            this.curr_weapon = 0;
             
-            bmp = tank.CreateBMP(player.GetColour(), angle);
+            this.tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
 
-            game = this.game;
+            this.game = game;
         }
 
         public Opponent GetPlayer()
         {
-            return player;
+            return this.player;
         }
 
         public TankModel GetTank()
         {
-            return player.GetTank();
+            return this.player.GetTank();
         }
 
         public float GetTankAngle()
         {
-            return angle;
+            return this.angle;
                 
         }
 
@@ -60,7 +64,7 @@ namespace TankBattle
 
         public int GetCurrentPower()
         {
-            return power;
+            return this.power;
         }
 
         public void SetPower(int power)
@@ -70,7 +74,7 @@ namespace TankBattle
 
         public int GetWeaponIndex()
         {
-            return curr_weapon;
+            return this.curr_weapon;
         }
         public void SetWeapon(int newWeapon)
         {
@@ -79,7 +83,27 @@ namespace TankBattle
 
         public void Display(Graphics graphics, Size displaySize)
         {
-            throw new NotImplementedException();
+            int x = tankX;
+            int y = tankY;
+            int startAmrour = 100;
+
+            int drawX1 = displaySize.Width * x / Map.WIDTH;
+            int drawY1 = displaySize.Height * y / Map.HEIGHT;
+            int drawX2 = displaySize.Width * (x + TankModel.WIDTH) / Map.WIDTH;
+            int drawY2 = displaySize.Height * (y + TankModel.HEIGHT) / Map.HEIGHT;
+
+            graphics.DrawImage(tankBmp, new Rectangle(drawX1, drawY1, drawX2 - drawX1, drawY2 - drawY1));
+
+            int drawY3 = displaySize.Height * (y - TankModel.HEIGHT) / Map.HEIGHT;
+            Font font = new Font("Arial", 8);
+            Brush brush = new SolidBrush(Color.White);
+
+            int pct = currDurability * 100 / startAmrour;
+            if (pct < 100)
+            {
+                graphics.DrawString(pct + "%", font, brush, new Point(drawX1, drawY3));
+            }
+
         }
 
         public int GetX()
