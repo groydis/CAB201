@@ -65,10 +65,12 @@ namespace TankBattle
                 {
                     for (int i = x; i < tankR; i++)
                     {
-                        for(int z = y; z < tankBott; z++)
-                        if (Get(i, z) == true)
+                        for (int z = y; z < tankBott; z++)
                         {
-                            return true;
+                            if (Get(i, z) == true)
+                            {
+                                return true;
+                            }
                         }
                     }
                 }
@@ -84,7 +86,7 @@ namespace TankBattle
             {
                 for (int i = x; i <= WIDTH; i++)
                 {
-                    if (CheckTankCollide(i, y) == true)
+                    if (CheckTankCollide(i, y) == false)
                     {
                         return y;
                     }   
