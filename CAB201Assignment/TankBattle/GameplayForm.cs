@@ -180,5 +180,20 @@ namespace TankBattle
         {
             Fire();
         }
+
+        private void weaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void angleNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void powerTrackBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
     }
 }

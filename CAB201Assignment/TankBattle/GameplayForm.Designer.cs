@@ -87,6 +87,7 @@
             this.powerTrackBar.Size = new System.Drawing.Size(120, 45);
             this.powerTrackBar.TabIndex = 9;
             this.powerTrackBar.Value = 5;
+            this.powerTrackBar.Scroll += new System.EventHandler(this.powerTrackBar_Scroll);
             // 
             // angleNumericUpDown
             // 
@@ -109,6 +110,7 @@
             this.angleNumericUpDown.Name = "angleNumericUpDown";
             this.angleNumericUpDown.Size = new System.Drawing.Size(40, 20);
             this.angleNumericUpDown.TabIndex = 8;
+            this.angleNumericUpDown.ValueChanged += new System.EventHandler(this.angleNumericUpDown_ValueChanged);
             // 
             // weaponComboBox
             // 
@@ -117,6 +119,7 @@
             this.weaponComboBox.Name = "weaponComboBox";
             this.weaponComboBox.Size = new System.Drawing.Size(121, 21);
             this.weaponComboBox.TabIndex = 7;
+            this.weaponComboBox.SelectedIndexChanged += new System.EventHandler(this.weaponComboBox_SelectedIndexChanged);
             // 
             // fireButton
             // 
