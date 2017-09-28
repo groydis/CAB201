@@ -81,21 +81,24 @@ namespace TankBattle
 
         public void SetAngle(float angle)
         {
-            throw new NotImplementedException();
+            angleNumericUpDown.Value = (decimal)angle;
+
         }
 
         public void SetPower(int power)
         {
-            throw new NotImplementedException();
+            powerTrackBar.Value = power;
         }
         public void SetWeapon(int weapon)
         {
-            throw new NotImplementedException();
+            weaponComboBox.SelectedValue = weapon;
         }
 
         public void Fire()
         {
-            throw new NotImplementedException();
+            currentGame.GetCurrentPlayerTank();
+            controlPanel.Enabled = false;
+            // ENABLE TIMER???
         }
 
         private void DrawBackground()
@@ -125,8 +128,9 @@ namespace TankBattle
 
         private void DrawGameplay()
         {
-            // CREATED AS PER INSTRUCTIONS FOR public GameplayForm
-            throw new NotImplementedException();
+            backgroundGraphics.Render(gameplayGraphics.Graphics);
+            currentGame.DrawPlayers(gameplayGraphics.Graphics, displayPanel.Size);
+            currentGame.DrawAttacks(gameplayGraphics.Graphics, displayPanel.Size);
         }
 
         private void NewTurn()

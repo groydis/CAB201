@@ -76,16 +76,7 @@ namespace TankBattle
 
         public int TankYPosition(int x)
         {
-            bool lowest = false;
-            for (int y = HEIGHT; y > 0; y--)
-            {
-                for (int i = x; i < WIDTH; i++)
-                {
-                    if () { }
-                }
-            }
-
-            return lowest;
+            throw new NotImplementedException();
         }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
