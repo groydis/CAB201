@@ -108,7 +108,21 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-            throw new NotImplementedException();
+            for (int y = 0; y > HEIGHT; y++)
+            {
+                for (int x = 0; x <= WIDTH; x++)
+                {
+                    if(thisMap[x, y] == true)
+                    {
+                       if(Get(x, y + 1) == false)
+                       {
+                            thisMap[x, y] = false;
+                            thisMap[x, y + 1] = true;
+                       }
+                    }
+                }
+            }
+            return false;
         }
     }
 }
