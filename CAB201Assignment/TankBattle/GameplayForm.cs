@@ -183,17 +183,21 @@ namespace TankBattle
 
         private void weaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
+            currentTank.SetWeapon(weaponComboBox.SelectedIndex);
         }
 
         private void angleNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-
+            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
+            currentTank.SetAngle((float)angleNumericUpDown.Value);
         }
 
         private void powerTrackBar_Scroll(object sender, EventArgs e)
         {
-
+            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
+            currentTank.SetPower((int)powerTrackBar.Value);
+            powerLabel.Text = currentTank.GetCurrentPower().ToString();
         }
     }
 }
