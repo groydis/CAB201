@@ -81,19 +81,29 @@ namespace TankBattle
         public int TankYPosition(int x)
         {
             //Not technically correct just trying to get past it and hopefully get it working later on
-            for (int y = 0; y < HEIGHT; y++)
-            {
-                for (int ix = x; ix <= TankModel.WIDTH; ix++)
+
+                int lowestValid = 0;
+                for (int y = 0; y <= Map.HEIGHT - TankModel.HEIGHT; y++)
                 {
-                    if (CheckTankCollide(ix, y ) == true)
+                    int colTiles = 0;
+                    for (int iy = 0; iy < TankModel.HEIGHT; iy++)
                     {
-                        return y;
+                        for (int ix = 0; ix < TankModel.WIDTH; ix++)
+                        {
+
+                            if (this.Get(x + ix, y + iy))
+                            {
+                                colTiles++;
+                            }
+                        }
+                    }
+                    if (colTiles == 0)
+                    {
+                        lowestValid = y;
                     }
                 }
-
+            return lowestValid;
             }
-            return x;
-        }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
         {
