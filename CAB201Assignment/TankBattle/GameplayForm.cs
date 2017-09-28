@@ -32,6 +32,35 @@ namespace TankBattle
             SetStyle(ControlStyles.UserPaint, true);
 
             InitializeComponent();
+
+            // THIS STUFF MAY NEED TO GO ABOVE ALL OF THAT ^
+            this.currentGame = game;
+            string[] imageFilenames =
+            {
+                "Images\\background1.jpg",
+                "Images\\background2.jpg",
+                "Images\\background3.jpg",
+                "Images\\background4.jpg",
+            };
+
+            Color[] landscapeColours =
+            {
+                Color.FromArgb(255, 0, 0, 0),
+                Color.FromArgb(255, 73, 58, 47),
+                Color.FromArgb(255, 148, 116, 93),
+                Color.FromArgb(255, 133, 119, 109),
+            };
+
+            int randomInt = rng.Next(4);
+            backgroundImage = Image.FromFile(imageFilenames[randomInt]);
+            landscapeColour = landscapeColours[randomInt];
+
+            backgroundGraphics = InitialiseBuffer();
+            gameplayGraphics = InitialiseBuffer();
+            DrawBackground();
+            DrawGameplay();
+            NewTurn();
+
         }
 
         // From https://stackoverflow.com/questions/13999781/tearing-in-my-animation-on-winforms-c-sharp
@@ -92,6 +121,18 @@ namespace TankBattle
                     }
                 }
             }
+        }
+
+        private void DrawGameplay()
+        {
+            // CREATED AS PER INSTRUCTIONS FOR public GameplayForm
+            throw new NotImplementedException();
+        }
+
+        private void NewTurn()
+        {
+            // CREATED AS PER INSTRUCTIONS FOR public GameplayForm
+            throw new NotImplementedException();
         }
 
         public BufferedGraphics InitialiseBuffer()
