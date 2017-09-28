@@ -76,6 +76,7 @@ namespace TankBattle
 
         public int TankYPosition(int x)
         {
+<<<<<<< HEAD
             //Not technically correct just trying to get past it and hopefully get it working later on
             int ans = 110;
             for (int y = HEIGHT; y > 0; y--)
