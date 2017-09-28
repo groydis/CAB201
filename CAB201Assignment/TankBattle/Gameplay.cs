@@ -171,9 +171,7 @@ namespace TankBattle
         }
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
-        {
-            
-            // tank.DISPLAY(graphics, displaysize) 
+        { 
             foreach (BattleTank tank in battleTanks)
             {
                 if (tank.Exists() == true)

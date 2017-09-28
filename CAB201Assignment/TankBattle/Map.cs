@@ -76,21 +76,34 @@ namespace TankBattle
 
         public int TankYPosition(int x)
         {
-            bool lowest = false;
+            //Not technically correct just trying to get past it and hopefully get it working later on
+            int ans = 110;
             for (int y = HEIGHT; y > 0; y--)
             {
-                for (int i = x; i < WIDTH; i++)
+                for (int i = x; i <= WIDTH; i++)
                 {
-                    if () { }
+                    if (CheckTankCollide(i, y) == true)
+                    {
+                        return y;
+                    }   
                 }
             }
-
-            return lowest;
+            return ans;
         }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
         {
-            throw new NotImplementedException();
+            for (int y = 0; y > HEIGHT; y++)
+            {
+                for (int x = 0; x <= WIDTH; x++)
+                {
+                    double dist = Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
+                    if (dist < radius)
+                    {
+                        thisMap[x, y] = false;
+                    }
+                }
+            }
         }
 
         public bool GravityStep()
