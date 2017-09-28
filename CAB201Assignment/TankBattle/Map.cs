@@ -81,21 +81,18 @@ namespace TankBattle
         public int TankYPosition(int x)
         {
             //Not technically correct just trying to get past it and hopefully get it working later on
-            int yPos = 0;
             for (int y = 0; y < HEIGHT; y++)
             {
-                for (int i = 0; i < WIDTH; i++)
+                for (int ix = x; ix <= TankModel.WIDTH; ix++)
                 {
-                    if (CheckTankCollide(i, y) == false)
+                    if (CheckTankCollide(ix, y ) == true)
                     {
-                        if (y > yPos)
-                        {
-                            yPos = y;
-                        }
+                        return y;
                     }
                 }
+
             }
-            return yPos;
+            return x;
         }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)

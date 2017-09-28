@@ -16,6 +16,7 @@ namespace TankBattle
         private Opponent player;
         private int tankX;
         private int tankY;
+        private int currDurability;
         private Gameplay game;
         private TankModel tank;
         private Bitmap bmp;
@@ -25,6 +26,7 @@ namespace TankBattle
             player = this.player;
 
             tank = player.GetTank();
+            currDurability = tank.GetTankArmour();
 
             angle = 0;
             power = 25;

@@ -167,6 +167,11 @@ namespace TankBattle
         {
             CommenceRound();
 
+            if (newMap == null)
+            {
+                newMap = new Map();
+            }
+
             return newMap;
         }
 
