@@ -48,7 +48,7 @@ namespace TankBattle
 
         public int GetRoundNumber()
         {
-            throw new NotImplementedException();
+            return curr_round;
         }
 
         public int GetMaxRounds()
@@ -68,7 +68,7 @@ namespace TankBattle
 
         public BattleTank GetGameplayTank(int playerNum)
         {
-            throw new NotImplementedException();
+            return battleTanks[playerNum];
         }
 
         public static Color GetColour(int playerNum)
