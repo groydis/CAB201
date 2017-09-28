@@ -13,42 +13,42 @@ namespace TankBattle
         private int power;
         private int curr_weapon;
 
-        private int tkX;
-        private int tkY;
+        private int tankX;
+        private int tankY;
         private int currDurability;
 
-        private Opponent thisPlayer;
+        private Opponent player;
 
-        private Gameplay thisGame;
+        private Gameplay game;
         private TankModel tankModel;
         private Bitmap tankBmp;
 
         public BattleTank(Opponent player, int tankX, int tankY, Gameplay game)
         {
-            thisPlayer = player;
-            tkX = tankX;
-            tkY = tankY;
+            this.player = player;
+            this.tankX = tankX;
+            this.tankY = tankY;
 
-            tankModel = player.GetTank();
+            this.tankModel = player.GetTank();
             currDurability = tankModel.GetTankArmour();
 
             angle = 0;
             power = 25;
             curr_weapon = 0;
             
-            tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
+            this.tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
 
-            thisGame = game;
+            this.game = game;
         }
 
         public Opponent GetPlayer()
         {
-            return thisPlayer;
+            return this.player;
         }
 
         public TankModel GetTank()
         {
-            return thisPlayer.GetTank();
+            return this.player.GetTank();
         }
 
         public float GetTankAngle()
@@ -83,8 +83,8 @@ namespace TankBattle
 
         public void Display(Graphics graphics, Size displaySize)
         {
-            int x = tkX;
-            int y = tkY;
+            int x = tankX;
+            int y = tankY;
             int startAmrour = 100;
 
             int drawX1 = displaySize.Width * x / Map.WIDTH;
@@ -108,18 +108,18 @@ namespace TankBattle
 
         public int GetX()
         {
-            return tkX;
+            return tankX;
         }
         public int Y()
         {
-            return tkY;
+            return tankY;
         }
 
         public void Fire()
         {
             tankModel = GetTank();
 
-            tankModel.ActivateWeapon(curr_weapon,this,thisGame);
+            tankModel.ActivateWeapon(curr_weapon ,this ,this.game);
         }
 
         public void InflictDamage(int damageAmount)
