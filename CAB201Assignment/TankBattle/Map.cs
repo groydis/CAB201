@@ -26,7 +26,7 @@ namespace TankBattle
             int newX, newY;
             for (int i = 0; i < 250; i++)
             {
-                newX = rng.Next(0, 160);
+                newX = rng.Next(0, 159);
                 newY = rng.Next(0, 119);
 
                 while (Get(newX, newY + 1) == false && newY <= 119)
