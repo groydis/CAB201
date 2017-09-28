@@ -56,15 +56,20 @@ namespace TankBattle
 
         public bool CheckTankCollide(int x, int y)
         {
-            int tankBott = y + TankModel.HEIGHT, tankR = x + TankModel.WIDTH;
+            int tankBott = y + TankModel.HEIGHT;
+            int tankR = x + TankModel.WIDTH;
 
             if (x >= 0 && y >= 0)
             {
-                if (x <= WIDTH - TankModel.WIDTH && y <= HEIGHT - TankModel.HEIGHT)
+                if (tankR <= WIDTH && tankBott <= HEIGHT)
                 {
-                    if (Get(x, tankBott+ 1) == true)
+                    for (int i = x; i < tankR; i++)
                     {
-                        return true;
+                        for(int z = y; z < tankBott; z++)
+                        if (Get(i, z) == true)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -92,12 +97,15 @@ namespace TankBattle
         {
             for (int y = 0; y > HEIGHT; y++)
             {
-                for (int x = 0; x <= WIDTH; x++)
+                for (int x = 0; x < WIDTH; x++)
                 {
                     double dist = Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
                     if (dist < radius)
                     {
-                        thisMap[x, y] = false;
+                        if (thisMap[x, y] == true)
+                        {
+                            thisMap[x, y] = false;
+                        }
                     }
                 }
             }
