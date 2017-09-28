@@ -381,7 +381,11 @@ namespace TankBattle
                 }
                 CommenceRound();
             }
-            //if (curr_round > noPlayers.Length){either(show leaderboard OR show MainMenuForm again)
+            if (curr_round > noPlayers.Length)
+            {
+                MainMenuForm newMainMenu = new MainMenuForm();
+                newMainMenu.Show();
+            }
         }
         
         public int GetWindSpeed()

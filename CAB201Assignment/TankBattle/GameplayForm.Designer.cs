@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameplayForm));
             this.displayPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.powerNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.powerTrackBar = new System.Windows.Forms.TrackBar();
+            this.angleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.weaponComboBox = new System.Windows.Forms.ComboBox();
             this.fireButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +43,8 @@
             this.windLabel = new System.Windows.Forms.Label();
             this.playerNameLabel = new System.Windows.Forms.Label();
             this.controlPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.powerNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powerTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // displayPanel
@@ -60,8 +60,8 @@
             this.controlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.controlPanel.BackColor = System.Drawing.Color.OrangeRed;
-            this.controlPanel.Controls.Add(this.trackBar1);
-            this.controlPanel.Controls.Add(this.powerNumericUpDown);
+            this.controlPanel.Controls.Add(this.powerTrackBar);
+            this.controlPanel.Controls.Add(this.angleNumericUpDown);
             this.controlPanel.Controls.Add(this.weaponComboBox);
             this.controlPanel.Controls.Add(this.fireButton);
             this.controlPanel.Controls.Add(this.label1);
@@ -77,23 +77,38 @@
             this.controlPanel.Size = new System.Drawing.Size(800, 32);
             this.controlPanel.TabIndex = 1;
             // 
-            // trackBar1
+            // powerTrackBar
             // 
-            this.trackBar1.LargeChange = 10;
-            this.trackBar1.Location = new System.Drawing.Point(552, 6);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Minimum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(120, 45);
-            this.trackBar1.TabIndex = 9;
-            this.trackBar1.Value = 5;
+            this.powerTrackBar.LargeChange = 10;
+            this.powerTrackBar.Location = new System.Drawing.Point(552, 6);
+            this.powerTrackBar.Maximum = 100;
+            this.powerTrackBar.Minimum = 5;
+            this.powerTrackBar.Name = "powerTrackBar";
+            this.powerTrackBar.Size = new System.Drawing.Size(120, 45);
+            this.powerTrackBar.TabIndex = 9;
+            this.powerTrackBar.Value = 5;
             // 
-            // powerNumericUpDown
+            // angleNumericUpDown
             // 
-            this.powerNumericUpDown.Location = new System.Drawing.Point(443, 5);
-            this.powerNumericUpDown.Name = "powerNumericUpDown";
-            this.powerNumericUpDown.Size = new System.Drawing.Size(40, 20);
-            this.powerNumericUpDown.TabIndex = 8;
+            this.angleNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.angleNumericUpDown.Location = new System.Drawing.Point(443, 5);
+            this.angleNumericUpDown.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.angleNumericUpDown.Minimum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            -2147483648});
+            this.angleNumericUpDown.Name = "angleNumericUpDown";
+            this.angleNumericUpDown.Size = new System.Drawing.Size(40, 20);
+            this.angleNumericUpDown.TabIndex = 8;
             // 
             // weaponComboBox
             // 
@@ -197,8 +212,8 @@
             this.Text = "Form1";
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.powerNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powerTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,8 +230,8 @@
         private System.Windows.Forms.Label weaponLabel;
         private System.Windows.Forms.Label currWindLabel;
         private System.Windows.Forms.Label windLabel;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.NumericUpDown powerNumericUpDown;
+        private System.Windows.Forms.TrackBar powerTrackBar;
+        private System.Windows.Forms.NumericUpDown angleNumericUpDown;
         private System.Windows.Forms.ComboBox weaponComboBox;
     }
 }

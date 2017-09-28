@@ -12,6 +12,7 @@ namespace TankBattle
         private string name;
         private TankModel tank;
         private Color colour;
+
         public AIPlayer(string name, TankModel tank, Color colour) : base(name, tank, colour)
         {
             this.name = name;
