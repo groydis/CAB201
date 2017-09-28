@@ -19,10 +19,7 @@ namespace TankBattle
         {
             for (int i = 0; i < WIDTH; i++)
             {
-                thisMap[i, HEIGHT] = true;
-            }
-            for (int i = 0; i < WIDTH; i++)
-            {
+                thisMap[i, HEIGHT -1] = true;
                 thisMap[i, 0] = false;
             }
 
@@ -32,7 +29,7 @@ namespace TankBattle
                 newX = rng.Next(0, 160);
                 newY = rng.Next(0, 119);
 
-                while (Get(newX, newY + 1) == false)
+                while (Get(newX, newY + 1) == false && newY <= 119)
                 {
                     newY++;
                 };
