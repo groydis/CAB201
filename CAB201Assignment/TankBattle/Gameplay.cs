@@ -163,15 +163,9 @@ namespace TankBattle
 
         }
 
+        // THIS DOES NOT WORK
         public Map GetArena()
         {
-            CommenceRound();
-
-            if (newMap == null)
-            {
-                newMap = new Map();
-            }
-
             return newMap;
         }
 

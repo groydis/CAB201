@@ -80,44 +80,46 @@ namespace TankBattle
 
         public int TankYPosition(int x)
         {
-            //Not technically correct just trying to get past it and hopefully get it working later on
-
-                int lowestValid = 0;
-                for (int y = 0; y <= Map.HEIGHT - TankModel.HEIGHT; y++)
+            int lowestValid = 0;
+            for (int y = 0; y <= Map.HEIGHT - TankModel.HEIGHT; y++)
+            {
+                int colTiles = 0;
+                for (int iy = 0; iy < TankModel.HEIGHT; iy++)
                 {
-                    int colTiles = 0;
-                    for (int iy = 0; iy < TankModel.HEIGHT; iy++)
+                    for (int ix = 0; ix < TankModel.WIDTH; ix++)
                     {
-                        for (int ix = 0; ix < TankModel.WIDTH; ix++)
-                        {
 
-                            if (this.Get(x + ix, y + iy))
-                            {
-                                colTiles++;
-                            }
+                        if (this.Get(x + ix, y + iy))
+                        {
+                            colTiles++;
                         }
                     }
-                    if (colTiles == 0)
-                    {
-                        lowestValid = y;
-                    }
                 }
-            return lowestValid;
+                if (colTiles == 0)
+                {
+                    lowestValid = y;
+                }
             }
+            return lowestValid;
+        }
 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
         {
-            for (int y = 0; y > HEIGHT; y++)
+            float dist = 0;
+
+            for (int y = 0; y > Map.HEIGHT; y++)
             {
-                for (int x = 0; x < WIDTH; x++)
+                for (int x = 0; x < Map.WIDTH; x++)
                 {
-                    double dist = Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
-                    if (dist < radius)
+                    dist = (float)Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
+                    Console.WriteLine(dist.ToString());
+                    if (dist < radius / 2)
                     {
-                        if (thisMap[x, y] == true)
-                        {
-                            thisMap[x, y] = false;
-                        }
+                        Console.WriteLine("Dist is less than radius");
+                        thisMap[x, y] = false;
+                    } else
+                    {
+                        Console.WriteLine("Dist is not less than radius");
                     }
                 }
             }
