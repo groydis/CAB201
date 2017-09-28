@@ -197,6 +197,7 @@ namespace TankBattle
         {
             BattleTank currentTank = currentGame.GetCurrentPlayerTank();
             currentTank.SetPower((int)powerTrackBar.Value);
+            powerLabel.Text = currentTank.GetCurrentPower().ToString();
         }
     }
 }
