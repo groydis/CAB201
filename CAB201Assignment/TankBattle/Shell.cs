@@ -9,9 +9,25 @@ namespace TankBattle
 {
     public class Shell : Effect
     {
+        private float x;
+        private float y;
+        private float gravity;
+        private float x_velocity;
+        private float y_velocity;
+        private Blast explosion;
+        private Opponent player;
+
         public Shell(float x, float y, float angle, float power, float gravity, Blast explosion, Opponent player)
         {
-            throw new NotImplementedException();
+            this.x = x;
+            this.y = y;
+            this.gravity = gravity;
+
+            float angleRadians = (90 - angle) * (float)Math.PI / 180;
+            float magnitude = power / 50;
+
+            x_velocity = (float)Math.Cos(angleRadians) * magnitude;
+            y_velocity = (float)Math.Sin(angleRadians) * -magnitude;
         }
 
         public override void Tick()
@@ -21,7 +37,14 @@ namespace TankBattle
 
         public override void Display(Graphics graphics, Size size)
         {
-            throw new NotImplementedException();
+            float x = (float)this.x * size.Width / Map.WIDTH;
+            float y = (float)this.y * size.Height / Map.HEIGHT;
+            float s = size.Width / Map.WIDTH;
+
+            RectangleF r = new RectangleF(x - s / 2.0f, y - s / 2.0f, s, s);
+            Brush b = new SolidBrush(Color.WhiteSmoke);
+
+            graphics.FillEllipse(b, r);
         }
     }
 }

@@ -109,8 +109,10 @@ namespace TankBattle
 
             for (int y = 0; y > Map.HEIGHT; y++)
             {
+                Console.WriteLine("{} y-position", y);
                 for (int x = 0; x < Map.WIDTH; x++)
                 {
+                    Console.WriteLine("{} x-position", x);
                     dist = (float)Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
                     Console.WriteLine(dist.ToString());
                     if (dist < radius / 2)

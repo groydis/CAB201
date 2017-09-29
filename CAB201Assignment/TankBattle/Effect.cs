@@ -9,9 +9,10 @@ namespace TankBattle
 {
     public abstract class Effect
     {
+        protected Gameplay game;
         public void ConnectGame(Gameplay game)
         {
-            throw new NotImplementedException();
+            this.game = game;
         }
 
         public abstract void Tick();

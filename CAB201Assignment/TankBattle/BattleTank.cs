@@ -13,47 +13,47 @@ namespace TankBattle
         private int power;
         private int curr_weapon;
 
-        private int tankX;
-        private int tankY;
+        private int tkX;
+        private int tkY;
         private int currDurability;
 
-        private Opponent player;
+        private Opponent thisPlayer;
 
-        private Gameplay game;
+        private Gameplay thisGame;
         private TankModel tankModel;
         private Bitmap tankBmp;
 
         public BattleTank(Opponent player, int tankX, int tankY, Gameplay game)
         {
-            this.player = player;
-            this.tankX = tankX;
-            this.tankY = tankY;
+            thisPlayer = player;
+            tkX = tankX;
+            tkY = tankY;
 
-            this.tankModel = player.GetTank();
-            this.currDurability = tankModel.GetTankArmour();
+            tankModel = player.GetTank();
+            currDurability = tankModel.GetTankArmour();
 
-            this.angle = 0;
-            this.power = 25;
-            this.curr_weapon = 0;
+            angle = 0;
+            power = 25;
+            curr_weapon = 0;
             
-            this.tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
+            tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
 
-            this.game = game;
+            thisGame = game;
         }
 
         public Opponent GetPlayer()
         {
-            return this.player;
+            return thisPlayer;
         }
 
         public TankModel GetTank()
         {
-            return this.player.GetTank();
+            return thisPlayer.GetTank();
         }
 
         public float GetTankAngle()
         {
-            return this.angle;
+            return angle;
                 
         }
 
@@ -64,7 +64,7 @@ namespace TankBattle
 
         public int GetCurrentPower()
         {
-            return this.power;
+            return power;
         }
 
         public void SetPower(int power)
@@ -74,17 +74,17 @@ namespace TankBattle
 
         public int GetWeaponIndex()
         {
-            return this.curr_weapon;
+            return curr_weapon;
         }
         public void SetWeapon(int newWeapon)
         {
-            this.curr_weapon = newWeapon;
+            curr_weapon = newWeapon;
         }
 
         public void Display(Graphics graphics, Size displaySize)
         {
-            int x = tankX;
-            int y = tankY;
+            int x = tkX;
+            int y = tkY;
             int startAmrour = 100;
 
             int drawX1 = displaySize.Width * x / Map.WIDTH;
@@ -108,26 +108,32 @@ namespace TankBattle
 
         public int GetX()
         {
-            throw new NotImplementedException();
+            return tkX;
         }
         public int Y()
         {
-            throw new NotImplementedException();
+            return tkY;
         }
 
         public void Fire()
         {
-            throw new NotImplementedException();
+            tankModel = GetTank();
+
+            tankModel.ActivateWeapon(curr_weapon,this,thisGame);
         }
 
         public void InflictDamage(int damageAmount)
         {
-            throw new NotImplementedException();
+            currDurability -= damageAmount;
         }
 
         public bool Exists()
         {
-            throw new NotImplementedException();
+            if (currDurability <= 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool GravityStep()

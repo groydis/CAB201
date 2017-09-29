@@ -19,11 +19,14 @@ namespace TankBattle
 
         private BattleTank[] battleTanks;
 
-        private int curr_round;
-        private int start_player;
+        private int curr_round = 1;
+        private int start_player = 0;
         private int curr_player;
         
         private int wind;
+
+        private Gameplay newGame;
+        private GameplayForm gpf;
 
         private Random rng = new Random();
 
@@ -122,10 +125,8 @@ namespace TankBattle
         public void BeginGame()
         {
             curr_round = 1;
-
             start_player = 0;
-
-            CommenceRound();
+            newGame.CommenceRound();
         }
 
         public void CommenceRound()
@@ -155,10 +156,10 @@ namespace TankBattle
  
             }
 
-            GetWindSpeed();
+            wind = GetWindSpeed();
 
-            Gameplay newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            GameplayForm gpf = new GameplayForm(newGame);
+            newGame = new Gameplay(noPlayers.Length, noRounds.Length);
+            gpf = new GameplayForm(newGame);
             gpf.Show();
 
         }
@@ -267,7 +268,7 @@ namespace TankBattle
 
             return false;
         }
-
+        
         public void InflictDamage(float damageX, float damageY, float explosionDamage, float radius)
         {
             float overallDamage = explosionDamage;
