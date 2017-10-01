@@ -21,6 +21,8 @@ namespace TankBattle
             int DY = Y2 - Y1;
             int D = 2 * DY - DX;
             int y = Y1;
+            graphic[X1, Y1] = 1;
+            graphic[X2, Y2] = 1;
 
             for (int x = X1; x < X2; x++) {
                 graphic[x, y] = 1;

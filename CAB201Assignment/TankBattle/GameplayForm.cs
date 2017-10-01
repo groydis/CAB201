@@ -205,7 +205,33 @@ namespace TankBattle
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (currentGame.ProcessWeaponEffects() == false)
+            {
+                if (currentGame.GravityStep() == true)
+                {
+                    DrawBackground();
+                    DrawGameplay();
+                    displayPanel.Invalidate();
+                }
+                else
+                {
+                    timer1.Enabled = false;
+                    if (currentGame.FinishTurn() == true)
+                    {
+                        NewTurn();
+                    }
+                    else
+                    {
+                        Dispose();
+                        currentGame.NextRound();
+                    }
 
+                }
+            } else
+            {
+                DrawGameplay();
+                displayPanel.Invalidate();
+            }
         }
     }
 }
