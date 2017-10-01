@@ -22,6 +22,7 @@ namespace TankBattle
         private Gameplay game;
         private TankModel tankModel;
         private Bitmap tankBmp;
+        private Color plColour;
 
         public BattleTank(Opponent player, int tankX, int tankY, Gameplay game)
         {
@@ -35,8 +36,10 @@ namespace TankBattle
             angle = 0;
             power = 25;
             curr_weapon = 0;
+
+            plColour = player.GetColour();
             
-            tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
+            tankBmp = tankModel.CreateBMP(plColour, angle);
 
             this.game = game;
         }
@@ -118,7 +121,7 @@ namespace TankBattle
         {
             tankModel = GetTank();
 
-            tankModel.ActivateWeapon(curr_weapon ,this ,this.game);
+            tankModel.ActivateWeapon(curr_weapon ,this ,game);
         }
 
         public void InflictDamage(int damageAmount)
