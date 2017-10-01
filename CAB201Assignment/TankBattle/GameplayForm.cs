@@ -98,7 +98,6 @@ namespace TankBattle
         {
             currentGame.GetCurrentPlayerTank();
             controlPanel.Enabled = false;
-            // ENABLE TIMER???
             timer1.Enabled = true;
             
         }
@@ -139,7 +138,9 @@ namespace TankBattle
         {
             BattleTank currentTank = currentGame.GetCurrentPlayerTank();
             Opponent opponentTank = currentTank.GetPlayer();
-            this.Text = String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+
+            this.Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+
             BackColor = opponentTank.GetColour();
             playerNameLabel.Text = opponentTank.Identifier();
             SetAngle(currentTank.GetTankAngle());
@@ -200,6 +201,11 @@ namespace TankBattle
             BattleTank currentTank = currentGame.GetCurrentPlayerTank();
             currentTank.SetPower((int)powerTrackBar.Value);
             powerLabel.Text = currentTank.GetCurrentPower().ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
