@@ -148,7 +148,16 @@ namespace TankBattle
 
         public override void ActivateWeapon(int weapon, BattleTank playerTank, Gameplay currentGame)
         {
-            throw new NotImplementedException();
+            float X_pos = playerTank.GetX() + (WIDTH /2);
+            float Y_pos = playerTank.Y() + (HEIGHT / 2);
+
+            Opponent player = playerTank.GetPlayer();
+
+            Blast blast = new Blast(100,4,4);
+            Shell shell = new Shell(X_pos,Y_pos,playerTank.GetTankAngle(),playerTank.GetCurrentPower(),0.01f,blast,player);
+
+            currentGame.AddWeaponEffect(shell);       
+
         }
     }
 }

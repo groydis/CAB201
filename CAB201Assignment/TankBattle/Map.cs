@@ -107,21 +107,14 @@ namespace TankBattle
         {
             float dist = 0;
 
-            for (int y = 0; y > Map.HEIGHT; y++)
-            {
-                Console.WriteLine("{} y-position", y);
-                for (int x = 0; x < Map.WIDTH; x++)
-                {
-                    Console.WriteLine("{} x-position", x);
+            for (int y = 0; y < HEIGHT; y++)
+            {                
+                for (int x = 0; x < WIDTH; x++)
+                {                    
                     dist = (float)Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
-                    Console.WriteLine(dist.ToString());
-                    if (dist < radius / 2)
-                    {
-                        Console.WriteLine("Dist is less than radius");
+                    if (dist < radius)
+                    {                        
                         thisMap[x, y] = false;
-                    } else
-                    {
-                        Console.WriteLine("Dist is not less than radius");
                     }
                 }
             }

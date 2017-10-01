@@ -162,8 +162,7 @@ namespace TankBattle
             gamePlayForm.Show(); 
 
         }
-
-        // THIS DOES NOT WORK
+       
         public Map GetArena()
         {
             return newMap;
