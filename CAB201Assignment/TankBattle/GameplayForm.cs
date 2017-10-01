@@ -149,7 +149,8 @@ namespace TankBattle
             if (currentWind > 0)
             {
                 currWindLabel.Text = String.Format("{0} E", currentWind);
-            } else
+            }
+            else
             {
                 currentWind = currentWind * -1;
                 currWindLabel.Text = String.Format("{0} W", currentWind);
@@ -227,7 +228,8 @@ namespace TankBattle
                     }
 
                 }
-            } else
+            }
+            else
             {
                 DrawGameplay();
                 displayPanel.Invalidate();

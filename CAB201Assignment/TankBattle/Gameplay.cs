@@ -93,7 +93,7 @@ namespace TankBattle
             {
                 if (i == 0)
                 {
-                    loc = screenWidth / numPlayers;
+                    loc = (screenWidth / numPlayers) / numPlayers;
                 }
                 else
                 {
@@ -182,6 +182,7 @@ namespace TankBattle
 
         public BattleTank GetCurrentPlayerTank()
         {
+            
             return battleTanks[curr_player];
         }
 
