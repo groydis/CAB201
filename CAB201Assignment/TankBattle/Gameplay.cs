@@ -20,13 +20,12 @@ namespace TankBattle
         private BattleTank[] battleTanks;
 
         private int curr_round = 1;
-        private int start_player = 0;
+        private int start_player;
         private int curr_player;
         
         private int wind;
 
         private Gameplay newGame;
-        private GameplayForm gamePlayForm;
 
         private Random rng = new Random();
 
@@ -144,7 +143,7 @@ namespace TankBattle
             
             Shuffle(positions);
             
-            battleTanks = new BattleTank[noPlayers.Length];
+            /*battleTanks = new BattleTank[noPlayers.Length];
             
             for (int i = 0; i < battleTanks.Length;i++)
             {
@@ -153,13 +152,13 @@ namespace TankBattle
 
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
  
-            }
+            }*/
             
             wind = GetWindSpeed();
             
             newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            gamePlayForm = new GameplayForm(newGame);
-            gamePlayForm.Show(); 
+            //GameplayForm gamePlayForm = new GameplayForm(newGame);
+            //gamePlayForm.Show(); 
 
         }
        

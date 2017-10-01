@@ -81,7 +81,7 @@ namespace TankBattle
         public int TankYPosition(int x)
         {
             int lowestValid = 0;
-            for (int y = 0; y <= Map.HEIGHT - TankModel.HEIGHT; y++)
+            for (int y = 0; y <= HEIGHT - TankModel.HEIGHT; y++)
             {
                 int colTiles = 0;
                 for (int iy = 0; iy < TankModel.HEIGHT; iy++)
@@ -122,24 +122,25 @@ namespace TankBattle
 
         public bool GravityStep()
         {
+            bool mover = false;
+
             for (int y = 0; y < HEIGHT - 1; y++)
             {
                 for (int x = 0; x < WIDTH; x++)
                 {
-                    if(thisMap[x, y] == true && thisMap[x,y+1] == false)
+                    if (y == HEIGHT - 1)
                     {
-
-                        thisMap[x, y] = false;
-                        thisMap[x, y + 1] = true;
-                        Console.WriteLine(thisMap[x, y + 1]);
-                        return true;
-                    } else
-                    {
-                        return false;
+                        if (Get(x, y) == true && Get(x, y + 1) == false)
+                        {
+                            thisMap[x, y + 1] = true;
+                            thisMap[x, y] = false;
+                            mover = true;
+                        }
                     }
                 }
-            }
-            return false;
+            }         
+                            
+            return mover;
         }
     }
 }

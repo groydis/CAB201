@@ -140,7 +140,28 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-            throw new NotImplementedException();
+            if(Exists() == true)
+            {
+                Map map = game.GetArena();
+                int X_pos = GetX();
+                int Y_pos = Y();
+                
+                if (map.CheckTankCollide(X_pos,Y_pos + 1) == false)
+                {
+                    tankY++;
+                    currDurability--;
+                    if (tankY == Map.HEIGHT - TankModel.HEIGHT)
+                    {
+                        currDurability = 0;
+                        return true;
+                    }
+                } else
+                {
+                    return false;
+                }
+            }
+            return false;
+                       
         }
     }
 }

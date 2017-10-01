@@ -31,6 +31,8 @@ namespace TankBattle
 
             x_velocity = (float)Math.Cos(angleRadians) * magnitude;
             y_velocity = (float)Math.Sin(angleRadians) * -magnitude;
+
+            this.player = player;
         }
 
         public override void Tick()
