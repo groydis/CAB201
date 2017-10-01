@@ -122,9 +122,9 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-            for (int y = 0; y > HEIGHT; y++)
+            for (int y = 0; y < HEIGHT; y++)
             {
-                for (int x = 0; x <= WIDTH; x++)
+                for (int x = 0; x < WIDTH; x++)
                 {
                     if(thisMap[x, y] == true)
                     {
