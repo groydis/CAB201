@@ -25,15 +25,7 @@ namespace TankBattle
 
         public GameplayForm(Gameplay game)
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
 
-            InitializeComponent();
-
-            // THIS STUFF MAY NEED TO GO ABOVE ALL OF THAT ^
             currentGame = game;
             string[] imageFilenames =
             {
@@ -55,8 +47,17 @@ namespace TankBattle
             backgroundImage = Image.FromFile(imageFilenames[randomInt]);
             landscapeColour = landscapeColours[randomInt];
 
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+
+            InitializeComponent();
+
             backgroundGraphics = InitialiseBuffer();
             gameplayGraphics = InitialiseBuffer();
+
             DrawBackground();
             DrawGameplay();
             NewTurn();
@@ -98,6 +99,8 @@ namespace TankBattle
             currentGame.GetCurrentPlayerTank();
             controlPanel.Enabled = false;
             // ENABLE TIMER???
+            timer1.Enabled = true;
+            
         }
 
         private void DrawBackground()

@@ -133,7 +133,7 @@ namespace TankBattle
         {
             curr_player = start_player;
 
-            newMap = new Map();
+           // newMap = new Map();
             
             int [] positions = GetPlayerLocations(noPlayers.Length);
             
@@ -157,9 +157,9 @@ namespace TankBattle
             
             wind = GetWindSpeed();
             
-            newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            gamePlayForm = new GameplayForm(newGame);
-            gamePlayForm.Show(); 
+           newGame = new Gameplay(noPlayers.Length, noRounds.Length);
+           gamePlayForm = new GameplayForm(newGame);
+           gamePlayForm.Show(); 
 
         }
 
