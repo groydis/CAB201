@@ -34,7 +34,7 @@ namespace TankBattle
             InitializeComponent();
 
             // THIS STUFF MAY NEED TO GO ABOVE ALL OF THAT ^
-            this.currentGame = game;
+            currentGame = game;
             string[] imageFilenames =
             {
                 "Images\\background1.jpg",
@@ -82,7 +82,6 @@ namespace TankBattle
         public void SetAngle(float angle)
         {
             angleNumericUpDown.Value = (decimal)angle;
-
         }
 
         public void SetPower(int power)

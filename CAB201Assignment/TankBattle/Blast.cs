@@ -50,13 +50,11 @@ namespace TankBattle
 
         public override void Display(Graphics graphics, Size displaySize)
         {
-            throw new NotImplementedException();
-
             //Answer has been given to us and just needs variables changed to private fields and 
             //Use variables that have been created in other scripts
 
-            float x = (float)this.x * displaySize.Width / Map.WIDTH;
-            float y = (float)this.y * displaySize.Height / Map.HEIGHT;
+            float disX = x * displaySize.Width / Map.WIDTH;
+            float disY = y * displaySize.Height / Map.HEIGHT;
             float radius = displaySize.Width * (float)((1.0 - blastLifeSpan) * explosionRadius * 3.0 / 2.0) / Map.WIDTH;
 
             int alpha = 0, red = 0, green = 0, blue = 0;
@@ -80,7 +78,7 @@ namespace TankBattle
                 blue = (int)((blastLifeSpan * 3.0 - 2.0) * 255);
             }
 
-            RectangleF rect = new RectangleF(x - radius, y - radius, radius * 2, radius * 2);
+            RectangleF rect = new RectangleF(disX - radius, disY - radius, radius * 2, radius * 2);
             Brush b = new SolidBrush(Color.FromArgb(alpha, red, green, blue));
 
             graphics.FillEllipse(b, rect); 

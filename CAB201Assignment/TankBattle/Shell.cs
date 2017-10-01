@@ -17,6 +17,9 @@ namespace TankBattle
         private Blast explosion;
         private Opponent player;
 
+        protected Gameplay game;
+        private int wind;
+
         public Shell(float x, float y, float angle, float power, float gravity, Blast explosion, Opponent player)
         {
             this.x = x;
@@ -32,13 +35,31 @@ namespace TankBattle
 
         public override void Tick()
         {
-            throw new NotImplementedException();
+            x = x + x_velocity;
+            y = y + y_velocity;
+
+            wind = game.GetWindSpeed();
+            x = x + (wind * 1000.0f);
+
+            if (x > Map.WIDTH || x < 0 || y > Map.HEIGHT || y < 0)
+            {
+                game.RemoveEffect(this);
+            }
+
+            if (game.CheckHitTank(x,y) == true)
+            {
+                player.HitPos(x, y);
+                explosion.Ignite(x, y);
+                game.AddWeaponEffect(explosion);
+                game.RemoveEffect(this);
+            }
+            y = y + gravity;
         }
 
         public override void Display(Graphics graphics, Size size)
         {
-            float x = (float)this.x * size.Width / Map.WIDTH;
-            float y = (float)this.y * size.Height / Map.HEIGHT;
+            x = x * size.Width / Map.WIDTH;
+            y = y * size.Height / Map.HEIGHT;
             float s = size.Width / Map.WIDTH;
 
             RectangleF r = new RectangleF(x - s / 2.0f, y - s / 2.0f, s, s);

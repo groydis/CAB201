@@ -29,32 +29,31 @@ namespace TankBattle
             this.tankX = tankX;
             this.tankY = tankY;
 
-            this.tankModel = player.GetTank();
+            tankModel = player.GetTank();
             currDurability = tankModel.GetTankArmour();
 
             angle = 0;
             power = 25;
             curr_weapon = 0;
             
-            this.tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
+            tankBmp = tankModel.CreateBMP(player.GetColour(), angle);
 
             this.game = game;
         }
 
         public Opponent GetPlayer()
         {
-            return this.player;
+            return player;
         }
 
         public TankModel GetTank()
         {
-            return this.player.GetTank();
+            return player.GetTank();
         }
 
         public float GetTankAngle()
         {
-            return angle;
-                
+            return angle;              
         }
 
         public void SetAngle(float angle)

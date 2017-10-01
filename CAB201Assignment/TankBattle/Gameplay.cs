@@ -124,9 +124,9 @@ namespace TankBattle
 
         public void BeginGame()
         {
-            this.curr_round = 1;
-            this.start_player = 0;
-            this.newGame.CommenceRound();
+            curr_round = 1;
+            start_player = 0;
+            CommenceRound();
         }
 
         public void CommenceRound()
@@ -134,20 +134,19 @@ namespace TankBattle
             curr_player = start_player;
 
             newMap = new Map();
-
+            
             int [] positions = GetPlayerLocations(noPlayers.Length);
-
+            
             for (int i =0; i < noPlayers.Length; i++)
             {
                 noPlayers[i].CommenceRound();                
             }
-
-            Shuffle(positions);
-
-            battleTanks = new BattleTank[noPlayers.Length];
-
             
-            for (int i = 0; i < positions.Length;i++)
+            Shuffle(positions);
+            
+            battleTanks = new BattleTank[noPlayers.Length];
+            
+            for (int i = 0; i < battleTanks.Length;i++)
             {
                 int X_pos = battleTanks[i].GetX();
                 int Y_pos = newMap.TankYPosition(X_pos);
@@ -155,12 +154,12 @@ namespace TankBattle
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
  
             }
-
+            
             wind = GetWindSpeed();
-
-            this.newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            this.gamePlayForm = new GameplayForm(newGame);
-            this.gamePlayForm.Show();
+            
+            newGame = new Gameplay(noPlayers.Length, noRounds.Length);
+            gamePlayForm = new GameplayForm(newGame);
+            gamePlayForm.Show(); 
 
         }
 

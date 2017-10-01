@@ -17,7 +17,19 @@ namespace TankBattle
 
         public static void LineDraw(int[,] graphic, int X1, int Y1, int X2, int Y2)
         {
-            throw new NotImplementedException();
+            int DX = X2 - X1;
+            int DY = Y2 - Y1;
+            int D = 2 * DY - DX;
+            int y = Y1;
+
+            for (int x = X1; x < X2; x++) {
+                graphic[x, y] = 1;
+                if (D > 0) {
+                    y = y + 1;
+                    D = D - 2 * DX;
+                }
+                D = D + 2 * DY;
+            }
         }
 
         public Bitmap CreateBMP(Color tankColour, float angle)
@@ -92,7 +104,44 @@ namespace TankBattle
 
         public override int[,] DisplayTankSprite(float angle)
         {
-            throw new NotImplementedException();
+            int end_Y = 0;
+            int end_X = 0;
+            int[,] norm = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
+                               { 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0 },
+                               { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
+                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+            if (angle >= -19 && angle <= 19)
+            {
+                end_X = 7;
+                end_Y = 1;
+            } else if (angle <= -20 && angle >= -69)
+            {
+                end_X = 3;
+                end_Y = 2;
+            } else if (angle <= -70 && angle >= -90)
+            {
+                end_X = 2;
+                end_Y = 6;
+            } else if (angle >= 20 && angle <= 69)
+            {
+                end_X = 11;
+                end_Y = 2;
+            } else if (angle >= 70 && angle <= 90)
+            {
+                end_X = 12;
+                end_Y = 6;
+            }
+
+            LineDraw(norm, 7, 6, end_X, end_Y);
+            return norm;
         }
 
         public override void ActivateWeapon(int weapon, BattleTank playerTank, Gameplay currentGame)
