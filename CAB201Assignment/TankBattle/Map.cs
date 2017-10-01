@@ -122,17 +122,20 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-            for (int y = 0; y < HEIGHT; y++)
+            for (int y = 0; y < HEIGHT - 1; y++)
             {
                 for (int x = 0; x < WIDTH; x++)
                 {
-                    if(thisMap[x, y] == true)
+                    if(thisMap[x, y] == true && thisMap[x,y+1] == false)
                     {
-                       if(Get(x, y + 1) == false)
-                       {
-                            thisMap[x, y] = false;
-                            thisMap[x, y + 1] = true;
-                       }
+
+                        thisMap[x, y] = false;
+                        thisMap[x, y + 1] = true;
+                        Console.WriteLine(thisMap[x, y + 1]);
+                        return true;
+                    } else
+                    {
+                        return false;
                     }
                 }
             }
