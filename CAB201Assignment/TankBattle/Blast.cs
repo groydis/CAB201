@@ -34,7 +34,7 @@ namespace TankBattle
 
         public override void Tick()
         {
-            blastLifeSpan -= 0.5f;
+            blastLifeSpan -= 0.05f;
 
             if (blastLifeSpan <= 0)
             {
