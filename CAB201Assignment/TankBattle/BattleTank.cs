@@ -131,14 +131,14 @@ namespace TankBattle
 
         public bool Exists()
         {
-            bool exists = false;
-
+            //bool exists = false;
+            Console.WriteLine("curr durability = " + currDurability);
             if (currDurability > 0)
             {
-                exists = true;
+                return true;
             }
 
-            return exists;
+            return false;
         }
 
         public bool GravityStep()

@@ -158,21 +158,46 @@ namespace TankBattle
             gameplayForm.Show(); 
 
         }
-       
+
         public Map GetArena()
         {
             return arena;
         }
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
-        { 
-            foreach (BattleTank tank in battleTanks)
+        {
+            Console.WriteLine("Commencing For Loop");
+            for (int i = 0; i < battleTanks.Length; i++)
             {
-                if (tank.Exists() == true)
+                Console.WriteLine("Checking if tank exists");
+                Console.WriteLine("total tanks = " + battleTanks.Length.ToString());
+                Console.WriteLine("checking tank " + i.ToString());
+                
+                if (battleTanks[i].Exists())
                 {
-                    tank.Display(graphics, displaySize);
+                    Console.WriteLine("Success");
+                    Console.WriteLine("Displaying");
+                    battleTanks[i].Display(graphics, displaySize);
+                    Console.WriteLine("Diplay Success");
                 }
             }
+            Console.WriteLine("For Loop Done");
+
+            /*Console.WriteLine("Draw Players in Gameplay");
+            foreach (BattleTank tank in battleTanks)
+            {
+                Console.WriteLine("For Loop");
+                if (tank.Exists() == true)
+                {
+                    Console.WriteLine("Tank Display");
+                    tank.Display(graphics, displaySize);
+                    Console.WriteLine("Success");
+                } else
+                {
+                    Console.WriteLine("Tank does not exist");
+                }
+            }
+            */
         }
 
         public BattleTank GetCurrentPlayerTank()

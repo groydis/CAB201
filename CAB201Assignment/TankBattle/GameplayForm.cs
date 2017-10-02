@@ -27,11 +27,6 @@ namespace TankBattle
 
         public GameplayForm(Gameplay game)
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
 
             currentGame = game;
 
@@ -51,19 +46,30 @@ namespace TankBattle
                 Color.FromArgb(255, 133, 119, 109),
             };
 
-            int randomInt = rng.Next(0,3);
+            int randomInt = rng.Next(0, 3);
             backgroundImage = Image.FromFile(imageFilenames[randomInt]);
-            landscapeColour = landscapeColours[randomInt];   
+            landscapeColour = landscapeColours[randomInt];
+
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
 
             InitializeComponent();
 
             backgroundGraphics = InitialiseBuffer();
             gameplayGraphics = InitialiseBuffer();
 
+            Console.WriteLine("About to run DrawBackground() in GameplayForm.cs");
             DrawBackground();
+            Console.WriteLine("Success");
+            Console.WriteLine("About to run DrawGameplay() in GameplayForm.cs");
             DrawGameplay();
+            Console.WriteLine("Success");
+            Console.WriteLine("About to run NewTurn() in GameplayForm.cs");
             NewTurn();
-
+            Console.WriteLine("Success");
         }
 
         // From https://stackoverflow.com/questions/13999781/tearing-in-my-animation-on-winforms-c-sharp
@@ -130,40 +136,48 @@ namespace TankBattle
 
         private void DrawGameplay()
         {
+            Console.WriteLine("Background Graphics");
             backgroundGraphics.Render(gameplayGraphics.Graphics);
+            Console.WriteLine("Success");
+            Console.WriteLine("Draw Players");
             currentGame.DrawPlayers(gameplayGraphics.Graphics, displayPanel.Size);
+            Console.WriteLine("Success");
+            Console.WriteLine("Draw Attacks");
             currentGame.DrawAttacks(gameplayGraphics.Graphics, displayPanel.Size);
+            Console.WriteLine("Success");
         }
 
         private void NewTurn()
         {
-            currentTank = currentGame.GetCurrentPlayerTank();
-            Opponent opponentTank = currentTank.GetPlayer();
+               currentTank = currentGame.GetCurrentPlayerTank();
+               Opponent opponentTank = currentTank.GetPlayer();
 
-            Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+               Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+               BackColor = opponentTank.GetColour();
+               playerNameLabel.Text = opponentTank.Identifier();
+               SetAngle(currentTank.GetTankAngle());
+               SetPower(currentTank.GetCurrentPower());
 
-            BackColor = opponentTank.GetColour();
-            playerNameLabel.Text = opponentTank.Identifier();
-            SetAngle(currentTank.GetTankAngle());
-            SetPower(currentTank.GetCurrentPower());
-            int currentWind = currentGame.GetWindSpeed();
-            if (currentWind > 0)
-            {
-                currWindLabel.Text = String.Format("{0} E", currentWind);
-            }
-            else
-            {
-                currentWind = currentWind * -1;
-                currWindLabel.Text = String.Format("{0} W", currentWind);
-            }
-            weaponComboBox.Items.Clear();
-            TankModel currentTankModel = currentTank.GetTank();
-            foreach (String weapon in currentTankModel.WeaponList())
-            {
-                weaponComboBox.Items.Add(weapon);
-            }
-            SetWeapon(weaponComboBox.SelectedIndex);
-            opponentTank.NewTurn(this, currentGame);
+
+               int currentWind = currentGame.GetWindSpeed();
+               if (currentWind > 0)
+               {
+                   currWindLabel.Text = String.Format("{0} E", currentWind);
+               }
+               else
+               {
+                   currentWind = currentWind * -1;
+                   currWindLabel.Text = String.Format("{0} W", currentWind);
+               }
+               weaponComboBox.Items.Clear();
+               TankModel currentTankModel = currentTank.GetTank();
+               foreach (String weapon in currentTankModel.WeaponList())
+               {
+                   weaponComboBox.Items.Add(weapon);
+               }
+               SetWeapon(weaponComboBox.SelectedIndex);
+               opponentTank.NewTurn(this, currentGame);
+               
         }
 
         public BufferedGraphics InitialiseBuffer()
