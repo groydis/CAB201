@@ -200,7 +200,6 @@ namespace TankBattle
         public void AddWeaponEffect(Effect weaponEffect)
         {
             effects.Add(weaponEffect);
-
         }
 
         public bool ProcessWeaponEffects()
@@ -209,10 +208,8 @@ namespace TankBattle
             foreach (Effect effect in effects)
             {
                 effect.Tick();
-                ans = true;
-                
+                ans = true;                
             }
-
             return ans;
         }
 

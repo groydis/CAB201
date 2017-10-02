@@ -17,20 +17,19 @@ namespace TankBattle
 
         public static void LineDraw(int[,] graphic, int X1, int Y1, int X2, int Y2)
         {
-            int DX = X2 - X1;
-            int DY = Y2 - Y1;
-            int D = 2 * DY - DX;
+            int dx = X2 - X1;
+            int dy = Y2 - Y1;
             int y = Y1;
-            graphic[X1, Y1] = 1;
-            graphic[X2, Y2] = 1;
+            int eps = 0;
 
-            for (int x = X1; x < X2; x++) {
+            for (int x = X1; x >= X2; x--)
+            {
                 graphic[x, y] = 1;
-                if (D > 0) {
-                    y = y + 1;
-                    D = D - 2 * DX;
+                eps += dy;
+                if ((eps << 1) >= dx)
+                {
+                    y++; eps -= dx;
                 }
-                D = D + 2 * DY;
             }
         }
 
