@@ -205,17 +205,15 @@ namespace TankBattle
 
         public bool ProcessWeaponEffects()
         {
-            if (effects.Count() > 0)
+            bool ans = false;
+            foreach (Effect effect in effects)
             {
-                foreach (Effect effect in effects)
-                {
-                    effect.Tick();
-                }
-                return true;
-            } else
-            {
-                return false;
+                effect.Tick();
+                ans = true;
+                
             }
+
+            return ans;
         }
 
         public void DrawAttacks(Graphics graphics, Size displaySize)
@@ -229,7 +227,6 @@ namespace TankBattle
         public void RemoveEffect(Effect weaponEffect)
         {
             effects.Remove(weaponEffect);
-
         }
 
         public bool CheckHitTank(float projectileX, float projectileY)
