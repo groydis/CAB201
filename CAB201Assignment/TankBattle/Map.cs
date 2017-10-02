@@ -124,18 +124,15 @@ namespace TankBattle
         {
             bool mover = false;
 
-            for (int y = 0; y < HEIGHT - 1; y++)
+            for (int x = 0; x < WIDTH; x++)
             {
-                for (int x = 0; x < WIDTH; x++)
+                for (int y = HEIGHT - 2; y > 0; y--)
                 {
-                    if (y < HEIGHT - 1)
+                    if (Get(x, y) == true && Get(x, y + 1) == false)
                     {
-                        if (Get(x, y) == true && Get(x, y + 1) == false)
-                        {
-                            thisMap[x, y + 1] = true;
-                            thisMap[x, y] = false;
-                            mover = true;
-                        }
+                        thisMap[x, y + 1] = true;
+                        thisMap[x, y] = false;
+                        mover = true;
                     }
                 }
             }         
