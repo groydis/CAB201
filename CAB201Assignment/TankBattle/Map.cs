@@ -128,7 +128,7 @@ namespace TankBattle
             {
                 for (int x = 0; x < WIDTH; x++)
                 {
-                    if (y == HEIGHT - 1)
+                    if (y < HEIGHT - 1)
                     {
                         if (Get(x, y) == true && Get(x, y + 1) == false)
                         {
