@@ -131,8 +131,6 @@ namespace TankBattle
 
         public bool Exists()
         {
-            //bool exists = false;
-            Console.WriteLine("curr durability = " + currDurability);
             if (currDurability > 0)
             {
                 return true;

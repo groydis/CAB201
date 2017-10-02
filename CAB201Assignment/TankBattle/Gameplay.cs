@@ -166,22 +166,14 @@ namespace TankBattle
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
-            Console.WriteLine("Commencing For Loop");
             for (int i = 0; i < battleTanks.Length - 1; i++)
             {
-                Console.WriteLine("Checking if tank exists");
-                Console.WriteLine("total tanks = " + battleTanks.Length.ToString());
-                Console.WriteLine("checking tank " + i.ToString());
-                
                 if (battleTanks[i].Exists())
                 {
-                    Console.WriteLine("Success");
-                    Console.WriteLine("Displaying");
                     battleTanks[i].Display(graphics, displaySize);
-                    Console.WriteLine("Diplay Success");
                 }
             }
-            Console.WriteLine("For Loop Done");
+
 
             /*Console.WriteLine("Draw Players in Gameplay");
             foreach (BattleTank tank in battleTanks)

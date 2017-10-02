@@ -61,15 +61,12 @@ namespace TankBattle
             backgroundGraphics = InitialiseBuffer();
             gameplayGraphics = InitialiseBuffer();
 
-            Console.WriteLine("About to run DrawBackground() in GameplayForm.cs");
             DrawBackground();
-            Console.WriteLine("Success");
-            Console.WriteLine("About to run DrawGameplay() in GameplayForm.cs");
+;
             DrawGameplay();
-            Console.WriteLine("Success");
-            Console.WriteLine("About to run NewTurn() in GameplayForm.cs");
+
             NewTurn();
-            Console.WriteLine("Success");
+
         }
 
         // From https://stackoverflow.com/questions/13999781/tearing-in-my-animation-on-winforms-c-sharp
@@ -136,15 +133,10 @@ namespace TankBattle
 
         private void DrawGameplay()
         {
-            Console.WriteLine("Background Graphics");
             backgroundGraphics.Render(gameplayGraphics.Graphics);
-            Console.WriteLine("Success");
-            Console.WriteLine("Draw Players");
             currentGame.DrawPlayers(gameplayGraphics.Graphics, displayPanel.Size);
-            Console.WriteLine("Success");
-            Console.WriteLine("Draw Attacks");
             currentGame.DrawAttacks(gameplayGraphics.Graphics, displayPanel.Size);
-            Console.WriteLine("Success");
+
         }
 
         private void NewTurn()
