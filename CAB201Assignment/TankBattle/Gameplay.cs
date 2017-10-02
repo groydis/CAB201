@@ -25,8 +25,6 @@ namespace TankBattle
         
         private int wind;
 
-        private Gameplay newGame;
-
         private Random rng = new Random();
 
         public Gameplay(int numPlayers, int numRounds)
@@ -156,9 +154,8 @@ namespace TankBattle
             
             wind = GetWindSpeed();
 
-            newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            GameplayForm gamePlayForm = new GameplayForm(newGame);
-            gamePlayForm.Show(); 
+            GameplayForm gameplayForm = new GameplayForm(this);
+            gameplayForm.Show(); 
 
         }
        

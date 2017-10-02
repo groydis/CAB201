@@ -23,10 +23,18 @@ namespace TankBattle
         private BufferedGraphics backgroundGraphics;
         private BufferedGraphics gameplayGraphics;
 
+        private BattleTank currentTank;
+
         public GameplayForm(Gameplay game)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
 
             currentGame = game;
+
             string[] imageFilenames =
             {
                 "Images\\background1.jpg",
@@ -43,15 +51,9 @@ namespace TankBattle
                 Color.FromArgb(255, 133, 119, 109),
             };
 
-            int randomInt = rng.Next(4);
+            int randomInt = rng.Next(0,3);
             backgroundImage = Image.FromFile(imageFilenames[randomInt]);
-            landscapeColour = landscapeColours[randomInt];
-
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
+            landscapeColour = landscapeColours[randomInt];   
 
             InitializeComponent();
 
@@ -99,7 +101,6 @@ namespace TankBattle
             currentGame.GetCurrentPlayerTank();
             controlPanel.Enabled = false;
             timer1.Enabled = true;
-            
         }
 
         private void DrawBackground()
@@ -136,10 +137,10 @@ namespace TankBattle
 
         private void NewTurn()
         {
-            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
+            currentTank = currentGame.GetCurrentPlayerTank();
             Opponent opponentTank = currentTank.GetPlayer();
 
-            this.Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+            Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
 
             BackColor = opponentTank.GetColour();
             playerNameLabel.Text = opponentTank.Identifier();
@@ -187,20 +188,19 @@ namespace TankBattle
 
         private void weaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
             currentTank.SetWeapon(weaponComboBox.SelectedIndex);
         }
 
         private void angleNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
             currentTank.SetAngle((float)angleNumericUpDown.Value);
+            DrawGameplay();
+            displayPanel.Invalidate();
         }
 
         private void powerTrackBar_Scroll(object sender, EventArgs e)
         {
-            BattleTank currentTank = currentGame.GetCurrentPlayerTank();
-            currentTank.SetPower((int)powerTrackBar.Value);
+            currentTank.SetPower(powerTrackBar.Value);
             powerLabel.Text = currentTank.GetCurrentPower().ToString();
         }
 
