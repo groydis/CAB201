@@ -15,7 +15,7 @@ namespace TankBattle
         private Opponent[] noPlayers;
         private Opponent[] noRounds;
 
-        private Map newMap;
+        private Map arena;
 
         private BattleTank[] battleTanks;
 
@@ -132,7 +132,7 @@ namespace TankBattle
         {
             curr_player = start_player;
 
-            newMap = new Map();
+            arena = new Map();
             
             int [] positions = GetPlayerLocations(noPlayers.Length);
             
@@ -143,28 +143,28 @@ namespace TankBattle
             
             Shuffle(positions);
             
-            /*battleTanks = new BattleTank[noPlayers.Length];
+            battleTanks = new BattleTank[noPlayers.Length];
             
             for (int i = 0; i < battleTanks.Length;i++)
             {
                 int X_pos = battleTanks[i].GetX();
-                int Y_pos = newMap.TankYPosition(X_pos);
+                int Y_pos = arena.TankYPosition(X_pos);
 
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
  
-            }*/
+            }
             
             wind = GetWindSpeed();
             
             newGame = new Gameplay(noPlayers.Length, noRounds.Length);
-            //GameplayForm gamePlayForm = new GameplayForm(newGame);
-            //gamePlayForm.Show(); 
+            GameplayForm gamePlayForm = new GameplayForm(newGame);
+            gamePlayForm.Show(); 
 
         }
        
         public Map GetArena()
         {
-            return newMap;
+            return arena;
         }
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
@@ -180,7 +180,6 @@ namespace TankBattle
 
         public BattleTank GetCurrentPlayerTank()
         {
-            
             return battleTanks[curr_player];
         }
 
@@ -243,7 +242,7 @@ namespace TankBattle
                 }
             }
 
-            if (newMap.Get((int)projectileX,(int)projectileY) == true)
+            if (arena.Get((int)projectileX,(int)projectileY) == true)
             {
                 return true;
             }
@@ -297,7 +296,7 @@ namespace TankBattle
         {
             bool moved = false;
 
-            if (newMap.GravityStep() == true)
+            if (arena.GravityStep() == true)
             {
                 moved = true;
             }

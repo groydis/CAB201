@@ -131,22 +131,29 @@ namespace TankBattle
 
         public bool Exists()
         {
-            if (currDurability <= 0)
+            bool exists = false;
+
+            if (currDurability > 0)
             {
-                return false;
+                exists = true;
             }
-            return true;
+
+            return exists;
         }
 
         public bool GravityStep()
         {
-            if(Exists() == true)
+            if(Exists())
             {
-                Map map = game.GetArena();
+                Map map = this.game.GetArena();
                 int X_pos = GetX();
                 int Y_pos = Y();
                 
-                if (map.CheckTankCollide(X_pos,Y_pos + 1) == false)
+                if (map.CheckTankCollide(X_pos,Y_pos + 1))
+                {
+                    return false;
+                }
+                else
                 {
                     tankY++;
                     currDurability--;
@@ -155,12 +162,9 @@ namespace TankBattle
                         currDurability = 0;
                         return true;
                     }
-                } else
-                {
-                    return false;
                 }
             }
-            return false;
+            return true;
                        
         }
     }
