@@ -52,7 +52,6 @@ namespace TankBattle
         {
             //Answer has been given to us and just needs variables changed to private fields and 
             //Use variables that have been created in other scripts
-
             float disX = x * displaySize.Width / Map.WIDTH;
             float disY = y * displaySize.Height / Map.HEIGHT;
             float radius = displaySize.Width * (float)((1.0 - blastLifeSpan) * explosionRadius * 3.0 / 2.0) / Map.WIDTH;

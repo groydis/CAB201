@@ -199,51 +199,37 @@ namespace TankBattle
 
         public void AddWeaponEffect(Effect weaponEffect)
         {
-            for (int i = 0; i < effects.Count; i++)
-            {
-                if (effects[i] == null)
-                {
-                    effects[i] = weaponEffect;
-                    effects[i].ConnectGame(this);
-                    break;
-                }
-            }
+            effects.Add(weaponEffect);
 
         }
 
         public bool ProcessWeaponEffects()
         {
-            for (int i = 0; i < effects.Count; i++)
+            if (effects.Count() > 0)
             {
-                if (effects[i] != null)
+                foreach (Effect effect in effects)
                 {
-                    effects[i].Tick();
-                    return true;
-                }              
+                    effect.Tick();
+                }
+                return true;
+            } else
+            {
+                return false;
             }
-            return false;
         }
 
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
-            for (int i = 0; i < effects.Count; i++)
+            foreach(Effect effect in effects)
             {
-                if (effects[i] != null)
-                {
-                    effects[i].Display(graphics,displaySize);                    
-                }
+                effect.Display(graphics, displaySize);
             }
         }
 
         public void RemoveEffect(Effect weaponEffect)
         {
-            for (int i = 0; i < effects.Count; i++)
-            {
-                if (effects[i] == weaponEffect)
-                {
-                    effects.Remove(weaponEffect);
-                }
-            }
+            effects.Remove(weaponEffect);
+
         }
 
         public bool CheckHitTank(float projectileX, float projectileY)
