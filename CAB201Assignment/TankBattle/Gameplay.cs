@@ -145,9 +145,9 @@ namespace TankBattle
             
             battleTanks = new BattleTank[noPlayers.Length];
             
-            for (int i = 0; i < battleTanks.Length;i++)
+            for (int i = 0; i < noPlayers.Length - 1;i++)
             {
-                int X_pos = battleTanks[i].GetX();
+                int X_pos = positions[i];
                 int Y_pos = arena.TankYPosition(X_pos);
 
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
@@ -155,7 +155,7 @@ namespace TankBattle
             }
             
             wind = GetWindSpeed();
-            
+
             newGame = new Gameplay(noPlayers.Length, noRounds.Length);
             GameplayForm gamePlayForm = new GameplayForm(newGame);
             gamePlayForm.Show(); 
