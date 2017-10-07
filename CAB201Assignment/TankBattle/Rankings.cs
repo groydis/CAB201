@@ -18,8 +18,8 @@ namespace TankBattle
             int winner = 0;
             for (int i = 0; i < game.NumPlayers(); i++)
             {
-               int score = game.GetPlayer(i).GetScore();
-               if (score > winner)
+                int score = game.GetPlayer(i).GetScore();
+                if (score > winner)
                 {
                     winner = score;
                 }
@@ -37,17 +37,17 @@ namespace TankBattle
             }
 
 
-
             playerListBox.Items.Clear();
 
             foreach (String name in playerArray)
             {
                 playerListBox.Items.Add(name);
+    
             }
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
             MainMenuForm newMainMenu = new MainMenuForm();
             newMainMenu.Show();

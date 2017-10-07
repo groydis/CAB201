@@ -374,8 +374,8 @@ namespace TankBattle
             }
             if (curr_round > noPlayers.Length)
             {
-                MainMenuForm newMainMenu = new MainMenuForm();
-                newMainMenu.Show();
+                Rankings rankingsWindow = new Rankings(this);
+                rankingsWindow.Show();
             }
         }
         

@@ -75,6 +75,12 @@
     </Compile>
     <Compile Include="Gameplay.cs" />
     <Compile Include="PlayerController.cs" />
+    <Compile Include="Rankings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rankings.Designer.cs">
+      <DependentUpon>Rankings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shell.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="MainMenuForm.cs">
@@ -104,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rankings.resx">
+      <DependentUpon>Rankings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

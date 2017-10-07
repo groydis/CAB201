@@ -46,3 +46,4 @@ C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Deb
 C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.csproj.CoreCompileInputs.cache
 C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.exe
 C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.pdb
+C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.Rankings.resources
