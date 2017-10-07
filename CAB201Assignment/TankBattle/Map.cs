@@ -20,13 +20,15 @@ namespace TankBattle
             for (int i = 0; i < WIDTH; i++)
             {
                 thisMap[i, HEIGHT -1] = true;
+                thisMap[i, HEIGHT - 2] = true;
+                thisMap[i, HEIGHT - 3] = true;
                 thisMap[i, 0] = false;
             }
 
             int newX, newY;
-            for (int i = 0; i < 2500; i++)
+            for (int i = 0; i < 200; i++)
             {
-                newX = rng.Next(0, 159);
+                newX = rng.Next(0, 156);
                 newY = rng.Next(0, 119);
 
                 while (Get(newX, newY + 1) == false && newY <= 119)
@@ -89,7 +91,7 @@ namespace TankBattle
                     for (int ix = 0; ix < TankModel.WIDTH; ix++)
                     {
 
-                        if (Get(x + ix, y + iy))
+                        if (Get(x + ix, y+ iy))
                         {
                             colTiles++;
                         }
