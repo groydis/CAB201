@@ -295,7 +295,7 @@ namespace TankBattle
                 moved = true;
             }
 
-            for(int i = 0; i < battleTanks.Length; i++)
+            for(int i = 0; i < battleTanks.Length - 1; i++)
             {
                 if(battleTanks[i].GravityStep() == true)
                 {
@@ -309,7 +309,7 @@ namespace TankBattle
         public bool FinishTurn()
         {
             int playersLeft = 0;
-            for (int i = 0; i< battleTanks.Length; i++)
+            for (int i = 0; i< battleTanks.Length - 1; i++)
             {
                 if (battleTanks[i].Exists() == true)
                 {
@@ -351,7 +351,7 @@ namespace TankBattle
 
         public void FindWinner()
         {
-            for (int i = 0; i < noPlayers.Length; i++)
+            for (int i = 0; i < noPlayers.Length- 1; i++)
             {
                 if (battleTanks[i].Exists() == true)
                 {
