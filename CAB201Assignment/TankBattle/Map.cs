@@ -24,7 +24,7 @@ namespace TankBattle
             }
 
             int newX, newY;
-            for (int i = 0; i < 250; i++)
+            for (int i = 0; i < 2500; i++)
             {
                 newX = rng.Next(0, 159);
                 newY = rng.Next(0, 119);
@@ -89,7 +89,7 @@ namespace TankBattle
                     for (int ix = 0; ix < TankModel.WIDTH; ix++)
                     {
 
-                        if (this.Get(x + ix, y + iy))
+                        if (Get(x + ix, y + iy))
                         {
                             colTiles++;
                         }
