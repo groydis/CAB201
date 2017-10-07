@@ -29,7 +29,7 @@ namespace TankBattle
 
         public Gameplay(int numPlayers, int numRounds)
         {
-            if (numPlayers >= 2 && numPlayers <= 8)
+            if (numPlayers > 1 && numPlayers <= 8)
             {
                 noPlayers = new Opponent[numPlayers];
             }
@@ -86,7 +86,7 @@ namespace TankBattle
             int[] locations = new int[numPlayers];
             int screenWidth = 160;
             int loc = 0;
-            for (int i = 0; i < numPlayers; i++)
+            for (int i = 0; i < locations.Length - 1; i++)
             {
                 if (i == 0)
                 {
@@ -105,12 +105,12 @@ namespace TankBattle
         {
 
             Random rng = new Random();
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                array[i] = i + 1;
+                array[i] = array[i] + 1;
             }
 
-            for (int j = 0; j < array.Length; j++)
+            for (int j = 0; j < array.Length - 1; j++)
             {
                 int z = rng.Next(j);
                 int k = array[z];
@@ -136,16 +136,17 @@ namespace TankBattle
             
             for (int i =0; i < noPlayers.Length; i++)
             {
-                noPlayers[i].CommenceRound();                
+                noPlayers[i].CommenceRound();
             }
             
             Shuffle(positions);
             
             battleTanks = new BattleTank[noPlayers.Length];
             
-            for (int i = 0; i < noPlayers.Length - 1;i++)
+            for (int i = 0; i < noPlayers.Length;i++)
             {
                 int X_pos = positions[i];
+                Console.WriteLine(X_pos);
                 int Y_pos = arena.TankYPosition(X_pos);
 
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
@@ -166,7 +167,7 @@ namespace TankBattle
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
-            for (int i = 0; i < battleTanks.Length - 1; i++)
+            for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (battleTanks[i].Exists())
                 {

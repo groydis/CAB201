@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TankBattle
 {
-    abstract public class Opponent
+    public abstract class Opponent
     {
         private string name;
         private TankModel tank;
