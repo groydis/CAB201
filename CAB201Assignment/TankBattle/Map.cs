@@ -25,7 +25,7 @@ namespace TankBattle
                 thisMap[i, 0] = false;
             }
 
-            int newX, newY;
+            /*int newX, newY;
             for (int i = 0; i < 200; i++)
             {
                 newX = rng.Next(0, 156);
@@ -37,7 +37,7 @@ namespace TankBattle
                 };
 
                 thisMap[newX, newY] = true;
-            }
+            }*/
 
         }
 
