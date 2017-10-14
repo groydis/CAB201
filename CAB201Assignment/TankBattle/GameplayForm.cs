@@ -101,7 +101,8 @@ namespace TankBattle
 
         public void Fire()
         {
-            currentGame.GetCurrentPlayerTank();
+            BattleTank bTank = currentGame.GetCurrentPlayerTank();
+            bTank.Fire();
             controlPanel.Enabled = false;
             timer1.Enabled = true;
         }

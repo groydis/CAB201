@@ -38,12 +38,12 @@ namespace TankBattle
 
             if (blastLifeSpan <= 0)
             {
-                game.InflictDamage(x,y,explosionDamage,explosionRadius);
+                effectGame.InflictDamage(x,y,explosionDamage,explosionRadius);
 
-                Map thisMap = game.GetArena();
+                Map thisMap = effectGame.GetArena();
                 thisMap.DestroyTerrain(x,y,earthDestructionRadius);
 
-                game.RemoveEffect(this);
+                effectGame.RemoveEffect(this);
 
             }
         }
@@ -61,20 +61,20 @@ namespace TankBattle
             if (blastLifeSpan < 1.0 / 3.0)
             {
                 red = 255;
-                alpha = (int)(blastLifeSpan * 3.0 * 255);
+                alpha = (int)(blastLifeSpan * 3.0 / 255);
             }
             else if (blastLifeSpan < 2.0 / 3.0)
             {
                 red = 255;
                 alpha = 255;
-                green = (int)((blastLifeSpan * 3.0 - 1.0) * 255);
+                green = (int)((blastLifeSpan * 3.0 - 1.0) / 255);
             }
             else
             {
                 red = 255;
                 alpha = 255;
                 green = 255;
-                blue = (int)((blastLifeSpan * 3.0 - 2.0) * 255);
+                blue = (int)((blastLifeSpan * 3.0 - 2.0) / 255);
             }
 
             RectangleF rect = new RectangleF(disX - radius, disY - radius, radius * 2, radius * 2);

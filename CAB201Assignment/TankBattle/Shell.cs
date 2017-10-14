@@ -43,22 +43,22 @@ namespace TankBattle
                 x += x_velocity;
                 y += y_velocity;
 
-                wind = game.GetWindSpeed();
+                wind = effectGame.GetWindSpeed();
 
                 x += (wind / 1000.0f);
 
                 if (x >= Map.WIDTH || x <= 0 || y >= Map.HEIGHT || y <= 0)
                 {
-                    game.RemoveEffect(this);
+                    effectGame.RemoveEffect(this);
                     return;
                 }
 
-                if (game.CheckHitTank(x, y) == true)
+                if (effectGame.CheckHitTank(x, y) == true)
                 {
                     player.HitPos(x, y);
                     explosion.Ignite(x, y);
-                    game.AddWeaponEffect(explosion);
-                    game.RemoveEffect(this);
+                    effectGame.AddWeaponEffect(explosion);
+                    effectGame.RemoveEffect(this);
                 }
                 y += gravity;
             }

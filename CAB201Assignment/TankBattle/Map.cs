@@ -17,27 +17,37 @@ namespace TankBattle
 
         public Map()
         {
-            for (int i = 0; i < WIDTH; i++)
+            
+
+            int mapSize = rng.Next(20, 100);
+            for (int i = mapSize; i > 0; i--)
             {
-                thisMap[i, HEIGHT -1] = true;
-                thisMap[i, HEIGHT - 2] = true;
-                thisMap[i, HEIGHT - 3] = true;
-                thisMap[i, 0] = false;
+                for (int j = 0; j < WIDTH; j++)
+                {
+                    thisMap[j, HEIGHT - i] = true;
+                }
             }
 
-            /*int newX, newY;
-            for (int i = 0; i < 200; i++)
+            int mapBomb = rng.Next(50, 100);
+            for (int z = 0; z < mapBomb; z++)
             {
-                newX = rng.Next(0, 156);
-                newY = rng.Next(0, 119);
+                float bX = rng.Next(0, 159);
+                float bY = rng.Next(mapSize, 119);
+                float rad = rng.Next(5, 10);
 
-                while (Get(newX, newY + 1) == false && newY <= 119)
-                {
-                    newY++;
-                };
+                DestroyTerrain(bX, bY, rad);
+            }
+            while (GravityStep() == true)
+            {
+                GravityStep();
+            }
 
-                thisMap[newX, newY] = true;
-            }*/
+            for (int i = 0; i < WIDTH; i++)
+            {
+                thisMap[i, HEIGHT - 1] = true;
+                thisMap[i, HEIGHT - 2] = true;
+                thisMap[i, 0] = false;
+            }
 
         }
 

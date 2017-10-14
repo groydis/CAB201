@@ -136,7 +136,7 @@ namespace TankBattle
             Console.WriteLine(positions[0]);
             Console.WriteLine(positions[1]);
 
-            for (int i = 0; i < noPlayers.Length - 1; i++)
+            for (int i = 0; i < noPlayers.Length; i++)
             {
                 noPlayers[i].CommenceRound();
             }
@@ -145,7 +145,7 @@ namespace TankBattle
             
             battleTanks = new BattleTank[noPlayers.Length];
             
-            for (int i = 0; i < noPlayers.Length;i++)
+            for (int i = 0; i < noPlayers.Length ;i++)
             {
                 int X_pos = positions[i];
                 int Y_pos = arena.TankYPosition(X_pos);
@@ -202,14 +202,15 @@ namespace TankBattle
         public void AddWeaponEffect(Effect weaponEffect)
         {
             effects.Add(weaponEffect);
+            weaponEffect.ConnectGame(this);
         }
 
         public bool ProcessWeaponEffects()
         {
             bool ans = false;
-            foreach (Effect effect in effects)
+            for (int i = 0; i < effects.Count(); i++)
             {
-                effect.Tick();
+                effects[i].Tick();
                 ans = true;                
             }
             return ans;
@@ -217,9 +218,9 @@ namespace TankBattle
 
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
-            foreach(Effect effect in effects)
+            for (int i = 0; i < effects.Count(); i++)
             {
-                effect.Display(graphics, displaySize);
+                effects[i].Display(graphics, displaySize);
             }
         }
 

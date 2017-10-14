@@ -9,10 +9,11 @@ namespace TankBattle
 {
     public abstract class Effect
     {
-        protected Gameplay game;
+        protected Gameplay effectGame;
+
         public void ConnectGame(Gameplay game)
         {
-            this.game = game;
+            effectGame = game;
         }
 
         public abstract void Tick();
