@@ -133,19 +133,17 @@ namespace TankBattle
             arena = new Map();
             
             int [] positions = GetPlayerLocations(noPlayers.Length);
-            Console.WriteLine(positions[0]);
-            Console.WriteLine(positions[1]);
 
             for (int i = 0; i < noPlayers.Length; i++)
             {
                 noPlayers[i].CommenceRound();
             }
             
-            //Shuffle(positions);
+            Shuffle(positions);
             
             battleTanks = new BattleTank[noPlayers.Length];
             
-            for (int i = 0; i < noPlayers.Length ;i++)
+            for (int i = 0; i < noPlayers.Length ; i++)
             {
                 int X_pos = positions[i];
                 int Y_pos = arena.TankYPosition(X_pos);
