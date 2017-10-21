@@ -208,7 +208,7 @@ namespace TankBattle
         private void powerTrackBar_Scroll(object sender, EventArgs e)
         {
             currentTank.SetPower(powerTrackBar.Value);
-            powerLabel.Text = currentTank.GetCurrentPower().ToString();
+            powerValueLabel.Text = currentTank.GetCurrentPower().ToString();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
