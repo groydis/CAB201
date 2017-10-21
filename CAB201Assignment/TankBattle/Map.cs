@@ -19,7 +19,7 @@ namespace TankBattle
         {
             
 
-            int mapSize = rng.Next(20, 100);
+            int mapSize = rng.Next(50, 100);
             for (int i = mapSize; i > 0; i--)
             {
                 for (int j = 0; j < WIDTH; j++)
@@ -28,7 +28,7 @@ namespace TankBattle
                 }
             }
 
-            int mapBomb = rng.Next(50, 100);
+            int mapBomb = rng.Next(50, 75);
             for (int z = 0; z < mapBomb; z++)
             {
                 float bX = rng.Next(0, 159);
@@ -37,6 +37,7 @@ namespace TankBattle
 
                 DestroyTerrain(bX, bY, rad);
             }
+
             while (GravityStep() == true)
             {
                 GravityStep();
@@ -46,9 +47,7 @@ namespace TankBattle
             {
                 thisMap[i, HEIGHT - 1] = true;
                 thisMap[i, HEIGHT - 2] = true;
-                thisMap[i, 0] = false;
             }
-
         }
 
         public bool Get(int x, int y)

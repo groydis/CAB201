@@ -62,6 +62,7 @@ namespace TankBattle
         public void SetAngle(float angle)
         {
             this.angle = angle;
+            tankBmp = tankModel.CreateBMP(plColour, angle);
         }
 
         public int GetCurrentPower()
