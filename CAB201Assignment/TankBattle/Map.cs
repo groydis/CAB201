@@ -38,7 +38,7 @@ namespace TankBattle
                 DestroyTerrain(bX, bY, rad);
             }
 
-            while (GravityStep() == true)
+            while (GravityStep())
             {
                 GravityStep();
             }
