@@ -10,74 +10,102 @@ namespace TankBattle
 {
     public class Gameplay
     {
+        //List of Effects used to store and effect the weapons of the game
         List<Effect> effects;
 
+        //Opponent arrays used to get the Round Data and Player Data
         private Opponent[] noPlayers;
         private Opponent[] noRounds;
 
+        //Map value that is created in Map.cs
         private Map arena;
 
+        //Array of BattleTanks for the TankModel
         private BattleTank[] battleTanks;
 
+        //Game Values that work to show current round and current player
         private int curr_round = 1;
         private int start_player;
         private int curr_player;
         
+        //wind value that will be used to calculate game effect values 
         private int wind;
 
+        //Random calculator
         private Random rng = new Random();
 
         public Gameplay(int numPlayers, int numRounds)
         {
+            //Check that the numPlayers is within 2 and 8
+            //Minimum number of Players is 2 and Maximum number is 8
             if (numPlayers >= 2 && numPlayers <= 8)
             {
+                //Make the array noPlayers to the length of the input Numplayers
                 noPlayers = new Opponent[numPlayers];
             }
+
+            //Check that the numRounds is within 1 and 100
+            //Minimum number of Rounds is 1 and Maximum number is 100
             if (numRounds >= 1 && numRounds <= 100)
             {
+                //Set the array length of noRounds to NumRounds
                 noRounds = new Opponent[numRounds];
             }
 
+            //Initiliaze the LIst of Effects to be used later in the 
             effects = new List<Effect>();
         }
 
         public int NumPlayers()
         {
+            //Return the length of the array 
             return noPlayers.Length;
         }
 
         public int GetRoundNumber()
         {
+            //Return the value of current round set in BeginGame
             return curr_round;
         }
 
         public int GetMaxRounds()
         {
+            //Returns the number of rounds that are set in the Gameplay function
             return noRounds.Length;
         }
 
         public void CreatePlayer(int playerNum, Opponent player)
         {
+            //Creates the opponent in the array noPlayers witht the input value of player
             noPlayers[playerNum - 1] = player;
         }
 
         public Opponent GetPlayer(int playerNum)
         {
+            //Returns the specific Opponent type from noPlayers at the position of playerNum
+            //The array noPlayers is zero indexed and the input value is from 1 to noPlayers.Length
             return noPlayers[playerNum - 1];
         }
 
         public BattleTank GetGameplayTank(int playerNum)
         {
+            //Returns the specific BattleTank type from battleTanks at the position of playerNum
+            //The array battleTanks is zero indexed and the input value is from 1 to battleTanks.Length
             return battleTanks[playerNum - 1];
         }
 
         public static Color GetColour(int playerNum)
         {
+            //Creates an array of Colors named colours
+            //There are only 8 colours as their is only a max of 8 players
+            //each player has only one colour
             Color[] colours = {Color.Aqua, Color.AntiqueWhite,
                   Color.Black, Color.DarkGreen,
                   Color.Gold, Color.IndianRed,
                   Color.LightGray, Color.Maroon};
 
+            //Returns the specific Color type from colours at the position of playerNum
+            //The array colours is zero indexed and the input value is from 1 to colours.Length
             return colours[playerNum - 1];
         }
 
@@ -120,39 +148,60 @@ namespace TankBattle
 
         public void BeginGame()
         {
+            //Setup the game and initiliaze game values of current round to 1 
+            //and starting player to 0
             curr_round = 1;
             start_player = 0;
+
+            //Calls the CommenceRound function to setup players, battletanks and maps
             CommenceRound();
         }
 
         public void CommenceRound()
         {
+            //Sets the current player to the starting player
             curr_player = start_player;
 
+            //Create a new map in the arena value
             arena = new Map();
             
+            //Create an array to hold the player locations retrieved through GetPlayerLocations()
             int [] positions = GetPlayerLocations(noPlayers.Length);
 
+            //Loop through the array of players
             for (int i = 0; i < noPlayers.Length; i++)
             {
+                //Call CommenceRound on each player
                 noPlayers[i].CommenceRound();
             }
             
+            //Shuffle the positions of each player
+            //So that player 1 can be at pos 1 or pos 2 depending on the game
             Shuffle(positions);
             
+            //Initiliaze the array of battleTanks to the length of noPlayers. 
+            //As they ahve to be the same length cause there can't seperate null values
             battleTanks = new BattleTank[noPlayers.Length];
             
+
+            //Loop through the array again with length of noPlayers.Length
             for (int i = 0; i < noPlayers.Length ; i++)
             {
+                //Get the X position of the i player
                 int X_pos = positions[i];
+                //Get the Y position of the i player using the X position
                 int Y_pos = arena.TankYPosition(X_pos);
 
+                //Create the battleTanks at i position using Opponent iin No players,
+                //the X and Y Positions and the Gameplay of this Game
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
  
             }
             
+            //Get a random wind speed between -100 and 100
             wind = GetWindSpeed();
 
+            //Create and Show a new GamePlayForm
             GameplayForm gameplayForm = new GameplayForm(this);
             gameplayForm.Show(); 
 
@@ -160,20 +209,25 @@ namespace TankBattle
 
         public Map GetArena()
         {
+            //Return the map value of this GamePlay
             return arena;
         }
 
-                public BattleTank GetCurrentPlayerTank()
+        public BattleTank GetCurrentPlayerTank()
         {
+            //Return the BattleTank of the current player
             return battleTanks[curr_player];
         }
 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
+            //Loop through the battleTanks array
             for (int i = 0; i < battleTanks.Length; i++)
             {
+                //Check to see if this battleTank Exists
                 if (battleTanks[i].Exists())
                 {
+                    //Display the battleTanks BMP so that the tank can be drawn
                     battleTanks[i].Display(graphics, displaySize);
                 }
             }
@@ -181,18 +235,24 @@ namespace TankBattle
 
         public void AddWeaponEffect(Effect weaponEffect)
         {
+            //Add the WeaponEffect
             effects.Add(weaponEffect);
+            //Connect the WeaponEffect to the game so that it can be accessed
             weaponEffect.ConnectGame(this);
         }
 
         public bool ProcessWeaponEffects()
         {
+            //Setup a bool to be returned with either true or false
             bool ans = false;
             for (int i = 0; i < effects.Count(); i++)
             {
+                //Call Tick on Each effect in the List
                 effects[i].Tick();
+                //bool becomes true once one is done
                 ans = true;                
             }
+            //Return the true or false
             return ans;
         }
 
@@ -309,14 +369,10 @@ namespace TankBattle
                             wind = 100;
                         }
                         return true;
-                    } else
-                    {                        
-                        if (i == battleTanks.Length - 1)
-                        {
-                            i = 0;
-                        }
+                    } else if (i == battleTanks.Length - 1)
+                    {
+                        i = 0;
                     }
-
                 } else if(playersLeft == 1 || playersLeft == 0)
                 {
                     FindWinner();
