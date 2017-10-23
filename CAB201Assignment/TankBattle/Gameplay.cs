@@ -290,27 +290,33 @@ namespace TankBattle
 
         public void RemoveEffect(Effect weaponEffect)
         {
+            //Remove this weaponEffect from the List
             effects.Remove(weaponEffect);
         }
 
         public bool CheckHitTank(float projectileX, float projectileY)
         {
+            //Check if the Projectile is within the screen
             if (projectileX > 0 && projectileX < Map.WIDTH)
             {
                 if (projectileY > 0 && projectileY < Map.HEIGHT)
                 {
+                    //Check if their is a tank at the given X and Y
                     if (arena.Get((int)projectileX, (int)projectileY))
                     {
+                        //Loop through the battleTanks array
                         for (int i = 0; i < battleTanks.Length; i++)
                         {
+                            //Get the tanks X, Y, WIDTH, HEIGHT
                             int x_pos = battleTanks[i].GetX();
                             int y_pos = battleTanks[i].Y();
                             int right = x_pos + TankModel.WIDTH;
                             int bottom = y_pos + TankModel.HEIGHT;
 
-                            if (projectileX >= x_pos || projectileX <= right)
+                            //Return True if the projectile hits within the Tanks bounds
+                            if (projectileX >= x_pos && projectileX <= right)
                             {
-                                if (projectileY >= y_pos || projectileY <= bottom)
+                                if (projectileY >= y_pos && projectileY <= bottom)
                                 {
                                     return true;
                                 }
@@ -353,15 +359,19 @@ namespace TankBattle
 
         public bool GravityStep()
         {
+            //Have a bool value to determine returned True or False
             bool moved = false;
 
+            //Return True if Map's GravityStep occurs
             if (arena.GravityStep())
             {
                 moved = true;
             }
 
+            //Loop through each BattleTank
             for(int i = 0; i < battleTanks.Length; i++)
             {
+                //Return True if BattleTank's GravityStep occurs
                 if(battleTanks[i].GravityStep())
                 {
                     moved = true;
@@ -407,7 +417,7 @@ namespace TankBattle
                 }
             }
 
-            if (playersLeft == 1 || playersLeft == 0)
+            if (playersLeft <= 1)
             {
                 FindWinner();
                 return false;
@@ -417,10 +427,13 @@ namespace TankBattle
 
         public void FindWinner()
         {
+            //Loop through the battleTanks Array
             for (int i = 0; i < battleTanks.Length; i++)
             {
+                //Check that the battleTanks exists
                 if (battleTanks[i].Exists())
                 {
+                    //Add the score to this player that wins
                     battleTanks[i].GetPlayer().AddScore();
                 }
             }
@@ -447,6 +460,7 @@ namespace TankBattle
         
         public int GetWindSpeed()
         {
+            //Randomly generate a value between -100 and 100 then return it
             wind = rng.Next(-100, 100);
             return wind;
         }
