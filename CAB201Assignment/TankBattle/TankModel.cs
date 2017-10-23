@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace TankBattle
 {
@@ -105,9 +106,9 @@ namespace TankBattle
 
         public override int[,] DisplayTankSprite(float angle)
         {
-            int length = 3;
-            int end_Y = 0;
-            int end_X = 0;
+            double length = 7;
+            double end_Y = 0;
+            double end_X = 0;
             int[,] norm = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -123,21 +124,27 @@ namespace TankBattle
 
             if (angle > 0)
             {
-                end_X = (int)Math.Cos((Math.PI / 180) * angle) * length;
-                end_Y = (int)Math.Sin((Math.PI / 180) * angle) * length;
+                Console.WriteLine((Math.PI / 180) * angle);
+                end_X = 7 + Math.Cos((Math.PI / 180) * angle) * length;
+                end_Y = 6 + Math.Sin((Math.PI / 180) * angle) * length;
+                Console.WriteLine(end_X);
+                Console.WriteLine(end_Y);
 
             } else if (angle < 0)
             {
-                end_X = (int)Math.Sin((Math.PI / 180) * angle) * length;
-                end_Y = (int)Math.Cos((Math.PI / 180) * angle) * length;
+                Console.WriteLine((Math.PI / 180) * angle);
+                end_X = 7 + Math.Sin((Math.PI / 180) * angle) * length;
+                end_Y = 6 + Math.Cos((Math.PI / 180) * angle) * length;
+                Console.WriteLine(end_X);
+                Console.WriteLine(end_Y);
             }
-            else
+            else if (angle == 0)
             {
                 end_X = 7;
                 end_Y = 1;
             }
 
-            LineDraw(norm, 7, 6, end_X, end_Y);
+            LineDraw(norm, 7, 6, (int)end_X, (int)end_Y);
             return norm;
         }
 
