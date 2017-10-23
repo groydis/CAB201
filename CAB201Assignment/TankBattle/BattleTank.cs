@@ -142,6 +142,7 @@ namespace TankBattle
 
         public bool GravityStep()
         {
+
             if(Exists())
             {
                 Map map = this.game.GetArena();
@@ -163,8 +164,7 @@ namespace TankBattle
                     }
                 }
             }
-            return true;
-                       
+            return false;
         }
     }
 }

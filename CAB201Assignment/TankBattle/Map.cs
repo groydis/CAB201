@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace TankBattle
 {
@@ -146,8 +147,8 @@ namespace TankBattle
                         mover = true;
                     }
                 }
-            }         
-                            
+            }
+            Debug.WriteLine("GravityStep() -> Map.cs Finished");
             return mover;
         }
     }

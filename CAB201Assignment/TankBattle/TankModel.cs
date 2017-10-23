@@ -124,19 +124,19 @@ namespace TankBattle
 
             if (angle > 0)
             {
-                Debug.WriteLine("Positive");
+               // Debug.WriteLine("Positive");
                 end_X = 7 + (length * Math.Cos(angle * (180 / Math.PI)));
                 end_Y = 6 + (length * Math.Sin(angle * (180 / Math.PI)));
-                Debug.WriteLine("end x: " + end_X);
-                Debug.WriteLine("end y: " + end_Y);
+               // Debug.WriteLine("end x: " + end_X);
+               // Debug.WriteLine("end y: " + end_Y);
             }
             else if (angle < 0 )
             {
-                Debug.WriteLine("Negative");
+               // Debug.WriteLine("Negative");
                 end_X = 7 + (length * Math.Cos(angle * (180 / Math.PI)));
                 end_Y = 6 + (length * Math.Sin(angle * (180 / Math.PI)));
-                Debug.WriteLine("end x: " + end_X);
-                Debug.WriteLine("end y: " + end_Y);
+               // Debug.WriteLine("end x: " + end_X);
+               // Debug.WriteLine("end y: " + end_Y);
             }
 
             LineDraw(norm, 7, 6, (int)end_X, (int)end_Y);

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Diagnostics;
+
 namespace TankBattle
 {
     public partial class GameplayForm : Form
@@ -142,35 +144,35 @@ namespace TankBattle
 
         private void NewTurn()
         {
-               currentTank = currentGame.GetCurrentPlayerTank();
-               Opponent opponentTank = currentTank.GetPlayer();
+            currentTank = currentGame.GetCurrentPlayerTank();
 
-               Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
-               BackColor = opponentTank.GetColour();
-               playerNameLabel.Text = opponentTank.Identifier();
-               SetAngle(currentTank.GetTankAngle());
-               SetPower(currentTank.GetCurrentPower());
+            Opponent opponentTank = currentTank.GetPlayer();
 
+            Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+            BackColor = opponentTank.GetColour();
+            playerNameLabel.Text = opponentTank.Identifier();
+            SetAngle(currentTank.GetTankAngle());
+            SetPower(currentTank.GetCurrentPower());
 
-               int currentWind = currentGame.GetWindSpeed();
-               if (currentWind > 0)
-               {
-                   currWindLabel.Text = String.Format("{0} E", currentWind);
-               }
-               else
-               {
-                   currentWind = currentWind * -1;
-                   currWindLabel.Text = String.Format("{0} W", currentWind);
-               }
-               weaponComboBox.Items.Clear();
-               TankModel currentTankModel = currentTank.GetTank();
-               foreach (String weapon in currentTankModel.WeaponList())
-               {
-                   weaponComboBox.Items.Add(weapon);
-               }
-               SetWeapon(weaponComboBox.SelectedIndex);
-               opponentTank.NewTurn(this, currentGame);
-               
+            int currentWind = currentGame.GetWindSpeed();
+            if (currentWind > 0)
+            {
+                currWindLabel.Text = String.Format("{0} E", currentWind);
+            }
+            else
+            {
+                currentWind = currentWind * -1;
+                currWindLabel.Text = String.Format("{0} W", currentWind);
+            }
+            weaponComboBox.Items.Clear();
+            TankModel currentTankModel = currentTank.GetTank();
+            foreach (String weapon in currentTankModel.WeaponList())
+            {
+                weaponComboBox.Items.Add(weapon);
+            }
+            SetWeapon(weaponComboBox.SelectedIndex);
+            opponentTank.NewTurn(this, currentGame);
+            Debug.WriteLine("NewTurn() Finished");
         }
 
         public BufferedGraphics InitialiseBuffer()

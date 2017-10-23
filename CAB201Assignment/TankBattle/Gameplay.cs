@@ -354,6 +354,7 @@ namespace TankBattle
 
             if (arena.GravityStep())
             {
+                Debug.WriteLine("GravityStep() -> Gameplay.cs True1");
                 moved = true;
             }
 
@@ -361,10 +362,11 @@ namespace TankBattle
             {
                 if(battleTanks[i].GravityStep())
                 {
+                    Debug.WriteLine("GravityStep() -> Gameplay.cs True2");
                     moved = true;
                 }
             }
-
+            Debug.WriteLine("GravityStep() -> Gameplay.cs Finished");
             return moved;
         }
 
@@ -382,6 +384,11 @@ namespace TankBattle
                 if (playersLeft >= 2)
                 {
                     curr_player++;
+                    Debug.WriteLine(curr_player);
+                    if (curr_player >= NumPlayers())
+                    {
+                        curr_player = 0;
+                    }
                     if (battleTanks[curr_player].Exists())
                     {
                         wind += rng.Next(-10, 10);
@@ -394,6 +401,7 @@ namespace TankBattle
                         {
                             wind = 100;
                         }
+                        Debug.WriteLine("Finish Turn Finished: true");
                         return true;
                     } else if (i == battleTanks.Length - 1)
                     {
@@ -404,10 +412,11 @@ namespace TankBattle
 
             if (playersLeft == 1 || playersLeft == 0)
             {
-                Debug.WriteLine("Players Left: " + playersLeft);
                 FindWinner();
+                Debug.WriteLine("Finish Turn Finsihed: False Find Winner");
                 return false;
             }
+            Debug.WriteLine("Finnish Turn Fished: false");
             return false;
         }
 
@@ -417,10 +426,10 @@ namespace TankBattle
             {
                 if (battleTanks[i].Exists())
                 {
-                    Debug.WriteLine("EXISTS");
                     battleTanks[i].GetPlayer().AddScore();
                 }
             }
+            Debug.WriteLine("Find Winner Fished");
         }
 
         public void NextRound()
@@ -440,6 +449,7 @@ namespace TankBattle
                 Rankings rankingsWindow = new Rankings(this);
                 rankingsWindow.Show();
             }
+            Debug.WriteLine("NextRound() Finished");
         }
         
         public int GetWindSpeed()
