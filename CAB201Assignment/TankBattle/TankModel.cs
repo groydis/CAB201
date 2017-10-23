@@ -20,16 +20,20 @@ namespace TankBattle
         {
             int dx = X2 - X1;
             int dy = Y2 - Y1;
-            int y = Y1;
-            int eps = 0;
-
-            for (int x = X1; x >= X2; x--)
+            
+            if (X1 > X2)
             {
-                graphic[x, y] = 1;
-                eps += dy;
-                if ((eps << 1) >= dx)
+                for (int x = X1; x != X2 - 1; x--)
                 {
-                    y++; eps -= dx;
+                    int y = Y1 + dy * (x - X1) / dx;
+                    graphic[x, y] = 1;
+                }
+            } else if (X2 > X1)
+            {
+                for (int x = X1; x != X2 - 1; x++)
+                {
+                    int y = Y1 + dy * (x - X1) / dx;
+                    graphic[x, y] = 1;
                 }
             }
         }
@@ -106,7 +110,7 @@ namespace TankBattle
 
         public override int[,] DisplayTankSprite(float angle)
         {
-            double length = 5;
+            double length = 7;
             double end_Y = 0;
             double end_X = 0;
             int[,] norm = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -123,15 +127,15 @@ namespace TankBattle
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
           
      
-            float angleRadians = (90 - angle) * (float) Math.PI / 180;
+            float angleRadians = (180 - angle) * (float) Math.PI / 180;
             
             end_X = Math.Round(7 + (length * Math.Cos(angleRadians)));
-            end_Y = Math.Round(6 + (length * Math.Sin(angleRadians)));
+            end_Y = Math.Round(7 + (length * Math.Sin(angleRadians)));
 
             Debug.WriteLine("end x: " + end_X);
             Debug.WriteLine("end y: " + end_Y);
 
-            LineDraw(norm, 7, 6, (int)end_X, (int)end_Y);
+            LineDraw(norm, 7, 7, (int)end_X, (int)end_Y);
             return norm;
         }
 
@@ -147,14 +151,14 @@ namespace TankBattle
             Blast blast = new Blast(100,4,4);
             if (weapon == 0)
             {
-                gravity = 0.01f;
+                gravity = 1.0f;
             } else if (weapon == 1)
             {
-                gravity = 1.0f;                
+                gravity = 2.0f;                
             }
             else if (weapon == 2)
             {
-                
+                gravity = 1.5f;
             }
             Shell shell = new Shell(x_pos, y_pos, playerTank.GetTankAngle(), playerTank.GetCurrentPower(), gravity, blast, player);
             currentGame.AddWeaponEffect(shell);       
