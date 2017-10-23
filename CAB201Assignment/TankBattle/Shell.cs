@@ -66,8 +66,8 @@ namespace TankBattle
 
         public override void Display(Graphics graphics, Size size)
         {
-            x = x * size.Width / Map.WIDTH;
-            y = y * size.Height / Map.HEIGHT;
+            float x = (float)this.x * size.Width / Map.WIDTH;
+            float y = (float)this.y * size.Height / Map.HEIGHT;
             float s = size.Width / Map.WIDTH;
 
             RectangleF r = new RectangleF(x - s / 2.0f, y - s / 2.0f, s, s);
