@@ -19,7 +19,7 @@ namespace TankBattle
         {
             
 
-            int mapSize = rng.Next(50, 100);
+            int mapSize = rng.Next(75, 100);
             for (int i = mapSize; i > 0; i--)
             {
                 for (int j = 0; j < WIDTH; j++)
@@ -28,7 +28,7 @@ namespace TankBattle
                 }
             }
 
-            int mapBomb = rng.Next(50, 75);
+            int mapBomb = rng.Next(25, 75);
             for (int z = 0; z < mapBomb; z++)
             {
                 float bX = rng.Next(0, 159);
