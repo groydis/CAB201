@@ -324,26 +324,31 @@ namespace TankBattle
         
         public void InflictDamage(float damageX, float damageY, float explosionDamage, float radius)
         {
-            float overallDamage = explosionDamage;
+            // Calculates tank position based on where the shell hit.
+            // If within range, does damage
+            // Else the damage will be equal to 0
+            float overall_dmg = 0;
             for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (battleTanks[i].Exists())
                 {
-                    float[] pos = {battleTanks[i].GetX() + (TankModel.WIDTH / 2), battleTanks[i].Y() + (TankModel.HEIGHT / 2)};
+                    float tank_centre_x = battleTanks[i].GetX() + (TankModel.WIDTH / 2);
+                    float tank_centre_y = battleTanks[i].Y() + (TankModel.HEIGHT / 2);
 
-                    float dist = (float)Math.Sqrt(Math.Pow(pos[0] - damageX, 2) + Math.Pow(pos[1] - damageY, 2));
+                    float dist = (float)Math.Sqrt(Math.Pow(tank_centre_x - damageX, 2) + Math.Pow(tank_centre_y - damageY, 2));
 
-                    if (dist > radius/2 && dist < radius)
+                    if (dist < radius && dist > radius / 2)
                     {
                         float diff = dist - radius;
-
-                        overallDamage = (explosionDamage * diff) / radius;
+                        overall_dmg = (explosionDamage * diff) / radius;
                     }
-                    if (dist < radius / 2)
+                    else if (dist < radius / 2)
                     {
-                        overallDamage = explosionDamage;
+                        overall_dmg = explosionDamage;
                     }
-                    battleTanks[i].InflictDamage((int)overallDamage);
+                    Debug.WriteLine("Damage Inflicted: " + overall_dmg);
+                    Debug.WriteLine("To tank: " + i);
+                    battleTanks[i].InflictDamage((int)overall_dmg);
                 }
             }
         }
