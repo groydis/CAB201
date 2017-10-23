@@ -148,7 +148,7 @@ namespace TankBattle
 
             Opponent opponentTank = currentTank.GetPlayer();
 
-            Text += String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
+            Text = String.Format("Tank Battle - Round {0} of {1}", currentGame.GetRoundNumber(), currentGame.GetMaxRounds());
             BackColor = opponentTank.GetColour();
             playerNameLabel.Text = opponentTank.Identifier();
             SetAngle(currentTank.GetTankAngle());

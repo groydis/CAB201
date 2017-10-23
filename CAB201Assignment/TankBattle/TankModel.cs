@@ -106,7 +106,7 @@ namespace TankBattle
 
         public override int[,] DisplayTankSprite(float angle)
         {
-            double length = 7;
+            double length = 5;
             double end_Y = 0;
             double end_X = 0;
             int[,] norm = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -123,10 +123,10 @@ namespace TankBattle
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
           
      
-            float angleRadians = (90 -angle) * (float) Math.PI / 180;
+            float angleRadians = (90 - angle) * (float) Math.PI / 180;
             
-            end_X = 7 + (length * Math.Cos(angleRadians));
-            end_Y = 6 + (length * Math.Sin(angleRadians));
+            end_X = Math.Round(7 + (length * Math.Cos(angleRadians)));
+            end_Y = Math.Round(6 + (length * Math.Sin(angleRadians)));
 
             Debug.WriteLine("end x: " + end_X);
             Debug.WriteLine("end y: " + end_Y);
