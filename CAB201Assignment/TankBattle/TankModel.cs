@@ -121,23 +121,15 @@ namespace TankBattle
                             { 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0 },
                             { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+          
+     
+            float angleRadians = (90 -angle) * (float) Math.PI / 180;
+            
+            end_X = 7 + (length * Math.Cos(angleRadians));
+            end_Y = 6 + (length * Math.Sin(angleRadians));
 
-            if (angle > 0)
-            {
-               // Debug.WriteLine("Positive");
-                end_X = 7 + (length * Math.Cos(angle * (180 / Math.PI)));
-                end_Y = 6 + (length * Math.Sin(angle * (180 / Math.PI)));
-               // Debug.WriteLine("end x: " + end_X);
-               // Debug.WriteLine("end y: " + end_Y);
-            }
-            else if (angle < 0 )
-            {
-               // Debug.WriteLine("Negative");
-                end_X = 7 + (length * Math.Cos(angle * (180 / Math.PI)));
-                end_Y = 6 + (length * Math.Sin(angle * (180 / Math.PI)));
-               // Debug.WriteLine("end x: " + end_X);
-               // Debug.WriteLine("end y: " + end_Y);
-            }
+            Debug.WriteLine("end x: " + end_X);
+            Debug.WriteLine("end y: " + end_Y);
 
             LineDraw(norm, 7, 6, (int)end_X, (int)end_Y);
             return norm;
@@ -145,6 +137,7 @@ namespace TankBattle
 
         public override void ActivateWeapon(int weapon, BattleTank playerTank, Gameplay currentGame)
         {
+            float gravity = 0.01f;
             float x_pos = (float)playerTank.GetX() + (TankModel.WIDTH / 2);
             float y_pos = (float)playerTank.Y() + (TankModel.HEIGHT / 2);
 
@@ -152,8 +145,18 @@ namespace TankBattle
              
 
             Blast blast = new Blast(100,4,4);
-            Shell shell = new Shell(x_pos, y_pos, playerTank.GetTankAngle(),playerTank.GetCurrentPower(),0.01f,blast,player);
-
+            if (weapon == 0)
+            {
+                gravity = 0.01f;
+            } else if (weapon == 1)
+            {
+                gravity = 1.0f;                
+            }
+            else if (weapon == 2)
+            {
+                
+            }
+            Shell shell = new Shell(x_pos, y_pos, playerTank.GetTankAngle(), playerTank.GetCurrentPower(), gravity, blast, player);
             currentGame.AddWeaponEffect(shell);       
 
         }

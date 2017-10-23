@@ -148,7 +148,6 @@ namespace TankBattle
                     }
                 }
             }
-            Debug.WriteLine("GravityStep() -> Map.cs Finished");
             return mover;
         }
     }
