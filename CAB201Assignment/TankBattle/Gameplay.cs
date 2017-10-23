@@ -280,8 +280,10 @@ namespace TankBattle
 
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
+            //Loops through the effects list
             for (int i = 0; i < effects.Count(); i++)
             {
+                //Draw each effect using the display functions
                 effects[i].Display(graphics, displaySize);
             }
         }
