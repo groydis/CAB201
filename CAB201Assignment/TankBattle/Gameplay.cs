@@ -111,32 +111,52 @@ namespace TankBattle
 
         public static int[] GetPlayerLocations(int numPlayers)
         {
+
+            // Create an array of to store the X position of player locations
             int[] locations = new int[numPlayers];
+            // Stored variable to ensure positions don't exceed screen width
             int screenWidth = 160;
+            // interget to store the x value temporarily
             int loc = 0;
+
+            // Cycles through number of positions in the locations araray
             for (int i = 0; i < locations.Length; i++)
             {
+                // does a check to see if it is the first position
                 if (i == 0)
                 {
+                    // Calculates first position by deviding the screen width by the number of players, then dividing that value by the number of players.
+                    // eg (160 / 2) = 80 
+                    // 80 / 2 = 40
+                    // If the game is running with 2 players, this should return 40.
                     loc = (screenWidth / numPlayers) / numPlayers;
                 }
+                // Otherwises if it is not the first position of the array.
                 else
                 {
+
+                    // Get the first position, and add the screnWidth / number of players.
+                    // Eg. 40 + (160 / 2)
+                    // 40 + 80 = 120
+                    // If teh game is running with 2 players, this should return 120.
                     loc = locations[i - 1] + (screenWidth / numPlayers);
                 }
+                // Add the loc value to the locations array.
                 locations[i] = loc;
             }
+            // Return the array.
             return locations;
         }
 
         public static void Shuffle(int[] array)
         {
             Random rng = new Random();
+            // I don't know why this is here?
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = array[i] + 1;
             }
-
+            // Loop through and shuffle the positions randomly.
             for (int j = 0; j < array.Length; j++)
             {
                 int z = rng.Next(j);
@@ -407,8 +427,8 @@ namespace TankBattle
             }
             if (curr_round > noRounds.Length)
             {
-                //Rankings rankingsWindow = new Rankings(this);
-                //rankingsWindow.Show();
+                Rankings rankingsWindow = new Rankings(this);
+                rankingsWindow.Show();
             }
         }
         

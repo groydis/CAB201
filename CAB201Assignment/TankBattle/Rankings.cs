@@ -14,6 +14,8 @@ namespace TankBattle
     {
         public Rankings(Gameplay game)
         {
+            InitializeComponent();
+
             int[] playerScores = new int[game.NumPlayers()];
             int winner = 1;
             for (int i = 1; i <= game.NumPlayers(); i++)
@@ -25,16 +27,15 @@ namespace TankBattle
                     winner = i;
                 }
             }
-            Console.WriteLine(game.GetPlayer(winner).Identifier().ToString() + " won!");
 
-            winnerLabel.Text = game.GetPlayer(winner).ToString() + " won!";
+            winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
 
             string[] playerArray = new string[game.NumPlayers()];
 
             for (int i = 1; i <= game.NumPlayers(); i++)
             {
-                String newString = game.GetPlayer(i).Identifier() + "(" + game.GetPlayer(i).GetScore() + "wins)";
-                playerArray[i- 1] = newString;
+                String newString = game.GetPlayer(i).Identifier() + " (" + game.GetPlayer(i).GetScore() + " wins)";
+                playerArray[i - 1] = newString;
             }
 
             playerListBox.Items.Clear();
@@ -42,15 +43,13 @@ namespace TankBattle
             foreach (String name in playerArray)
             {
                 playerListBox.Items.Add(name);
-    
+
             }
-            InitializeComponent();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            MainMenuForm newMainMenu = new MainMenuForm();
-            newMainMenu.Show();
+            this.Close();
         }
     }
 }

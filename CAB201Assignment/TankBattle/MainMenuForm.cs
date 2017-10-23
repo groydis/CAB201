@@ -21,7 +21,7 @@ namespace TankBattle
         {
             Gameplay game = new Gameplay(2, 1);
             Opponent player1 = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(1));
-            Opponent player2 = new PlayerController("player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
+            Opponent player2 = new PlayerController("Player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
             game.CreatePlayer(1, player1);
             game.CreatePlayer(2, player2);
             game.BeginGame();
