@@ -369,11 +369,13 @@ namespace TankBattle
         public bool FinishTurn()
         {
             int playersLeft = 0;
+            Debug.WriteLine("Players Left: " + playersLeft);
             for (int i = 0; i< battleTanks.Length; i++)
             {
                 if (battleTanks[i].Exists())
                 {
                     playersLeft++;
+                    Debug.WriteLine("Players Left: " + playersLeft);
                 }
                 if (playersLeft >= 2)
                 {
@@ -395,11 +397,14 @@ namespace TankBattle
                     {
                         i = 0;
                     }
-                } else if(playersLeft == 1 || playersLeft == 0)
-                {
-                    FindWinner();
-                    return false;
                 }
+            }
+
+            if (playersLeft == 1 || playersLeft == 0)
+            {
+                Debug.WriteLine("Players Left: " + playersLeft);
+                FindWinner();
+                return false;
             }
             return false;
         }
@@ -410,6 +415,7 @@ namespace TankBattle
             {
                 if (battleTanks[i].Exists())
                 {
+                    Debug.WriteLine("EXISTS");
                     battleTanks[i].GetPlayer().AddScore();
                 }
             }
