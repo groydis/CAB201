@@ -95,10 +95,12 @@ namespace TankBattle
         public void SetPower(int power)
         {
             powerTrackBar.Value = power;
+            powerValueLabel.Text = power.ToString();
         }
         public void SetWeapon(int weapon)
         {
             weaponComboBox.SelectedValue = weapon;
+            weaponComboBox.SelectedValue = 0;
         }
 
         public void Fire()
@@ -107,6 +109,7 @@ namespace TankBattle
             bTank.Fire();
             controlPanel.Enabled = false;
             timer1.Enabled = true;
+
         }
 
         private void DrawBackground()

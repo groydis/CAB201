@@ -49,3 +49,4 @@ C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Deb
 C:\Users\Groydis-Mac\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.Rankings.resources
 C:\Users\seano\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.Rankings.resources
 C:\Users\seano\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.GameSetup.resources
+C:\Users\seano\Documents\GitHub\CAB201\CAB201Assignment\TankBattle\obj\Debug\TankBattle.SetupPlayer.resources

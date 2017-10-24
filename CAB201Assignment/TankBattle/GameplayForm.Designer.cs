@@ -87,8 +87,9 @@
             this.powerTrackBar.Maximum = 100;
             this.powerTrackBar.Minimum = 5;
             this.powerTrackBar.Name = "powerTrackBar";
-            this.powerTrackBar.Size = new System.Drawing.Size(120, 25);
+            this.powerTrackBar.Size = new System.Drawing.Size(120, 28);
             this.powerTrackBar.TabIndex = 20;
+            this.powerTrackBar.TickFrequency = 4;
             this.powerTrackBar.Value = 5;
             this.powerTrackBar.Scroll += new System.EventHandler(this.powerTrackBar_Scroll);
             // 
