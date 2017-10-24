@@ -35,13 +35,15 @@ namespace TankBattle
 
         public override void Tick()
         {
-            blastLifeSpan -= 0.05f;
+            blastLifeSpan -= 0.02f;
 
             if (blastLifeSpan <= 0)
             {
+                blastLifeSpan = 0;
                 effectGame.InflictDamage(x,y,explosionDamage,explosionRadius);
 
                 Map thisMap = effectGame.GetArena();
+
                 thisMap.DestroyTerrain(x,y,earthDestructionRadius);
 
                 effectGame.RemoveEffect(this);
@@ -53,8 +55,8 @@ namespace TankBattle
         {
             //Answer has been given to us and just needs variables changed to private fields and 
             //Use variables that have been created in other scripts
-            float disX = x * displaySize.Width / Map.WIDTH;
-            float disY = y * displaySize.Height / Map.HEIGHT;
+            float x = (float)this.x * displaySize.Width / Map.WIDTH;
+            float y = (float)this.y * displaySize.Height / Map.HEIGHT;
             float radius = displaySize.Width * (float)((1.0 - blastLifeSpan) * explosionRadius * 3.0 / 2.0) / Map.WIDTH;
 
             int alpha = 0, red = 0, green = 0, blue = 0;
@@ -62,26 +64,27 @@ namespace TankBattle
             if (blastLifeSpan < 1.0 / 3.0)
             {
                 red = 255;
-                alpha = (int)(blastLifeSpan * 3.0 / 255);
+                alpha = (int)(blastLifeSpan * 3.0 * 255);
             }
             else if (blastLifeSpan < 2.0 / 3.0)
             {
                 red = 255;
                 alpha = 255;
-                green = (int)((blastLifeSpan * 3.0 - 1.0) / 255);
+                green = (int)((blastLifeSpan * 3.0 - 1.0) * 255);
             }
             else
             {
                 red = 255;
                 alpha = 255;
                 green = 255;
-                blue = (int)((blastLifeSpan * 3.0 - 2.0) / 255);
+                blue = (int)((blastLifeSpan * 3.0 - 2.0) * 255);
+
             }
 
-            RectangleF rect = new RectangleF(disX - radius, disY - radius, radius * 2, radius * 2);
+            RectangleF rect = new RectangleF(x - radius, y - radius, radius * 2, radius * 2);
             Brush b = new SolidBrush(Color.FromArgb(alpha, red, green, blue));
 
-            graphics.FillEllipse(b, rect); 
+            graphics.FillEllipse(b, rect);
         }
     }
 }

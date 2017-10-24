@@ -18,30 +18,26 @@ namespace TankBattle
         private Gameplay currentGame;
 
         private Random rng = new Random();
- 
-
-        private float prev_angle;
-        private int prev_power;
-
-        private int prev_x_hit;
-        private int prev_y_hit;
-
+        int angle_min;
+        int angle_max;
         float angle;
         int power;
-  
+
+        List<BattleTank> opponentTank;
+
 
         public AIPlayer(string name, TankModel tank, Color colour) : base(name, tank, colour)
         {
             this.name = name;
             this.tank = tank;
             this.colour = colour;
-            prev_angle = 0;
-            prev_power = 0;
         }
 
         public override void CommenceRound()
         {
-
+            angle_min = 0;
+            angle_max = 0;
+            power = 20;
             
         }
 
@@ -50,21 +46,26 @@ namespace TankBattle
             this.gameplayForm = gameplayForm;
             this.currentGame = currentGame;
 
-
-            if (prev_angle == 0)
+            int playerPos = currentGame.GetCurrentPlayerTank().GetX();
+            if (playerPos > Map.WIDTH / 2)
             {
-                angle = rng.Next(-90, 90);
-                gameplayForm.SetAngle(angle);
-                prev_angle = angle;
-                gameplayForm.SetPower(20);
-                prev_power = 20;
-                gameplayForm.SetWeapon(0);
-                gameplayForm.Fire();
+                angle_min = 0;
+                angle_max = 18;
             } else
             {
-                
+                angle_min = -18;
+                angle_max = 0;
+
             }
-            throw new NotImplementedException();
+            angle = rng.Next(angle_min, angle_max) * 5;
+            gameplayForm.SetAngle(angle);
+
+            power = rng.Next(5, 100);
+            gameplayForm.SetPower(20);
+
+            gameplayForm.SetWeapon(0);
+            gameplayForm.Fire();
+
         }
 
         public override void HitPos(float x, float y)

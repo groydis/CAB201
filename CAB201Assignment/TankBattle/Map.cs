@@ -124,6 +124,7 @@ namespace TankBattle
                 for (int x = 0; x < WIDTH; x++)
                 {                    
                     dist = (float)Math.Sqrt(Math.Pow(x - destroyX, 2) + Math.Pow(y - destroyY, 2));
+
                     if (dist < radius)
                     {                        
                         thisMap[x, y] = false;

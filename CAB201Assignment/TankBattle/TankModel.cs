@@ -166,7 +166,7 @@ namespace TankBattle
                 gravity = 0.01f;
                 explosionDmg = 100;
                 explosionRad = 4;
-                explosionDes = 1;
+                explosionDes = 4;
             }
             else if (weapon == 1)
             {
