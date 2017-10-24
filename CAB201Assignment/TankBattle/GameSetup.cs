@@ -16,24 +16,26 @@ namespace TankBattle
         {
             InitializeComponent();
         }
-        
-        private void setupButton_Click(object sender, EventArgs e)
+
+        private void setupGame_Click(object sender, EventArgs e)
         {
             Opponent[] players = new Opponent[(int)playerNumUpDown.Value];
             Gameplay game = new Gameplay((int)playerNumUpDown.Value, (int)roundsNumUpDown.Value);
-            if (playerNumUpDown.Value > 2) {
+            if (playerNumUpDown.Value > 2)
+            {
                 players[0] = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(1));
                 players[1] = new PlayerController("Player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
                 for (int i = 3; i <= playerNumUpDown.Value; i++)
                 {
                     players[i - 1] = new PlayerController("Player " + i, TankModel.GetTank(1), Gameplay.GetColour(i));
                 }
-            }else
+            }
+            else
             {
                 players[0] = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(1));
                 players[1] = new PlayerController("Player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
             }
-            
+
             for (int i = 1; i <= playerNumUpDown.Value; i++)
             {
                 game.CreatePlayer(i, players[i - 1]);

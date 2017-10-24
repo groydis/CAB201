@@ -18,8 +18,7 @@ namespace TankBattle
         }
 
         private void newGameButton_Click(object sender, EventArgs e)
-        {
-            
+        {            
             GameSetup setupGame = new GameSetup();
             setupGame.Show();
         }

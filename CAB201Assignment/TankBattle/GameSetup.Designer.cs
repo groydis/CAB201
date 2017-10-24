@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.setupButton = new System.Windows.Forms.Button();
             this.playerNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.roundsNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.setupGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.playerNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roundsNumUpDown)).BeginInit();
             this.SuspendLayout();
@@ -41,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(280, 27);
             this.label1.TabIndex = 0;
@@ -51,27 +51,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 55);
+            this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(332, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "How many gameplay rounds?";
             // 
-            // setupButton
-            // 
-            this.setupButton.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setupButton.Location = new System.Drawing.Point(19, 94);
-            this.setupButton.Name = "setupButton";
-            this.setupButton.Size = new System.Drawing.Size(372, 45);
-            this.setupButton.TabIndex = 2;
-            this.setupButton.Text = "Setup Players";
-            this.setupButton.UseVisualStyleBackColor = true;
-            this.setupButton.Click += new System.EventHandler(this.setupButton_Click);
-            // 
             // playerNumUpDown
             // 
             this.playerNumUpDown.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerNumUpDown.Location = new System.Drawing.Point(352, 11);
+            this.playerNumUpDown.Location = new System.Drawing.Point(350, 7);
             this.playerNumUpDown.Maximum = new decimal(new int[] {
             8,
             0,
@@ -83,8 +72,8 @@
             0,
             0});
             this.playerNumUpDown.Name = "playerNumUpDown";
-            this.playerNumUpDown.Size = new System.Drawing.Size(39, 29);
-            this.playerNumUpDown.TabIndex = 3;
+            this.playerNumUpDown.Size = new System.Drawing.Size(38, 29);
+            this.playerNumUpDown.TabIndex = 2;
             this.playerNumUpDown.Value = new decimal(new int[] {
             2,
             0,
@@ -94,34 +83,45 @@
             // roundsNumUpDown
             // 
             this.roundsNumUpDown.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roundsNumUpDown.Location = new System.Drawing.Point(352, 53);
+            this.roundsNumUpDown.Location = new System.Drawing.Point(350, 48);
             this.roundsNumUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.roundsNumUpDown.Name = "roundsNumUpDown";
-            this.roundsNumUpDown.Size = new System.Drawing.Size(39, 29);
-            this.roundsNumUpDown.TabIndex = 4;
+            this.roundsNumUpDown.Size = new System.Drawing.Size(38, 29);
+            this.roundsNumUpDown.TabIndex = 3;
             this.roundsNumUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
+            // setupGame
+            // 
+            this.setupGame.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setupGame.Location = new System.Drawing.Point(17, 83);
+            this.setupGame.Name = "setupGame";
+            this.setupGame.Size = new System.Drawing.Size(371, 39);
+            this.setupGame.TabIndex = 4;
+            this.setupGame.Text = "Setup Players";
+            this.setupGame.UseVisualStyleBackColor = true;
+            this.setupGame.Click += new System.EventHandler(this.setupGame_Click);
+            // 
             // GameSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 151);
+            this.ClientSize = new System.Drawing.Size(395, 133);
+            this.Controls.Add(this.setupGame);
             this.Controls.Add(this.roundsNumUpDown);
             this.Controls.Add(this.playerNumUpDown);
-            this.Controls.Add(this.setupButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "GameSetup";
             this.ShowIcon = false;
-            this.Text = "Setup Game";
+            this.Text = "GameSetup";
             ((System.ComponentModel.ISupportInitialize)(this.playerNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roundsNumUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -133,8 +133,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button setupButton;
         private System.Windows.Forms.NumericUpDown playerNumUpDown;
         private System.Windows.Forms.NumericUpDown roundsNumUpDown;
+        private System.Windows.Forms.Button setupGame;
     }
 }
