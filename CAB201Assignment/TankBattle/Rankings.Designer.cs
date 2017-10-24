@@ -70,6 +70,7 @@
             this.Controls.Add(this.playerListBox);
             this.Controls.Add(this.winnerLabel);
             this.Name = "Rankings";
+            this.ShowIcon = false;
             this.Text = "Rankings";
             this.ResumeLayout(false);
             this.PerformLayout();

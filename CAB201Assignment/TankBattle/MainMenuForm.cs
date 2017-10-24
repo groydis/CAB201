@@ -19,12 +19,9 @@ namespace TankBattle
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
-            Gameplay game = new Gameplay(2, 6);
-            Opponent player1 = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(1));
-            Opponent player2 = new PlayerController("Player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
-            game.CreatePlayer(1, player1);
-            game.CreatePlayer(2, player2);
-            game.BeginGame();
+            
+            GameSetup setupGame = new GameSetup();
+            setupGame.Show();
         }
     }
 }
