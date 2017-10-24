@@ -17,14 +17,27 @@ namespace TankBattle
             InitializeComponent();
 
             int[] playerScores = new int[game.NumPlayers()];
-            int winner = 1;
+            int winner = 01;
             for (int i = 1; i <= game.NumPlayers(); i++)
             {
                 int score = game.GetPlayer(i).GetScore();
                 playerScores[i - 1] = score;
-                if (score > playerScores[i - 1])
+            }
+
+            for (int i = 0; i < playerScores.Length - 1; i++)
+            {
+                int j = i + 1;
+
+                while (j > 0)
                 {
-                    winner = i;
+                    if (playerScores[j - 1] > playerScores[j])
+                    {
+                        int temp = playerScores[j - 1];
+                        playerScores[j - 1] = playerScores[j];
+                        playerScores[j] = temp;
+
+                    }
+                    j--;
                 }
             }
 
