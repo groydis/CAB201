@@ -51,10 +51,9 @@
             // 
             // displayPanel
             // 
-            this.displayPanel.Location = new System.Drawing.Point(0, 62);
-            this.displayPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.displayPanel.Location = new System.Drawing.Point(0, 32);
             this.displayPanel.Name = "displayPanel";
-            this.displayPanel.Size = new System.Drawing.Size(1600, 1154);
+            this.displayPanel.Size = new System.Drawing.Size(800, 600);
             this.displayPanel.TabIndex = 0;
             this.displayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.displayPanel_Paint);
             // 
@@ -76,21 +75,20 @@
             this.controlPanel.Controls.Add(this.playerNameLabel);
             this.controlPanel.Enabled = false;
             this.controlPanel.Location = new System.Drawing.Point(0, 0);
-            this.controlPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1600, 62);
+            this.controlPanel.Size = new System.Drawing.Size(800, 32);
             this.controlPanel.TabIndex = 1;
             // 
             // powerTrackBar
             // 
+            this.powerTrackBar.AutoSize = false;
             this.powerTrackBar.LargeChange = 10;
-            this.powerTrackBar.Location = new System.Drawing.Point(1104, 12);
-            this.powerTrackBar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.powerTrackBar.Location = new System.Drawing.Point(552, 4);
             this.powerTrackBar.Maximum = 100;
             this.powerTrackBar.Minimum = 5;
             this.powerTrackBar.Name = "powerTrackBar";
-            this.powerTrackBar.Size = new System.Drawing.Size(240, 90);
-            this.powerTrackBar.TabIndex = 9;
+            this.powerTrackBar.Size = new System.Drawing.Size(120, 25);
+            this.powerTrackBar.TabIndex = 20;
             this.powerTrackBar.Value = 5;
             this.powerTrackBar.Scroll += new System.EventHandler(this.powerTrackBar_Scroll);
             // 
@@ -101,8 +99,7 @@
             0,
             0,
             0});
-            this.angleNumericUpDown.Location = new System.Drawing.Point(886, 10);
-            this.angleNumericUpDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.angleNumericUpDown.Location = new System.Drawing.Point(443, 5);
             this.angleNumericUpDown.Maximum = new decimal(new int[] {
             90,
             0,
@@ -114,26 +111,24 @@
             0,
             -2147483648});
             this.angleNumericUpDown.Name = "angleNumericUpDown";
-            this.angleNumericUpDown.Size = new System.Drawing.Size(80, 31);
+            this.angleNumericUpDown.Size = new System.Drawing.Size(40, 20);
             this.angleNumericUpDown.TabIndex = 8;
             this.angleNumericUpDown.ValueChanged += new System.EventHandler(this.angleNumericUpDown_ValueChanged);
             // 
             // weaponComboBox
             // 
             this.weaponComboBox.FormattingEnabled = true;
-            this.weaponComboBox.Location = new System.Drawing.Point(512, 8);
-            this.weaponComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.weaponComboBox.Location = new System.Drawing.Point(256, 4);
             this.weaponComboBox.Name = "weaponComboBox";
-            this.weaponComboBox.Size = new System.Drawing.Size(238, 33);
+            this.weaponComboBox.Size = new System.Drawing.Size(121, 21);
             this.weaponComboBox.TabIndex = 7;
             this.weaponComboBox.SelectedIndexChanged += new System.EventHandler(this.weaponComboBox_SelectedIndexChanged);
             // 
             // fireButton
             // 
-            this.fireButton.Location = new System.Drawing.Point(1444, 8);
-            this.fireButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fireButton.Location = new System.Drawing.Point(722, 4);
             this.fireButton.Name = "fireButton";
-            this.fireButton.Size = new System.Drawing.Size(150, 44);
+            this.fireButton.Size = new System.Drawing.Size(75, 23);
             this.fireButton.TabIndex = 6;
             this.fireButton.Text = "Fire";
             this.fireButton.UseVisualStyleBackColor = true;
@@ -143,10 +138,9 @@
             // 
             this.powerValueLabel.AutoSize = true;
             this.powerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.powerValueLabel.Location = new System.Drawing.Point(1356, 12);
-            this.powerValueLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.powerValueLabel.Location = new System.Drawing.Point(678, 6);
             this.powerValueLabel.Name = "powerValueLabel";
-            this.powerValueLabel.Size = new System.Drawing.Size(53, 37);
+            this.powerValueLabel.Size = new System.Drawing.Size(27, 20);
             this.powerValueLabel.TabIndex = 5;
             this.powerValueLabel.Text = "20";
             // 
@@ -154,10 +148,9 @@
             // 
             this.powerLabel.AutoSize = true;
             this.powerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.powerLabel.Location = new System.Drawing.Point(978, 12);
-            this.powerLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.powerLabel.Location = new System.Drawing.Point(489, 6);
             this.powerLabel.Name = "powerLabel";
-            this.powerLabel.Size = new System.Drawing.Size(116, 37);
+            this.powerLabel.Size = new System.Drawing.Size(57, 20);
             this.powerLabel.TabIndex = 4;
             this.powerLabel.Text = "Power:";
             // 
@@ -165,10 +158,9 @@
             // 
             this.angleLabel.AutoSize = true;
             this.angleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.angleLabel.Location = new System.Drawing.Point(766, 8);
-            this.angleLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.angleLabel.Location = new System.Drawing.Point(383, 4);
             this.angleLabel.Name = "angleLabel";
-            this.angleLabel.Size = new System.Drawing.Size(108, 37);
+            this.angleLabel.Size = new System.Drawing.Size(54, 20);
             this.angleLabel.TabIndex = 3;
             this.angleLabel.Text = "Angle:";
             // 
@@ -176,20 +168,17 @@
             // 
             this.weaponLabel.AutoSize = true;
             this.weaponLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weaponLabel.Location = new System.Drawing.Point(354, 8);
-            this.weaponLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.weaponLabel.Location = new System.Drawing.Point(177, 4);
             this.weaponLabel.Name = "weaponLabel";
-            this.weaponLabel.Size = new System.Drawing.Size(146, 37);
+            this.weaponLabel.Size = new System.Drawing.Size(73, 20);
             this.weaponLabel.TabIndex = 0;
             this.weaponLabel.Text = "Weapon:";
             // 
             // currWindLabel
             // 
-            this.currWindLabel.AutoSize = true;
-            this.currWindLabel.Location = new System.Drawing.Point(216, 31);
-            this.currWindLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.currWindLabel.Location = new System.Drawing.Point(102, 16);
             this.currWindLabel.Name = "currWindLabel";
-            this.currWindLabel.Size = new System.Drawing.Size(50, 25);
+            this.currWindLabel.Size = new System.Drawing.Size(33, 13);
             this.currWindLabel.TabIndex = 2;
             this.currWindLabel.Text = "0 W";
             this.currWindLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -198,10 +187,9 @@
             // 
             this.windLabel.AutoSize = true;
             this.windLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.windLabel.Location = new System.Drawing.Point(198, 8);
-            this.windLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.windLabel.Location = new System.Drawing.Point(99, 4);
             this.windLabel.Name = "windLabel";
-            this.windLabel.Size = new System.Drawing.Size(66, 26);
+            this.windLabel.Size = new System.Drawing.Size(36, 13);
             this.windLabel.TabIndex = 1;
             this.windLabel.Text = "Wind";
             this.windLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -210,10 +198,9 @@
             // 
             this.playerNameLabel.AutoSize = true;
             this.playerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerNameLabel.Location = new System.Drawing.Point(6, 8);
-            this.playerNameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.playerNameLabel.Location = new System.Drawing.Point(3, 4);
             this.playerNameLabel.Name = "playerNameLabel";
-            this.playerNameLabel.Size = new System.Drawing.Size(139, 37);
+            this.playerNameLabel.Size = new System.Drawing.Size(73, 20);
             this.playerNameLabel.TabIndex = 0;
             this.playerNameLabel.Text = "Player 1";
             // 
@@ -224,14 +211,13 @@
             // 
             // GameplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 1210);
+            this.ClientSize = new System.Drawing.Size(800, 629);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.displayPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "GameplayForm";
             this.Text = "Form1";
             this.controlPanel.ResumeLayout(false);

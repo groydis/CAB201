@@ -172,7 +172,7 @@ namespace TankBattle
             }
             SetWeapon(weaponComboBox.SelectedIndex);
             opponentTank.NewTurn(this, currentGame);
-            Debug.WriteLine("NewTurn() Finished");
+            controlPanel.BackColor = opponentTank.GetColour();
         }
 
         public BufferedGraphics InitialiseBuffer()

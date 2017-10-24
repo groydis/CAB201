@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace TankBattle
 {
@@ -52,8 +53,7 @@ namespace TankBattle
                     effectGame.RemoveEffect(this);
                     return;
                 }
-
-                if (effectGame.CheckHitTank(x, y) == true)
+                else if (effectGame.CheckHitTank(x, y))
                 {
                     player.HitPos(x, y);
                     explosion.Ignite(x, y);
@@ -61,7 +61,10 @@ namespace TankBattle
                     effectGame.RemoveEffect(this);
                 }
                 y += gravity;
+                Debug.WriteLine("X = " + x);
+                Debug.WriteLine("Y = " + y);
             }
+            Debug.WriteLine("Shell -> Tick() Finished");
         }
 
         public override void Display(Graphics graphics, Size size)

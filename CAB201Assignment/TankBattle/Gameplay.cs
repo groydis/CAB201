@@ -296,32 +296,28 @@ namespace TankBattle
 
         public bool CheckHitTank(float projectileX, float projectileY)
         {
-            //Check if the Projectile is within the screen
-            if (projectileX > 0 && projectileX < Map.WIDTH)
+            if (projectileX < 0 || projectileX > Map.WIDTH || projectileY < 0 || projectileY > Map.HEIGHT)
             {
-                if (projectileY > 0 && projectileY < Map.HEIGHT)
+                return false;
+            }
+            if (arena.Get((int)projectileX, (int)projectileY)) {
+                return true;
+            }
+            for (int i = 0; i < battleTanks.Length; i++)
+            {
+                if (i == curr_player)
                 {
-                    //Check if their is a tank at the given X and Y
-                    if (arena.Get((int)projectileX, (int)projectileY))
+                    return false;
+                }
+                int x_pos = battleTanks[i].GetX();
+                int y_pos = battleTanks[i].Y();
+                int right = x_pos + TankModel.WIDTH;
+                int bottom = y_pos + TankModel.HEIGHT;
+                if (projectileX >= x_pos && projectileX <= right)
+                {
+                    if (projectileY >= y_pos && projectileY <= bottom)
                     {
-                        //Loop through the battleTanks array
-                        for (int i = 0; i < battleTanks.Length; i++)
-                        {
-                            //Get the tanks X, Y, WIDTH, HEIGHT
-                            int x_pos = battleTanks[i].GetX();
-                            int y_pos = battleTanks[i].Y();
-                            int right = x_pos + TankModel.WIDTH;
-                            int bottom = y_pos + TankModel.HEIGHT;
-
-                            //Return True if the projectile hits within the Tanks bounds
-                            if (projectileX >= x_pos && projectileX <= right)
-                            {
-                                if (projectileY >= y_pos && projectileY <= bottom)
-                                {
-                                    return true;
-                                }
-                            }
-                        }
+                        return true;
                     }
                 }
             }
@@ -391,8 +387,7 @@ namespace TankBattle
                 }
                 if (playersLeft >= 2)
                 {
-                    curr_player++;
-                    Debug.WriteLine(curr_player);
+                    curr_player++;             
                     if (curr_player >= NumPlayers())
                     {
                         curr_player = 0;
