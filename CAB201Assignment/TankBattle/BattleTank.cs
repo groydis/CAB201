@@ -142,29 +142,50 @@ namespace TankBattle
 
         public bool GravityStep()
         {
-
-            if(Exists())
+            if (Exists() == false)
             {
-                Map map = this.game.GetArena();
-                int X_pos = GetX();
-                int Y_pos = Y();
-                
-                if (map.CheckTankCollide(X_pos,Y_pos + 1))
+                return false;
+            }
+            Map map = this.game.GetArena();
+            int x = GetX();
+            int y = Y();
+            if (map.CheckTankCollide(x, y + 1))
+            {
+                return false;
+            } else
+            {
+                tankY++;
+                currDurability--;
+                if (tankY == Map.HEIGHT - TankModel.HEIGHT)
                 {
-                    return false;
-                }
-                else
-                {
-                    tankY++;
-                    currDurability--;
-                    if (tankY == Map.HEIGHT - TankModel.HEIGHT)
-                    {
-                        currDurability = 0;
-                        return true;
-                    }
+                    currDurability = 0;
+                    return true;
                 }
             }
             return false;
         }
+        //    if(Exists())
+        //    {
+        //        Map map = this.game.GetArena();
+        //        int X_pos = GetX();
+        //        int Y_pos = Y();
+                
+        //        if (map.CheckTankCollide(X_pos,Y_pos + 1))
+        //        {
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            tankY++;
+        //            currDurability--;
+        //            if (tankY == Map.HEIGHT - TankModel.HEIGHT)
+        //            {
+        //                currDurability = 0;
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }

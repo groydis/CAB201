@@ -105,7 +105,7 @@ namespace TankBattle
         }
         public override string[] WeaponList()
         {
-            return new string[] { "Standard Shell", "Falling Mines", "jumping Tinnies" };
+            return new string[] { "Standard Shell", "Nuke" };
         }
 
         public override int[,] DisplayTankSprite(float angle)
@@ -163,7 +163,7 @@ namespace TankBattle
 
             if (weapon == 0)
             {
-                gravity = 0.45f;
+                gravity = 0.01f;
                 explosionDmg = 100;
                 explosionRad = 4;
                 explosionDes = 1;
@@ -172,16 +172,10 @@ namespace TankBattle
             {
                 gravity = 0.05f;
                 explosionDmg = 200;
-                explosionRad = 10;
+                explosionRad = 20;
                 explosionDes = 10;
             }
-            else if (weapon == 2)
-            {
-                gravity = 0.1f;
-                explosionDmg = 100;
-                explosionRad = 20;
-                explosionDes = 20;
-            }
+            
             Blast blast = new Blast(explosionDmg, explosionRad, explosionDes);
             Shell shell = new Shell(x_pos, y_pos, playerTank.GetTankAngle(), playerTank.GetCurrentPower(), gravity, blast, player);
             currentGame.AddWeaponEffect(shell);       
