@@ -31,7 +31,6 @@ namespace TankBattle
             this.y = y;
 
             blastLifeSpan = 1.0f;
-            Debug.WriteLine("Blast -> Ignite Finished");
         }
 
         public override void Tick()
@@ -44,7 +43,6 @@ namespace TankBattle
 
                 Map thisMap = effectGame.GetArena();
                 thisMap.DestroyTerrain(x,y,earthDestructionRadius);
-                Debug.WriteLine("Destroyed Terrain As Part of Blast");
 
                 effectGame.RemoveEffect(this);
 

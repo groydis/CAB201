@@ -60,11 +60,8 @@ namespace TankBattle
                     effectGame.AddWeaponEffect(explosion);
                     effectGame.RemoveEffect(this);
                 }
-                y += gravity;
-                Debug.WriteLine("X = " + x);
-                Debug.WriteLine("Y = " + y);
+                y_velocity += gravity;
             }
-            Debug.WriteLine("Shell -> Tick() Finished");
         }
 
         public override void Display(Graphics graphics, Size size)
