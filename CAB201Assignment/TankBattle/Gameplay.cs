@@ -102,7 +102,7 @@ namespace TankBattle
             //There are only 8 colours as their is only a max of 8 players
             //each player has only one colour
             Color[] colours = {Color.Aqua, Color.AntiqueWhite,
-                  Color.Black, Color.DarkGreen,
+                  Color.Magenta, Color.DarkGreen,
                   Color.Gold, Color.IndianRed,
                   Color.LightGray, Color.Maroon};
 
