@@ -7,24 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TankBattle
 {
     public partial class Rankings : Form
     {
+        private Opponent[] players;
+
         public Rankings(Gameplay game)
         {
             InitializeComponent();
 
             int[] playerScores = new int[game.NumPlayers()];
-            int winner = 01;
+            
+            int winner = 1;
             for (int i = 1; i <= game.NumPlayers(); i++)
             {
                 int score = game.GetPlayer(i).GetScore();
                 playerScores[i - 1] = score;
+                if (score > playerScores[i - 1])
+                {                  
+                    winner = i;
+                }
+
             }
 
-            for (int i = 0; i < playerScores.Length; i++)
+                for (int i = 0; i < playerScores.Length - 1; i++)
             {
                 int j = i + 1;
 
@@ -32,7 +41,7 @@ namespace TankBattle
                 {
                     if (playerScores[j - 1] > playerScores[j])
                     {
-                        int temp = playerScores[j - 1];
+                        int temp = playerScores[j - 1];                        
                         playerScores[j - 1] = playerScores[j];
                         playerScores[j] = temp;
 
