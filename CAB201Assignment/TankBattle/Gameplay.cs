@@ -19,10 +19,10 @@ namespace TankBattle
         private Opponent[] noPlayers;
         private Opponent[] noRounds;
 
-        //Map value that is created in Map.cs
+        //Map 
         private Map arena;
 
-        //Array of BattleTanks for the TankModel
+        //Array of BattleTanks
         private BattleTank[] battleTanks;
 
         //Game Values that work to show current round and current player
@@ -128,9 +128,6 @@ namespace TankBattle
                 if (i == 0)
                 {
                     // Calculates first position by deviding the screen width by the number of players, then dividing that value by the number of players.
-                    // eg (160 / 2) = 80 
-                    // 80 / 2 = 40
-                    // If the game is running with 2 players, this should return 40.
                     loc = (screenWidth / numPlayers) / numPlayers;
                 }
                 // Otherwises if it is not the first position of the array.
@@ -138,9 +135,6 @@ namespace TankBattle
                 {
 
                     // Get the first position, and add the screnWidth / number of players.
-                    // Eg. 40 + (160 / 2)
-                    // 40 + 80 = 120
-                    // If teh game is running with 2 players, this should return 120.
                     loc = locations[i - 1] + (screenWidth / numPlayers);
                 }
                 // Add the loc value to the locations array.
@@ -170,8 +164,7 @@ namespace TankBattle
 
         public void BeginGame()
         {
-            //Setup the game and initiliaze game values of current round to 1 
-            //and starting player to 0
+            //Setup the game and initiliaze game values 
             curr_round = 1;
             start_player = 0;
 
@@ -296,13 +289,16 @@ namespace TankBattle
 
         public bool CheckHitTank(float projectileX, float projectileY)
         {
+            //Is the projectile within the bounds
             if (projectileX < 0 || projectileX > Map.WIDTH || projectileY < 0 || projectileY > Map.HEIGHT)
             {
                 return false;
             }
+            //Is the projectile hitting anything
             if (arena.Get((int)projectileX, (int)projectileY)) {
                 return true;
             }
+            //Loop through battleTanks array
             for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (i == curr_player)

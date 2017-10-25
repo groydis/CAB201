@@ -24,7 +24,7 @@ namespace TankBattle
                 playerScores[i - 1] = score;
             }
 
-            for (int i = 0; i < playerScores.Length - 1; i++)
+            for (int i = 0; i < playerScores.Length; i++)
             {
                 int j = i + 1;
 
