@@ -22,6 +22,11 @@ namespace TankBattle
 
         public abstract int[,] DisplayTankSprite(float angle);
 
+        /// <summary>
+        /// This method draws a line on the row-major two-dimensional array 'graphic' connecting X1,Y2 to X2,Y2. 
+        /// The line will be drawn by setting 1s in the array in the places where the line graphic is supposed to go.
+        /// </summary>
+        /// <returns> Returns the starting durability of this type of tank </returns>
         public static void LineDraw(int[,] graphic, int X1, int Y1, int X2, int Y2)
         {
             int dx = X2 - X1;
@@ -69,7 +74,6 @@ namespace TankBattle
                 }
             }
 
-            // Outline each pixel
             for (int y = 1; y < height - 1; y++)
             {
                 for (int x = 1; x < width - 1; x++)
@@ -105,10 +109,23 @@ namespace TankBattle
 
     public class NormTank : TankModel
     {
+        /// <summary>
+        /// This method gets the starting durability of this type of tank
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <returns> Returns the starting durability of this type of tank </returns>
         public override int GetTankArmour()
         {
             return 100;
         }
+
+        /// <summary>
+        /// This method returns an array containing a list of weapons that this tank has
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <returns> Returns an array containing a list of weapons that this tank hasreturns>
         public override string[] WeaponList()
         {
             return new string[] { "Standard Shell", "Nuke" };
@@ -133,7 +150,7 @@ namespace TankBattle
                             { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
           
-            // Checks to ensure line does not draw past given positions;
+            // TODO: FIX Checks to ensure line does not draw past given positions;
             if (angle >= 65)
             {
                 turret_angle = 65;
@@ -155,6 +172,15 @@ namespace TankBattle
             return norm;
         }
 
+        /// <summary>
+        /// This method is used to handle firing the specified weapon from the tank playerTank.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="weapon">The index of the weapon selected</param> 
+        /// <param name="playerTank">the player tank</param> 
+        /// <param name="currentGame">the current GamePlay</param> 
+        /// <returns> Returns the starting durability of this type of tank </returns>
         public override void ActivateWeapon(int weapon, BattleTank playerTank, Gameplay currentGame)
         {
             float gravity = 0;
