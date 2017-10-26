@@ -43,7 +43,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public Gameplay(int numPlayers, int numRounds)
         {
 
@@ -80,7 +81,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public int GetRoundNumber()
         {
             return curr_round;
@@ -93,7 +95,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public int GetMaxRounds()
         {
             return noRounds.Length;
@@ -106,7 +109,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void CreatePlayer(int playerNum, Opponent player)
         {
             noPlayers[playerNum - 1] = player;
@@ -120,7 +124,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public Opponent GetPlayer(int playerNum)
         {
             return noPlayers[playerNum - 1];
@@ -134,7 +139,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public BattleTank GetGameplayTank(int playerNum)
         {
             return battleTanks[playerNum - 1];
@@ -147,7 +153,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public static Color GetColour(int playerNum)
         {
             //Creates an array of Colors named colours
@@ -171,7 +178,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public static int[] GetPlayerLocations(int numPlayers) 
         {
 
@@ -210,7 +218,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public static void Shuffle(int[] array)
         {
             Random rng = new Random();
@@ -238,7 +247,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns> 
         public void BeginGame()
         {
             //Setup the game and initiliaze game values 
@@ -262,7 +272,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void CommenceRound()
         {
             curr_player = start_player;
@@ -306,7 +317,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public Map GetArena()
         {
             return arena;
@@ -319,7 +331,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public BattleTank GetCurrentPlayerTank()
         {
             
@@ -333,7 +346,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns> 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
             for (int i = 0; i < battleTanks.Length; i++)
@@ -354,7 +368,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void AddWeaponEffect(Effect weaponEffect)
         {
 
@@ -371,7 +386,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public bool ProcessWeaponEffects()
         {
             //Setup a bool to be returned with either true or false
@@ -394,7 +410,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
 
@@ -404,6 +421,15 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        ///
+        /// removes and effect from the effects list
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// <param name="weaponEffect">Effect to be removede</param> 
+        /// <returns>explanation of return value</returns>
         public void RemoveEffect(Effect weaponEffect)
         {
             //Remove this weaponEffect from the List
@@ -421,7 +447,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public bool CheckHitTank(float projectileX, float projectileY)
         {
  
@@ -464,7 +491,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void InflictDamage(float damageX, float damageY, float explosionDamage, float radius)
         {
             float overall_dmg = 0;
@@ -498,7 +526,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
-        /// 
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public bool GravityStep()
         {
             bool moved = false;
@@ -526,6 +555,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public bool FinishTurn()
         {
             int playersLeft = 0;
@@ -578,6 +609,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void FindWinner()
         {
             
@@ -599,6 +632,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public void NextRound()
         {
             curr_round++;
@@ -624,6 +659,8 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         ///
         /// </summary>
+        /// <param name="paramName">explanation of paramName</param> 
+        /// <returns>explanation of return value</returns>
         public int GetWindSpeed()
         {
             
