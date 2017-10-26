@@ -7,6 +7,12 @@ using System.Diagnostics;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// This class represents the landscape, the arena on which the tanks battle. The terrain is randomly 
+    /// generated and can be destroyed during the round. A new Map with a newly-generated terrain is created for each round.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public class Map
     {
         public const int WIDTH = 160;

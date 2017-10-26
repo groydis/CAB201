@@ -8,6 +8,12 @@ using System.Diagnostics;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// The Shell class is a type of Effect that represents the a projectile or shell launched by a BattleTank. 
+    /// A Shell is launched at a certain angle and velocity and is affected by gravity and wind.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public class Shell : Effect
     {
         private float x;

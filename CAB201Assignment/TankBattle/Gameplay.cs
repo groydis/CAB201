@@ -37,11 +37,9 @@ namespace TankBattle
         private Random rng = new Random();
 
         /// <summary>
-        ///
         /// Initiates numPlayers and numRounds private variables and initialises list of effects
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
-        ///
         /// </summary>
         /// <param name="numPlayers">Number of Players</param> 
         /// <param name="numRounds">Number of Rounds</param> 

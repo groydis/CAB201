@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// This is a concrete class that extends the Opponent class, providing functionality specific to computer-controlled Opponents.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public class AIPlayer : Opponent
     {
         private string name;

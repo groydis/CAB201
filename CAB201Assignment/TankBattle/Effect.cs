@@ -7,6 +7,11 @@ using System.Drawing;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// This abstract class represents a generic effect created by a BattleTank's attack. Both Blast and Shell come under this umbrella.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public abstract class Effect
     {
         protected Gameplay effectGame;

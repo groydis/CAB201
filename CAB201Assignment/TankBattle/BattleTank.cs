@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// This class represents a tank on the battlefield, as distinct from Tank which represents a particular model of tank
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public class BattleTank
     {
         private float angle;
@@ -29,6 +34,7 @@ namespace TankBattle
         /// Setting the colour with GetColour()
         /// Durability with GetTankArmour();
         /// TankModel with GetTank();
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="player">The player associated with the Battle Tanks</param> 
@@ -58,6 +64,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the player assocaited with the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns>Returns the Opponent type of the BattleTank</returns>
@@ -68,6 +75,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the TankModel assocaited with the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns>Returns the TankModel of the BattleTank</returns>
@@ -78,6 +86,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the current angle of the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns>Returns the Angle as a Float of the BattleTank</returns>
@@ -88,6 +97,7 @@ namespace TankBattle
 
         /// <summary>
         /// Modifies the sprite bitmap with teh angle
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="angle">The angle to passed</param> 
@@ -99,6 +109,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the power of the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns>Returns an Int equal to the power of the BattleTank</returns>
@@ -109,6 +120,7 @@ namespace TankBattle
 
         /// <summary>
         /// Sets the power of the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="power">The power to be set</param> 
@@ -120,6 +132,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the current index of the current weapon being used by the BattleTank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns>Returns an Int equal to that of the current weapon</returns>
@@ -130,6 +143,7 @@ namespace TankBattle
 
         /// <summary>
         /// Sets the weapon to the passed Int
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="newWeapon">Int representing the new weapon</param> 
@@ -141,6 +155,7 @@ namespace TankBattle
         /// <summary>
         /// This method draws the BattleTank to graphics, scaled to the provided displaySize. 
         /// The BattleTank's durability will also be shown as a percentage.
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="graphics">Graphics</param> 
@@ -172,6 +187,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the X Position of the Battle Tank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns> Returns an Int equal to the X position of the BattleTank</returns>
@@ -182,6 +198,7 @@ namespace TankBattle
 
         /// <summary>
         /// Returns the Y Position of the Battle Tank
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns> Returns an Int equal to the Y position of the BattleTank</returns>
@@ -192,6 +209,7 @@ namespace TankBattle
 
         /// <summary>
         /// Gets the current Tank and Activates the weapon
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         public void Fire()
@@ -203,6 +221,7 @@ namespace TankBattle
 
         /// <summary>
         /// Reduces the current durability of teh BattleTank by the damage passed
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <param name="damageAmount">Amount of damage to inflict on the Player</param> 
@@ -213,6 +232,7 @@ namespace TankBattle
 
         /// <summary>
         /// Bool, checks the BattleTanks current durability and returns true if greater than ZERO
+        /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
         /// <returns> Returns true if current duability greater than ZERO, returns false if less than or equal to ZERO</returns> 
@@ -230,6 +250,8 @@ namespace TankBattle
         /// Moves thank BattleTank down on the Y axis if there is no ground underneath it
         /// If the tank doesn't exist will return false
         /// If the tank falls off the screen, will destroy the tank and return true
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
         /// </summary>
         public bool GravityStep()
         {

@@ -8,6 +8,12 @@ using System.Diagnostics;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// TankModel is an abstract class representing a generic tank model.You will need to create at least one concrete class inheriting from it for this game to work.
+    /// Different tanks can have different graphics, weapons, armour etc.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public abstract class TankModel
     {
         public const int WIDTH = 4;

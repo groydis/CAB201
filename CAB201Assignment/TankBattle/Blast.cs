@@ -8,6 +8,11 @@ using System.Diagnostics;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// The Blast class is a type of Attack that represents the payload attached to a Shell. An Boom will inflict damage on tanks and destroy terrain within a radius.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public class Blast : Effect
     {
         private int explosionDamage;

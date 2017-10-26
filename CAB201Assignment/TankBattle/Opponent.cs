@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace TankBattle
 {
+    /// <summary>
+    /// This abstract class represents either a computer or human player. A player has an associated name, 
+    /// Tank and colour, and also keeps track of the number of rounds won by that player. 
+    /// The AIOpponent and PlayerController inherit from Opponent.
+    /// Author Greyden Scott & Sean O'Connell October 2017
+    /// Written, edited and tested by both team members
+    /// </summary>
     public abstract class Opponent
     {
         private string name;
