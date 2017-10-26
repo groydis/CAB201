@@ -36,6 +36,14 @@ namespace TankBattle
         //Random calculator
         private Random rng = new Random();
 
+        /// <summary>
+        ///
+        /// Initiates numPlayers and numRounds private variables and initialises list of effects
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public Gameplay(int numPlayers, int numRounds)
         {
             //Check that the numPlayers is within 2 and 8
@@ -58,44 +66,94 @@ namespace TankBattle
             effects = new List<Effect>();
         }
 
+        /// <summary>
+        ///
+        /// Return the length of the array
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public int NumPlayers()
         {
-            //Return the length of the array 
             return noPlayers.Length;
         }
 
+        /// <summary>
+        ///
+        /// Return the value of current round set in BeginGame
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public int GetRoundNumber()
         {
-            //Return the value of current round set in BeginGame
             return curr_round;
         }
 
+        /// <summary>
+        ///
+        /// Returns the number of rounds that are set in the Gameplay function
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public int GetMaxRounds()
         {
-            //Returns the number of rounds that are set in the Gameplay function
             return noRounds.Length;
         }
 
+        /// <summary>
+        ///
+        /// Creates the opponent in the array noPlayers witht the input value of player
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void CreatePlayer(int playerNum, Opponent player)
         {
-            //Creates the opponent in the array noPlayers witht the input value of player
             noPlayers[playerNum - 1] = player;
         }
 
+        /// <summary>
+        ///
+        /// Returns the specific Opponent type from noPlayers at the position of playerNum
+        /// The array noPlayers is zero indexed and the input value is from 1 to noPlayers.Length
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public Opponent GetPlayer(int playerNum)
         {
-            //Returns the specific Opponent type from noPlayers at the position of playerNum
-            //The array noPlayers is zero indexed and the input value is from 1 to noPlayers.Length
             return noPlayers[playerNum - 1];
         }
 
+        /// <summary>
+        ///
+        /// Returns the specific BattleTank type from battleTanks at the position of playerNum
+        /// The array battleTanks is zero indexed and the input value is from 1 to battleTanks.Length
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public BattleTank GetGameplayTank(int playerNum)
         {
-            //Returns the specific BattleTank type from battleTanks at the position of playerNum
-            //The array battleTanks is zero indexed and the input value is from 1 to battleTanks.Length
             return battleTanks[playerNum - 1];
         }
 
+        /// <summary>
+        ///
+        /// Returns the colour of player which is stored in a static array
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public static Color GetColour(int playerNum)
         {
             //Creates an array of Colors named colours
@@ -111,48 +169,63 @@ namespace TankBattle
             return colours[playerNum - 1];
         }
 
-        public static int[] GetPlayerLocations(int numPlayers)
+        /// <summary>
+        ///
+        /// Returns a list of locations for the player tanks to spawn on the x axis
+        /// Does this by calculating the screen width and dividing it by the number of players and then the number of players again
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
+        public static int[] GetPlayerLocations(int numPlayers) 
         {
 
-            // Create an array of to store the X position of player locations
+
             int[] locations = new int[numPlayers];
-            // Stored variable to ensure positions don't exceed screen width
+
             int screenWidth = 160;
-            // interget to store the x value temporarily
+
             int loc = 0;
 
-            // Cycles through number of positions in the locations araray
             for (int i = 0; i < locations.Length; i++)
             {
-                // does a check to see if it is the first position
+
                 if (i == 0)
                 {
-                    // Calculates first position by deviding the screen width by the number of players, then dividing that value by the number of players.
+
                     loc = (screenWidth / numPlayers) / numPlayers;
                 }
-                // Otherwises if it is not the first position of the array.
+
                 else
                 {
 
-                    // Get the first position, and add the screnWidth / number of players.
                     loc = locations[i - 1] + (screenWidth / numPlayers);
                 }
-                // Add the loc value to the locations array.
+
                 locations[i] = loc;
             }
-            // Return the array.
+
             return locations;
         }
 
+        /// <summary>
+        ///
+        /// Shuffles the list of positions randomly
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public static void Shuffle(int[] array)
         {
             Random rng = new Random();
-            // I don't know why this is here?
+
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = array[i] + 1;
             }
-            // Loop through and shuffle the positions randomly.
+
             for (int j = 0; j < array.Length; j++)
             {
                 int z = rng.Next(j);
@@ -162,6 +235,16 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        ///
+        /// Sets the current round to 1
+        /// the starting player to 0 
+        /// and calls commenceRound()
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void BeginGame()
         {
             //Setup the game and initiliaze game values 
@@ -172,90 +255,129 @@ namespace TankBattle
             CommenceRound();
         }
 
+        /// <summary>
+        ///
+        /// Sets the current player to the starting player
+        /// Creates a new map
+        /// populates a list of player positions and calls commence round on each player
+        /// Shuffles the positions
+        /// Createsa a list of battle tanks and stores the battle tanks in the list
+        /// Sets the windspeed for the game
+        /// Calsl teh gameplayForm and shows it
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void CommenceRound()
         {
-            //Sets the current player to the starting player
             curr_player = start_player;
 
-            //Create a new map in the arena value
             arena = new Map();
             
-            //Create an array to hold the player locations retrieved through GetPlayerLocations()
             int [] positions = GetPlayerLocations(noPlayers.Length);
 
-            //Loop through the array of players
             for (int i = 0; i < noPlayers.Length; i++)
             {
-                //Call CommenceRound on each player
                 noPlayers[i].CommenceRound();
             }
             
-            //Shuffle the positions of each player
-            //So that player 1 can be at pos 1 or pos 2 depending on the game
             Shuffle(positions);
-            
-            //Initiliaze the array of battleTanks to the length of noPlayers. 
-            //As they ahve to be the same length cause there can't seperate null values
+
             battleTanks = new BattleTank[noPlayers.Length];
             
-
-            //Loop through the array again with length of noPlayers.Length
             for (int i = 0; i < noPlayers.Length ; i++)
             {
-                //Get the X position of the i player
+
                 int X_pos = positions[i];
-                //Get the Y position of the i player using the X position
+
                 int Y_pos = arena.TankYPosition(X_pos);
 
-                //Create the battleTanks at i position using Opponent iin No players,
-                //the X and Y Positions and the Gameplay of this Game
+
                 battleTanks[i] = new BattleTank(noPlayers[i], X_pos, Y_pos, this);
  
             }
             
-            //Get a random wind speed between -100 and 100
             wind = GetWindSpeed();
 
-            //Create and Show a new GamePlayForm
             GameplayForm gameplayForm = new GameplayForm(this);
             gameplayForm.Show(); 
 
         }
 
+        /// <summary>
+        ///
+        /// Returns the map of this gameplay
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public Map GetArena()
         {
-            //Return the map value of this GamePlay
             return arena;
         }
 
+        /// <summary>
+        ///
+        /// Returns the battletank of the current player
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public BattleTank GetCurrentPlayerTank()
         {
-            //Return the BattleTank of the current player
+            
             return battleTanks[curr_player];
         }
 
+        /// <summary>
+        ///
+        /// Loops through the existing players and displays them
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void DrawPlayers(Graphics graphics, Size displaySize)
         {
-            //Loop through the battleTanks array
             for (int i = 0; i < battleTanks.Length; i++)
             {
-                //Check to see if this battleTank Exists
+
                 if (battleTanks[i].Exists())
                 {
-                    //Display the battleTanks BMP so that the tank can be drawn
+
                     battleTanks[i].Display(graphics, displaySize);
                 }
             }
         }
 
+        /// <summary>
+        ///
+        /// Adds an effect to the effects list
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void AddWeaponEffect(Effect weaponEffect)
         {
-            //Add the WeaponEffect
+
             effects.Add(weaponEffect);
-            //Connect the WeaponEffect to the game so that it can be accessed
+
             weaponEffect.ConnectGame(this);
         }
 
+        /// <summary>
+        ///
+        /// Loops through the list of effects and runs the tick function for the effect
+        /// Returning true once complete
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public bool ProcessWeaponEffects()
         {
             //Setup a bool to be returned with either true or false
@@ -271,12 +393,19 @@ namespace TankBattle
             return ans;
         }
 
+        /// <summary>
+        ///
+        /// Loops through the list of effects and displays them
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void DrawAttacks(Graphics graphics, Size displaySize)
         {
-            //Loops through the effects list
+
             for (int i = 0; i < effects.Count(); i++)
             {
-                //Draw each effect using the display functions
                 effects[i].Display(graphics, displaySize);
             }
         }
@@ -287,18 +416,30 @@ namespace TankBattle
             effects.Remove(weaponEffect);
         }
 
+        /// <summary>
+        ///
+        /// Checks if the projectile has hit anything
+        /// First it checks if the projectile is within the game bounds
+        /// Then chicks if it has hit terrain
+        /// Finally checks if it has hit a tank
+        /// If nothing was hit it returns false
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public bool CheckHitTank(float projectileX, float projectileY)
         {
-            //Is the projectile within the bounds
+ 
             if (projectileX < 0 || projectileX > Map.WIDTH || projectileY < 0 || projectileY > Map.HEIGHT)
             {
                 return false;
             }
-            //Is the projectile hitting anything
+
             if (arena.Get((int)projectileX, (int)projectileY)) {
                 return true;
             }
-            //Loop through battleTanks array
+ 
             for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (i == curr_player)
@@ -319,12 +460,19 @@ namespace TankBattle
             }
             return false;
         }
-        
+
+        /// <summary>
+        ///
+        /// Calculates the tanks posted based on where the shell hit
+        /// If within range does damage
+        /// else the damage will be equal to 0
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public void InflictDamage(float damageX, float damageY, float explosionDamage, float radius)
         {
-            // Calculates tank position based on where the shell hit.
-            // If within range, does damage
-            // Else the damage will be equal to 0
             float overall_dmg = 0;
             for (int i = 0; i < battleTanks.Length; i++)
             {
@@ -349,21 +497,25 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        ///
+        /// Boolean check to see if the tanks need to move due to gravity
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
+        /// 
         public bool GravityStep()
         {
-            //Have a bool value to determine returned True or False
             bool moved = false;
 
-            //Return True if Map's GravityStep occurs
             if (arena.GravityStep())
             {
                 moved = true;
             }
 
-            //Loop through each BattleTank
             for(int i = 0; i < battleTanks.Length; i++)
             {
-                //Return True if BattleTank's GravityStep occurs
                 if(battleTanks[i].GravityStep())
                 {
                     moved = true;
@@ -372,6 +524,14 @@ namespace TankBattle
             return moved;
         }
 
+        /// <summary>
+        ///
+        /// Boolean check to see if the current players turn is over, if so changes the current player
+        /// to the next player, picks a new value for wind -10 or +10 the existing speed
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         public bool FinishTurn()
         {
             int playersLeft = 0;
@@ -416,6 +576,14 @@ namespace TankBattle
             return false;
         }
 
+        /// <summary>
+        ///
+        /// Finds the winner of a round by checking what tanks remain
+        /// Increase the winning tanks score
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         public void FindWinner()
         {
             //Loop through the battleTanks Array
@@ -430,6 +598,13 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        ///
+        /// Initiates the next round, or if maximum rounds ends the game and shows the rankings window
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         public void NextRound()
         {
             curr_round++;
@@ -448,7 +623,13 @@ namespace TankBattle
                 rankingsWindow.Show();
             }
         }
-        
+        /// <summary>
+        ///
+        /// Randomly generats a value for the wind betwene -100 and 100 then returns it
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         public int GetWindSpeed()
         {
             //Randomly generate a value between -100 and 100 then return it
