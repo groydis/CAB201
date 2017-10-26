@@ -23,6 +23,15 @@ namespace TankBattle
         private float y;
         private float blastLifeSpan;
 
+        /// <summary>
+        /// Blast takes the explosion damage, explosion radius and earth 
+        /// destruction radius values it is passed and stores them as private fields.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="explosionDamage">The amount of damage the explosion does</param> 
+        /// <param name="explosionReadius">The radius of the explosionk</param> 
+        /// <param name="earthDestruction">The earth destruciton of the explosion</param> 
         public Blast(int explosionDamage, int explosionRadius, int earthDestructionRadius)
         {
             this.explosionDamage = explosionDamage;
@@ -30,6 +39,14 @@ namespace TankBattle
             this.earthDestructionRadius = earthDestructionRadius;
         }
 
+
+        /// <summary>
+        /// This method detonates the Boom at the specified location.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X location to ignite</param> 
+        /// <param name="y">The y location to ignite</param> 
         public void Ignite(float x, float y)
         {
             this.x = x;
@@ -38,6 +55,14 @@ namespace TankBattle
             blastLifeSpan = 1.0f;
         }
 
+        /// <summary>
+        /// This method reduces the Blast's lifespan by 0.05, and if it reaches 0 (or lower) 
+        /// Calls the GamePlay's InflictDamage() method with the Blaat's x and y coordinates, explosion damage and explosion radius.
+        /// Calls the Gameplay's GetArena() to get a reference to the Map and then call DestroyTerrain() on it, this time passing in Blast's x and y coordinates and the earth destruction radius
+        /// Calls the Gameplays's RemoveEffect(), passing in the this reference to remove the Blast from the list of active Attacks.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void Tick()
         {
             blastLifeSpan -= 0.02f;
@@ -55,7 +80,11 @@ namespace TankBattle
 
             }
         }
-
+        /// <summary>
+        /// This method draws one frame of the Boom. The idea is to draw a circle that expands, cycling from yellow to red and then fading out.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void Display(Graphics graphics, Size displaySize)
         {
             //Answer has been given to us and just needs variables changed to private fields and 
