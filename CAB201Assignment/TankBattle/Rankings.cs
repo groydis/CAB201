@@ -82,11 +82,9 @@ namespace TankBattle
             }
         }
         /// <summary>
-        ///
         /// Closes the window
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
-        ///
         /// </summary>
         private void closeButton_Click(object sender, EventArgs e)
         {
