@@ -26,6 +26,18 @@ namespace TankBattle
         
         private int wind;
 
+        /// <summary>
+        /// This method constructs a new Shell.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X position of the shell</param> 
+        /// <param name="y">The y Position of teh shell</param> 
+        /// <param name="angle">The angle in which the shell is firedy</param> 
+        /// <param name="power">The power which assists in determining the shells speedy</param> 
+        /// <param name="gravity">Gravity value affecting the shell</param>
+        /// <param name="explosion">The blast effect to displayed</param>
+        /// <param name="player">The assocated playery</param>
         public Shell(float x, float y, float angle, float power, float gravity, Blast explosion, Opponent player)
         {
             this.x = x;
@@ -43,6 +55,11 @@ namespace TankBattle
             this.player = player;
         }
 
+        /// <summary>
+        /// This method moves the given projectile according to its angle, power, gravity and the wind.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void Tick()
         {
             for (int i = 0; i < 10; i++)
@@ -70,6 +87,11 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        /// This method draws the Shell as a small white circle.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void Display(Graphics graphics, Size size)
         {
             float x = (float)this.x * size.Width / Map.WIDTH;
