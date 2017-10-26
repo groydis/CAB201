@@ -22,44 +22,40 @@ namespace TankBattle
             int[] playerScores = new int[game.NumPlayers()];
             
             int winner = 1;
-            for (int i = 1; i <= game.NumPlayers(); i++)
-            {
-                int score = game.GetPlayer(i).GetScore();
-                playerScores[i - 1] = score;
-                if (score > playerScores[i - 1])
-                {                  
-                    winner = i;
-                }
 
+            Debug.WriteLine("Populate array of scores");
+            for (int i = 0; i < game.NumPlayers(); i++)
+            {
+                playerScores[i] = game.GetPlayer(i + 1).GetScore();
             }
-
-                for (int i = 0; i < playerScores.Length - 1; i++)
+            Debug.WriteLine("Populate array of scores -> Done");
+            Debug.WriteLine("Find winner");
+            for (int i = 0; i < game.NumPlayers(); i++)
             {
-                int j = i + 1;
-
-                while (j > 0)
+                int score_to_check = game.GetPlayer(i + 1).GetScore();
+                for (int x = 0; i < game.NumPlayers(); i++)
                 {
-                    if (playerScores[j - 1] > playerScores[j])
+                    if (score_to_check > playerScores[x])
                     {
-                        int temp = playerScores[j - 1];                        
-                        playerScores[j - 1] = playerScores[j];
-                        playerScores[j] = temp;
-
+                        winner = i + 1;
                     }
-                    j--;
                 }
             }
+            Debug.WriteLine("Find winner -> Done Winner: " + winner);
 
+            Debug.WriteLine("Writing Winner String ");
             winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
+            Debug.WriteLine("Writing Winner String -> Done ");
 
+            Debug.WriteLine("Compiling list of players with scores");
             string[] playerArray = new string[game.NumPlayers()];
 
-            for (int i = 1; i <= game.NumPlayers(); i++)
+            for (int i = 0; i < game.NumPlayers(); i++)
             {
-                String newString = game.GetPlayer(i).Identifier() + " (" + game.GetPlayer(i).GetScore() + " wins)";
-                playerArray[i - 1] = newString;
+                String newString = game.GetPlayer(i + 1).Identifier() + " (" + game.GetPlayer(i + 1).GetScore() + " wins)";
+                playerArray[i] = newString;
             }
-
+            Debug.WriteLine("Compiling list of players with scores -> Done");
             playerListBox.Items.Clear();
 
             foreach (String name in playerArray)
