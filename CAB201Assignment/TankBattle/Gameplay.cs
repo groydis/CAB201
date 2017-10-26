@@ -46,23 +46,17 @@ namespace TankBattle
         /// 
         public Gameplay(int numPlayers, int numRounds)
         {
-            //Check that the numPlayers is within 2 and 8
-            //Minimum number of Players is 2 and Maximum number is 8
+
             if (numPlayers >= 2 && numPlayers <= 8)
             {
-                //Make the array noPlayers to the length of the input Numplayers
                 noPlayers = new Opponent[numPlayers];
             }
 
-            //Check that the numRounds is within 1 and 100
-            //Minimum number of Rounds is 1 and Maximum number is 100
             if (numRounds >= 1 && numRounds <= 100)
             {
-                //Set the array length of noRounds to NumRounds
                 noRounds = new Opponent[numRounds];
             }
 
-            //Initiliaze the LIst of Effects to be used later in the 
             effects = new List<Effect>();
         }
 
@@ -586,13 +580,13 @@ namespace TankBattle
         /// </summary>
         public void FindWinner()
         {
-            //Loop through the battleTanks Array
+            
             for (int i = 0; i < battleTanks.Length; i++)
             {
-                //Check that the battleTanks exists
+                
                 if (battleTanks[i].Exists())
                 {
-                    //Add the score to this player that wins
+                    
                     battleTanks[i].GetPlayer().AddScore();
                 }
             }
@@ -632,7 +626,7 @@ namespace TankBattle
         /// </summary>
         public int GetWindSpeed()
         {
-            //Randomly generate a value between -100 and 100 then return it
+            
             wind = rng.Next(-100, 100);
             return wind;
         }
