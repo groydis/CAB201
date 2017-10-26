@@ -22,6 +22,13 @@ namespace TankBattle
 
         Random rng = new Random();
 
+        /// <summary>
+        /// This constructor randomly generates the terrain on which the tanks will battle. 
+        /// It creates a two-dimensional array of bools which represent the terrain (where 'true' means there is terrain at that location). 
+        /// The size of the array is in the constants Map.WIDTH and Map.HEIGHT
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public Map()
         {
             
@@ -57,6 +64,15 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        /// This returns whether there is any terrain at the given coordinates. 
+        /// If there is, it returns true. Otherwise, it returns false.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X location to check</param> 
+        /// <param name="y">The Y location to check</param>
+        /// <returns> If terrain exists returns true. Otherwise, it returns false. </returns>
         public bool Get(int x, int y)
         {
             if (x >= 0 && x <= WIDTH)
@@ -72,6 +88,16 @@ namespace TankBattle
             return false;
         }
 
+        /// <summary>
+        /// This returns  whether there is room for a tank-sized object 
+        /// (a tank is Tank.WIDTH wide and Tank.HEIGHT tall) at the given coordinates.
+        /// The coordinates refer to the top left of the tank position
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X location to check</param> 
+        /// <param name="y">The Y location to check</param>
+        /// <returns> If tank can fit exists returns false. Otherwise, it returns true. </returns>
         public bool CheckTankCollide(int x, int y)
         {
             int tankBott = y + TankModel.HEIGHT;
@@ -96,6 +122,14 @@ namespace TankBattle
             return false;
         }
 
+        /// <summary>
+        /// This method takes the x coordinate of a tank and, using that, 
+        /// finds the largest (lowest) y coordinate where a tank can go
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X location to check</param> 
+        /// <returns> Returns the Y position </returns>
         public int TankYPosition(int x)
         {
             int lowestValid = 0;
@@ -121,6 +155,15 @@ namespace TankBattle
             return lowestValid;
         }
 
+        /// <summary>
+        /// This method destroys all terrain within a circle centred around destroyX, destroyY. 
+        /// This method is called after a Shell explodes, destroying the terain
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="destroyX">The X location to destroy</param> 
+        /// <param name="destroyY">The Y location to destroy</param> 
+        /// <param name="radius">The radius of the destroy area</param> 
         public void DestroyTerrain(float destroyX, float destroyY, float radius)
         {
             float dist = 0;
@@ -139,6 +182,14 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        /// This method takes the x coordinate of a tank and, using that, 
+        /// finds the largest (lowest) y coordinate where a tank can go
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <param name="x">The X location to check</param> 
+        /// <returns> Returns the Y position </returns>
         public bool GravityStep()
         {
             bool mover = false;
