@@ -11,10 +11,27 @@ using System.Diagnostics;
 
 namespace TankBattle
 {
+    /// <summary>
+    ///
+    /// Form for displaying rankings
+    /// Author Greyden Scott October 2017
+    ///
+    /// </summary>
     public partial class Rankings : Form
     {
         private Opponent[] players;
 
+        /// <summary>
+        ///
+        /// Form for displaying rankings
+        /// Creates a list of player scores
+        /// Checks scores against each other searching for highest score
+        /// Finds associated player for that score and sets them as the winner
+        /// Then populates form fields with relevant data
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         public Rankings(Gameplay game)
         {
             InitializeComponent();
@@ -64,7 +81,13 @@ namespace TankBattle
 
             }
         }
-
+        /// <summary>
+        ///
+        /// Closes the window
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        ///
+        /// </summary>
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
