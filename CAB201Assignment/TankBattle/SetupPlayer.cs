@@ -23,12 +23,24 @@ namespace TankBattle
             InitializeComponent();         
         }
 
+        /// <summary>
+        /// Sets the values passed in from GameSetup to the correct Form attributes
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public void SetupGamePlay()
         {
             playerNumberNameLbl.Text = playNumName;
             playerNameBox.Text = textBoxName;
         }
 
+        /// <summary>
+        /// Changes the players in the array playersArray so that they are either playercontrolled or AIControlled
+        /// Checks the AI or Human button checked with playerNameBox
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <returns>Returns a colour</returns>
         private void nextPlayerButton_Click_1(object sender, EventArgs e)
         {
             if (AIRButton.Checked)

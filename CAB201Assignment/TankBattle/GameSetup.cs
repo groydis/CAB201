@@ -20,6 +20,13 @@ namespace TankBattle
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Allows user to define the number of players and the number of rounds
+        /// Creates the players whether it be as AI or Player controlled as determined by the player
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
+        /// <returns>Returns a colour</returns>
         private void setupGame_Click(object sender, EventArgs e)
         {
             Opponent[] players = new Opponent[(int)playerNumUpDown.Value];
@@ -31,6 +38,8 @@ namespace TankBattle
             {
                
                 SetupPlayer form = new SetupPlayer();
+
+                //Give the new form the Correct Values
                 form.BackColor = Gameplay.GetColour(i);
                 form.Text = "Setup Player #" + i;
                 form.playNumName = "Player # "+ i + " Name:";
@@ -39,8 +48,9 @@ namespace TankBattle
                 form.playersArray = players;
                 form.SetupGamePlay();
                 form.ShowDialog();
-                players = form.playersArray;
 
+                //Return Values and Create player
+                players = form.playersArray;
                 game.CreatePlayer(i, players[i - 1]);
             }
 

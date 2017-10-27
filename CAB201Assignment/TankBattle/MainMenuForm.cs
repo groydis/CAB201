@@ -16,7 +16,12 @@ namespace TankBattle
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Allows user to define the number of players and the number of rounds
+        /// Creates the players whether it be as AI or Player controlled as determined by the player
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         private void newGameButton_Click(object sender, EventArgs e)
         {            
             GameSetup setupGame = new GameSetup();
