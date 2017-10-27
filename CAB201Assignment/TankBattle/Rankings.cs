@@ -50,22 +50,6 @@ namespace TankBattle
             winner = playerScores.ToList().IndexOf(maxValue) + 1;
 
 
-            //for (int i = 0; i < game.NumPlayers(); i++)
-            //{
-            //    int score_to_check = game.GetPlayer(i + 1).GetScore();
-            //    for (int x = 0; i < game.NumPlayers(); i++)
-            //    {
-            //        Debug.WriteLine("Score to check: " + score_to_check);
-            //        Debug.WriteLine("VS this player: " + playerScores[x]);
-            //        if (score_to_check < playerScores[x])
-            //        {
-            //            winner = i + 1;
-            //        } else if (score_to_check == playerScores[x]) {
-            //            tie_occured = true;
-            //        }
-            //    }
-            //}
-
             for (int i = 0; i < playerScores.Length; i++)
             {
                 for (int j = i + 1; j < playerScores.Length; j++)
