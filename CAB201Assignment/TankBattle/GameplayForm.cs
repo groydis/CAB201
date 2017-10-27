@@ -218,13 +218,16 @@ namespace TankBattle
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             if (currentGame.ProcessWeaponEffects() == false)
             {
+                //currentGame.GravityStep();
+                DrawBackground();
+                DrawGameplay();
+                displayPanel.Invalidate();
                 if (currentGame.GravityStep() == true)
                 {
-                    DrawBackground();
-                    DrawGameplay();
-                    displayPanel.Invalidate();
+                    return;
                 }
                 else
                 {
@@ -237,6 +240,7 @@ namespace TankBattle
                     {
                         Dispose();
                         currentGame.NextRound();
+                        return;
                     }
 
                 }
@@ -245,6 +249,7 @@ namespace TankBattle
             {
                 DrawGameplay();
                 displayPanel.Invalidate();
+                return;
             }
         }
     }

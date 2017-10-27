@@ -49,28 +49,31 @@ namespace TankBattle
         public override void NewTurn(GameplayForm gameplayForm, Gameplay currentGame)
         {
             this.gameplayForm = gameplayForm;
-            this.currentGame = currentGame;
+            //this.currentGame = currentGame;
 
-            int playerPos = currentGame.GetCurrentPlayerTank().GetX();
-            if (playerPos > Map.WIDTH / 2)
-            {
-                angle_min = 0;
-                angle_max = 18;
-            } else
-            {
-                angle_min = -18;
-                angle_max = 0;
+            //int playerPos = currentGame.GetCurrentPlayerTank().GetX();
+            //if (playerPos > Map.WIDTH / 2)
+            //{
+            //    angle_min = 0;
+            //    angle_max = 18;
+            //} else
+            //{
+            //    angle_min = -18;
+            //    angle_max = 0;
 
-            }
-            angle = rng.Next(angle_min, angle_max) * 5;
-            gameplayForm.SetAngle(angle);
+            //}
+            //angle = rng.Next(angle_min, angle_max) * 5;
+            //gameplayForm.SetAngle(angle);
 
-            power = rng.Next(5, 100);
+            //power = rng.Next(5, 100);
+            //gameplayForm.SetPower(20);
+
+            //gameplayForm.SetWeapon(0);
+            //gameplayForm.Fire();
+
+            gameplayForm.SetAngle(0);
             gameplayForm.SetPower(20);
-
-            gameplayForm.SetWeapon(0);
             gameplayForm.Fire();
-
         }
 
         public override void HitPos(float x, float y)

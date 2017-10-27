@@ -494,23 +494,28 @@ namespace TankBattle
         public bool FinishTurn()
         {
             int playersLeft = 0;
-            for (int i = 0; i< battleTanks.Length; i++)
+            Debug.WriteLine("Battle tanks: " + battleTanks.Length);
+            for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (battleTanks[i].Exists())
                 {
                     playersLeft++;
+                    Debug.WriteLine("Players Left: " + playersLeft);
                 }
-                if (playersLeft >= 2)
+             
+            }
+            if (playersLeft > 1)
+            {
+                for (int i = 0; i < playersLeft; i++)
                 {
-                    curr_player++;             
-                    if (curr_player >= NumPlayers())
+                    curr_player++;
+                    if (curr_player >= battleTanks.Length)
                     {
                         curr_player = 0;
                     }
                     if (battleTanks[curr_player].Exists())
                     {
                         wind += rng.Next(-10, 10);
-
                         if (wind < -100)
                         {
                             wind = -100;
@@ -519,19 +524,18 @@ namespace TankBattle
                         {
                             wind = 100;
                         }
+                        Debug.WriteLine("RETURNED TRUE");
                         return true;
-                    } else if (i == battleTanks.Length - 1)
-                    {
-                        i = 0;
                     }
                 }
             }
-
-            if (playersLeft <= 1)
+            if (playersLeft == 1)
             {
                 FindWinner();
+                Debug.WriteLine("FOUND WINNER ENDED");
                 return false;
             }
+            Debug.WriteLine("ENDED OUTSIDE OF CONTEXT");
             return false;
         }
 
@@ -551,6 +555,7 @@ namespace TankBattle
                 {
                     
                     battleTanks[i].GetPlayer().AddScore();
+                    Debug.WriteLine("ADDED THE SCORE");
                 }
             }
         }
