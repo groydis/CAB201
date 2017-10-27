@@ -41,38 +41,51 @@ namespace TankBattle
             int winner = 1;
 
             bool tie_occured = false;
-            Debug.WriteLine("Populate array of scores");
+
             for (int i = 0; i < game.NumPlayers(); i++)
             {
                 playerScores[i] = game.GetPlayer(i + 1).GetScore();
             }
-            Debug.WriteLine("Populate array of scores -> Done");
-            Debug.WriteLine("Find winner");
-            for (int i = 0; i < game.NumPlayers(); i++)
+            int maxValue = playerScores.Max();
+            winner = playerScores.ToList().IndexOf(maxValue) + 1;
+
+
+            //for (int i = 0; i < game.NumPlayers(); i++)
+            //{
+            //    int score_to_check = game.GetPlayer(i + 1).GetScore();
+            //    for (int x = 0; i < game.NumPlayers(); i++)
+            //    {
+            //        Debug.WriteLine("Score to check: " + score_to_check);
+            //        Debug.WriteLine("VS this player: " + playerScores[x]);
+            //        if (score_to_check < playerScores[x])
+            //        {
+            //            winner = i + 1;
+            //        } else if (score_to_check == playerScores[x]) {
+            //            tie_occured = true;
+            //        }
+            //    }
+            //}
+
+            for (int i = 0; i < playerScores.Length; i++)
             {
-                int score_to_check = game.GetPlayer(i + 1).GetScore();
-                for (int x = 0; i < game.NumPlayers(); i++)
+                for (int j = i + 1; j < playerScores.Length; j++)
                 {
-                    if (score_to_check < playerScores[x])
+                    if (playerScores[i] == playerScores[j] && playerScores[i] == maxValue)
                     {
-                        winner = i + 1;
-                    } else if (score_to_check == playerScores[x]) {
                         tie_occured = true;
                     }
+                    
                 }
             }
-            Debug.WriteLine("Find winner -> Done Winner: " + winner);
 
-            Debug.WriteLine("Writing Winner String ");
             if (tie_occured)
             {
                 winnerLabel.Text = "Tie!";
             } else {
                 winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
             }
-            Debug.WriteLine("Writing Winner String -> Done ");
 
-            Debug.WriteLine("Compiling list of players with scores");
+
             string[] playerArray = new string[game.NumPlayers()];
 
             for (int i = 0; i < game.NumPlayers(); i++)
@@ -80,7 +93,6 @@ namespace TankBattle
                 String newString = game.GetPlayer(i + 1).Identifier() + " (" + game.GetPlayer(i + 1).GetScore() + " wins)";
                 playerArray[i] = newString;
             }
-            Debug.WriteLine("Compiling list of players with scores -> Done");
             playerListBox.Items.Clear();
 
             foreach (String name in playerArray)

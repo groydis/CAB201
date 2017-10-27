@@ -494,13 +494,11 @@ namespace TankBattle
         public bool FinishTurn()
         {
             int playersLeft = 0;
-            Debug.WriteLine("Battle tanks: " + battleTanks.Length);
             for (int i = 0; i < battleTanks.Length; i++)
             {
                 if (battleTanks[i].Exists())
                 {
                     playersLeft++;
-                    Debug.WriteLine("Players Left: " + playersLeft);
                 }
              
             }
@@ -524,7 +522,6 @@ namespace TankBattle
                         {
                             wind = 100;
                         }
-                        Debug.WriteLine("RETURNED TRUE");
                         return true;
                     }
                 }
@@ -532,10 +529,8 @@ namespace TankBattle
             if (playersLeft == 1)
             {
                 FindWinner();
-                Debug.WriteLine("FOUND WINNER ENDED");
                 return false;
             }
-            Debug.WriteLine("ENDED OUTSIDE OF CONTEXT");
             return false;
         }
 
@@ -555,7 +550,6 @@ namespace TankBattle
                 {
                     
                     battleTanks[i].GetPlayer().AddScore();
-                    Debug.WriteLine("ADDED THE SCORE");
                 }
             }
         }
