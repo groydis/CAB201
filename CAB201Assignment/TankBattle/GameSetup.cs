@@ -26,7 +26,6 @@ namespace TankBattle
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
-        /// <returns>Returns a colour</returns>
         private void setupGame_Click(object sender, EventArgs e)
         {
             Opponent[] players = new Opponent[(int)playerNumUpDown.Value];

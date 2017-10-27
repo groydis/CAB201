@@ -40,7 +40,6 @@ namespace TankBattle
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
         /// </summary>
-        /// <returns>Returns a colour</returns>
         private void nextPlayerButton_Click_1(object sender, EventArgs e)
         {
             if (AIRButton.Checked)
