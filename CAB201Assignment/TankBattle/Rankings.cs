@@ -40,6 +40,7 @@ namespace TankBattle
             
             int winner = 1;
 
+            bool tie_occured = false;
             Debug.WriteLine("Populate array of scores");
             for (int i = 0; i < game.NumPlayers(); i++)
             {
@@ -52,16 +53,23 @@ namespace TankBattle
                 int score_to_check = game.GetPlayer(i + 1).GetScore();
                 for (int x = 0; i < game.NumPlayers(); i++)
                 {
-                    if (score_to_check > playerScores[x])
+                    if (score_to_check < playerScores[x])
                     {
                         winner = i + 1;
+                    } else if (score_to_check == playerScores[x]) {
+                        tie_occured = true;
                     }
                 }
             }
             Debug.WriteLine("Find winner -> Done Winner: " + winner);
 
             Debug.WriteLine("Writing Winner String ");
-            winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
+            if (tie_occured)
+            {
+                winnerLabel.Text = "Tie!";
+            } else {
+                winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
+            }
             Debug.WriteLine("Writing Winner String -> Done ");
 
             Debug.WriteLine("Compiling list of players with scores");
