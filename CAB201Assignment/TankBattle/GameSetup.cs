@@ -27,20 +27,6 @@ namespace TankBattle
             numOfRounds = (int)roundsNumUpDown.Value;
             Gameplay game = new Gameplay(numOfPlayers, numOfRounds);
 
-
-            /*if (numOfPlayers > 2)
-            {
-                for (int i =1; i <= numOfPlayers; i++)
-                {
-                    players[i - 1] = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(i));
-                }
-            }
-            else
-            {
-                players[0] = new PlayerController("Player 1", TankModel.GetTank(1), Gameplay.GetColour(1));
-                players[1] = new PlayerController("Player 2", TankModel.GetTank(1), Gameplay.GetColour(2));
-            }*/
-
             for (int i = 1; i <= numOfPlayers; i++)
             {
                
