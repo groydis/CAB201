@@ -33,11 +33,11 @@ namespace TankBattle
         {
             if (AIRButton.Checked)
             {
-                playersArray[whichPlayer] = new AIPlayer(playerNameBox.Text, TankModel.GetTank(1), Gameplay.GetColour(whichPlayer));
+                playersArray[whichPlayer] = new AIPlayer(playerNameBox.Text, TankModel.GetTank(1), Gameplay.GetColour(whichPlayer + 1));
             }
             else
             {
-                playersArray[whichPlayer] = new PlayerController(playerNameBox.Text, TankModel.GetTank(1), Gameplay.GetColour(whichPlayer));
+                playersArray[whichPlayer] = new PlayerController(playerNameBox.Text, TankModel.GetTank(1), Gameplay.GetColour(whichPlayer + 1));
             }
             this.Close();
         }

@@ -52,7 +52,7 @@ namespace TankBattle
                 form.whichPlayer = i - 1;
                 form.playersArray = players;
                 form.SetupGamePlay();
-                form.Show();
+                form.ShowDialog();
                 players = form.playersArray;
 
                 game.CreatePlayer(i, players[i - 1]);
