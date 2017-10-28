@@ -151,13 +151,13 @@ namespace TankBattle
                             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
           
             // TODO: FIX Checks to ensure line does not draw past given positions;
-            if (angle >= 65)
+            if (angle >= 80)
             {
-                turret_angle = 65;
+                turret_angle = 80;
             }
-            else if (angle <= -65)
+            else if (angle <= -80)
             {
-                turret_angle = -65;
+                turret_angle = -80;
             }
             else
             {

@@ -56,7 +56,7 @@ namespace TankBattle
         }
 
         /// <summary>
-        /// This method reduces the Blast's lifespan by 0.05, and if it reaches 0 (or lower) 
+        /// This method reduces the Blast's lifespan by 0.02, and if it reaches 0 (or lower) 
         /// Calls the GamePlay's InflictDamage() method with the Blaat's x and y coordinates, explosion damage and explosion radius.
         /// Calls the Gameplay's GetArena() to get a reference to the Map and then call DestroyTerrain() on it, this time passing in Blast's x and y coordinates and the earth destruction radius
         /// Calls the Gameplays's RemoveEffect(), passing in the this reference to remove the Blast from the list of active Attacks.
