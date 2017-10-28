@@ -221,7 +221,7 @@ namespace TankBattle
 
             if (currentGame.ProcessWeaponEffects() == false)
             {
-                //currentGame.GravityStep();
+                currentGame.GravityStep();
                 DrawBackground();
                 DrawGameplay();
                 displayPanel.Invalidate();
