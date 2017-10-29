@@ -25,7 +25,11 @@ namespace TankBattle
         private BufferedGraphics gameplayGraphics;
 
         private BattleTank currentTank;
-
+        /// <summary>
+        /// INitilises the GameplayForm View
+        /// </summary>
+        /// <param name="game">Current Gameplay</param> 
+         
         public GameplayForm(Gameplay game)
         {
 
@@ -81,27 +85,47 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        /// Enables the control panel
+        /// </summary> 
         public void EnableControlPanel()
         {
             controlPanel.Enabled = true;
         }
 
+        /// <summary>
+        /// Sets the angle based on what is on the UI
+        /// </summary>
+        /// <param name="angle">the angle</param> 
         public void SetAngle(float angle)
         {
             angleNumericUpDown.Value = (decimal)angle;
         }
 
+        /// <summary>
+        /// Sets the power based on what is on the UI
+        /// </summary>
+        /// <param name="power">the power</param> 
         public void SetPower(int power)
         {
             powerTrackBar.Value = power;
             powerValueLabel.Text = power.ToString();
         }
+
+        /// <summary>
+        /// Sets the weapon based on what is on the UI
+        /// </summary>
+        /// <param name="Weapon">the weapon int</param> 
         public void SetWeapon(int weapon)
         {
             weaponComboBox.SelectedValue = weapon;
             weaponComboBox.SelectedValue = 0;
         }
 
+        /// <summary>
+        /// This method is called both externally (by the computer player when it wants to fire) and by the 
+        /// 'Fire!' button when it is clicked.
+        /// </summary>
         public void Fire()
         {
             BattleTank bTank = currentGame.GetCurrentPlayerTank();
@@ -136,6 +160,9 @@ namespace TankBattle
             }
         }
 
+        /// <summary>
+        /// This method is used to draw the gameplay elements of the screen (that is, everything but the terrain).
+        /// </summary>
         private void DrawGameplay()
         {
             backgroundGraphics.Render(gameplayGraphics.Graphics);
@@ -144,6 +171,9 @@ namespace TankBattle
 
         }
 
+        /// <summary>
+        /// This method is used to update form elements to reflect who the current player is.
+        /// </summary>
         private void NewTurn()
         {
             currentTank = currentGame.GetCurrentPlayerTank();
