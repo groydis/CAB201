@@ -45,12 +45,13 @@ namespace TankBattle
         /// <returns>explanation of return value</returns>
         public Gameplay(int numPlayers, int numRounds)
         {
-
+            //number of Players must be between 2 and 8
             if (numPlayers >= 2 && numPlayers <= 8)
             {
                 noPlayers = new Opponent[numPlayers];
             }
 
+            //Number of Rounds is between 1 and 100
             if (numRounds >= 1 && numRounds <= 100)
             {
                 noRounds = new Opponent[numRounds];
@@ -164,18 +165,16 @@ namespace TankBattle
 
             int loc = 0;
 
+            //Loop through number of players and setup their X positions
             for (int i = 0; i < locations.Length; i++)
             {
 
                 if (i == 0)
                 {
-
                     loc = (screenWidth / numPlayers) / numPlayers;
                 }
-
                 else
                 {
-
                     loc = locations[i - 1] + (screenWidth / numPlayers);
                 }
 
@@ -195,11 +194,13 @@ namespace TankBattle
         {
             Random rng = new Random();
 
+            //Loop through the given array
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = array[i] + 1;
             }
 
+            //Loop through the given array
             for (int j = 0; j < array.Length; j++)
             {
                 int z = rng.Next(j);
@@ -241,6 +242,7 @@ namespace TankBattle
 
             arena = new Map();
             
+            //Setup players positions and change them about
             int [] positions = GetPlayerLocations(noPlayers.Length);
 
             for (int i = 0; i < noPlayers.Length; i++)
@@ -250,6 +252,7 @@ namespace TankBattle
             
             Shuffle(positions);
 
+            //Setup BattleTanks in their given positions
             battleTanks = new BattleTank[noPlayers.Length];
             
             for (int i = 0; i < noPlayers.Length ; i++)
@@ -266,6 +269,7 @@ namespace TankBattle
             
             wind = GetWindSpeed();
 
+            //Show Form
             GameplayForm gameplayForm = new GameplayForm(this);
             gameplayForm.Show(); 
 
@@ -283,11 +287,9 @@ namespace TankBattle
         }
 
         /// <summary>
-        ///
         /// Returns the battletank of the current player
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
-        ///
         /// </summary>
         /// <returns>Returns the BattleTank of the playere</returns>
         public BattleTank GetCurrentPlayerTank()
@@ -439,11 +441,12 @@ namespace TankBattle
             {
                 if (battleTanks[i].Exists())
                 {
+                    //Check the distance between tank and the explosion
                     float tank_centre_x = battleTanks[i].GetX() + (TankModel.WIDTH / 2);
                     float tank_centre_y = battleTanks[i].Y() + (TankModel.HEIGHT / 2);
 
                     float dist = (float)Math.Sqrt(Math.Pow(tank_centre_x - damageX, 2) + Math.Pow(tank_centre_y - damageY, 2));
-
+                   
                     if (dist < radius && dist > radius / 2)
                     {
                         float diff = dist - radius;
@@ -512,6 +515,7 @@ namespace TankBattle
                     }
                     if (battleTanks[curr_player].Exists())
                     {
+                        //Make sure values are always in between -100 and 100
                         wind += rng.Next(-10, 10);
                         if (wind < -100)
                         {
@@ -540,14 +544,12 @@ namespace TankBattle
         /// Written, edited and tested by both team members
         /// </summary>
         public void FindWinner()
-        {
-            
+        {            
             for (int i = 0; i < battleTanks.Length; i++)
             {
                 
                 if (battleTanks[i].Exists())
-                {
-                    
+                {                    
                     battleTanks[i].GetPlayer().AddScore();
                 }
             }
@@ -572,6 +574,7 @@ namespace TankBattle
             }
             if (curr_round > noRounds.Length)
             {
+                //Maxrounds reached show ranking form
                 Rankings rankingsWindow = new Rankings(this);
                 rankingsWindow.Show();
             }

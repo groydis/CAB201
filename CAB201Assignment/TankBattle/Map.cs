@@ -32,7 +32,7 @@ namespace TankBattle
         public Map()
         {
             
-
+            //Random height of map drawn
             int mapSize = rng.Next(75, 100);
             for (int i = mapSize; i > 0; i--)
             {
@@ -42,6 +42,7 @@ namespace TankBattle
                 }
             }
 
+            //Random amount of bombs dropped within the height created
             int mapBomb = rng.Next(25, 75);
             for (int z = 0; z < mapBomb; z++)
             {
@@ -52,6 +53,8 @@ namespace TankBattle
                 DestroyTerrain(bX, bY, rad);
             }
 
+            //Moves terrain to correct placement
+            //Removes Swiss Cheese Effect on Map
             while (GravityStep())
             {
                 GravityStep();

@@ -22,7 +22,6 @@ namespace TankBattle
         private Opponent[] players;
 
         /// <summary>
-        ///
         /// Form for displaying rankings
         /// Creates a list of player scores
         /// Checks scores against each other searching for highest score
@@ -30,7 +29,6 @@ namespace TankBattle
         /// Then populates form fields with relevant data
         /// Author Greyden Scott & Sean O'Connell October 2017
         /// Written, edited and tested by both team members
-        ///
         /// </summary>
         public Rankings(Gameplay game)
         {
@@ -42,6 +40,7 @@ namespace TankBattle
 
             bool tie_occured = false;
 
+            //Gets the score of each player in the game
             for (int i = 0; i < game.NumPlayers(); i++)
             {
                 playerScores[i] = game.GetPlayer(i + 1).GetScore();
@@ -49,7 +48,7 @@ namespace TankBattle
             int maxValue = playerScores.Max();
             winner = playerScores.ToList().IndexOf(maxValue) + 1;
 
-
+            //Checks for a Tie
             for (int i = 0; i < playerScores.Length; i++)
             {
                 for (int j = i + 1; j < playerScores.Length; j++)
@@ -62,6 +61,7 @@ namespace TankBattle
                 }
             }
 
+            //Outputs the winning values into the from Label
             if (tie_occured)
             {
                 winnerLabel.Text = "Tie!";
@@ -69,7 +69,7 @@ namespace TankBattle
                 winnerLabel.Text = game.GetPlayer(winner).Identifier() + " won!";
             }
 
-
+            //Outputs the player and their score into the listBox
             string[] playerArray = new string[game.NumPlayers()];
 
             for (int i = 0; i < game.NumPlayers(); i++)

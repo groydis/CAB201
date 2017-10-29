@@ -30,7 +30,11 @@ namespace TankBattle
 
         List<BattleTank> opponentTank;
 
-
+        /// <summary>
+        /// Creates a player that has properties branching from the Opponent class 
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public AIPlayer(string name, TankModel tank, Color colour) : base(name, tank, colour)
         {
             this.name = name;
@@ -38,6 +42,12 @@ namespace TankBattle
             this.colour = colour;
         }
 
+        /// <summary>
+        /// Overrides Gameplay.CommenceRound for the current player to be 
+        /// assigned these values in this method.
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void CommenceRound()
         {
             angle_min = 0;
@@ -46,30 +56,14 @@ namespace TankBattle
             
         }
 
+        /// <summary>
+        /// Overrides the processes of the Opponent.NewTurn to allow the AI to play the game
+        /// Author Greyden Scott & Sean O'Connell October 2017
+        /// Written, edited and tested by both team members
+        /// </summary>
         public override void NewTurn(GameplayForm gameplayForm, Gameplay currentGame)
         {
             this.gameplayForm = gameplayForm;
-            //this.currentGame = currentGame;
-
-            //int playerPos = currentGame.GetCurrentPlayerTank().GetX();
-            //if (playerPos > Map.WIDTH / 2)
-            //{
-            //    angle_min = 0;
-            //    angle_max = 18;
-            //} else
-            //{
-            //    angle_min = -18;
-            //    angle_max = 0;
-
-            //}
-            //angle = rng.Next(angle_min, angle_max) * 5;
-            //gameplayForm.SetAngle(angle);
-
-            //power = rng.Next(5, 100);
-            //gameplayForm.SetPower(20);
-
-            //gameplayForm.SetWeapon(0);
-            //gameplayForm.Fire();
 
             gameplayForm.SetAngle(0);
             gameplayForm.SetPower(20);
