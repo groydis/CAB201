@@ -28,8 +28,6 @@ namespace TankBattle
         float angle;
         int power;
 
-        List<BattleTank> opponentTank;
-
 
         public AIPlayer(string name, TankModel tank, Color colour) : base(name, tank, colour)
         {
